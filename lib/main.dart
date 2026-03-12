@@ -1,5 +1,4 @@
 import 'package:enr_tickets/features/log_in/presentation/view/log_in.dart';
-import 'package:enr_tickets/features/log_in/presentation/view/widgets/background_image.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(fontFamily: "Quicksand"),
-      home: BackgroundImage(),
+      home: LogIn(),
       debugShowCheckedModeBanner: false,
     );
   }

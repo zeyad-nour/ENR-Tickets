@@ -1,11 +1,11 @@
 import 'package:enr_tickets/core/utils/colors.dart';
 import 'package:enr_tickets/core/utils/strings.dart';
+import 'package:enr_tickets/core/utils/widget/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class CustomLogo extends StatelessWidget {
   const CustomLogo({super.key});
-  final double size = 70;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -15,28 +15,12 @@ class CustomLogo extends StatelessWidget {
           children: [
             Text(
               "E",
-              style: TextStyle(
-                fontSize: size,
-                fontWeight: FontWeight.w800,
+              style: Styles.textStyle70.copyWith(
                 color: const Color.fromARGB(255, 194, 28, 28),
               ),
             ),
-            Text(
-              "N",
-              style: TextStyle(
-                fontSize: size,
-                fontWeight: FontWeight.w800,
-                color: iconColor,
-              ),
-            ),
-            Text(
-              "R",
-              style: TextStyle(
-                fontSize: size,
-                fontWeight: FontWeight.w800,
-                color: mainfontcolor,
-              ),
-            ),
+            Text("N", style: Styles.textStyle70),
+            Text("R", style: Styles.textStyle70),
           ],
         ),
         Row(

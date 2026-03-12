@@ -8,6 +8,7 @@ import 'package:enr_tickets/core/utils/widget/custom_form_feild.dart';
 import 'package:enr_tickets/core/utils/widget/styles.dart';
 import 'package:enr_tickets/features/log_in/presentation/view/widgets/custom_forget_text.dart';
 import 'package:enr_tickets/features/log_in/presentation/view/widgets/custom_logo.dart';
+import 'package:enr_tickets/features/log_in/presentation/view/widgets/sign_in_via.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -56,16 +57,7 @@ class LogInBody extends StatelessWidget {
             },
           ),
           Gap(15),
-          Center(
-            child: Text(
-              sign_in_with,
-              style: Styles.hintStyle.copyWith(
-                fontSize: 20,
-                fontWeight: FontWeight.w800,
-                color: Colors.grey[350],
-              ),
-            ),
-          ),
+          SignInVia(),
         ],
       ),
     );
