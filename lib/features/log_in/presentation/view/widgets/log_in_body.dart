@@ -9,7 +9,7 @@ import 'package:enr_tickets/core/utils/widget/custom_form_feild.dart';
 import 'package:enr_tickets/core/utils/widget/styles.dart';
 import 'package:enr_tickets/features/create_account/presentation/view/create_account.dart';
 import 'package:enr_tickets/features/log_in/presentation/view/widgets/custom_forget_text.dart';
-import 'package:enr_tickets/features/log_in/presentation/view/widgets/custom_logo.dart';
+import 'package:enr_tickets/core/utils/widget/custom_logo.dart';
 import 'package:enr_tickets/features/log_in/presentation/view/widgets/sign_in_methods.dart';
 import 'package:enr_tickets/features/log_in/presentation/view/widgets/sign_in_via.dart';
 import 'package:flutter/material.dart';
