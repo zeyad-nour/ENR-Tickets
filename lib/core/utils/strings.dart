@@ -8,4 +8,4 @@ const String email = 'Email';
 const String password = 'Password';
 const String forgetpassword = 'Forget Password ?';
 const String loginword = 'LogIn';
-const String sign_in_with = 'Or Sign in with';
+const String sign_in_with = 'Or Sign in via';
