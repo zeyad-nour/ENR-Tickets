@@ -5,6 +5,7 @@ import 'package:enr_tickets/core/utils/strings.dart';
 import 'package:enr_tickets/core/utils/widget/custom_button_register.dart';
 import 'package:enr_tickets/core/utils/widget/styles.dart';
 import 'package:enr_tickets/features/create_account/presentation/view/create_account.dart';
+import 'package:enr_tickets/features/home/presentation/view/home_view.dart';
 import 'package:enr_tickets/features/log_in/presentation/view/widgets/custom_forget_text.dart';
 import 'package:enr_tickets/core/utils/widget/custom_logo.dart';
 import 'package:enr_tickets/features/log_in/presentation/view/widgets/form_feild_view_login.dart';
@@ -70,7 +71,10 @@ class _LogInBodyState extends State<LogInBody> {
               onTap: () {
                 if (formKey.currentState!.validate()) {
                   log("Valid Data");
-                  // Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context)=>), (route)=>false);
+                  Navigator.of(context).pushAndRemoveUntil(
+                    MaterialPageRoute(builder: (context) => HomeView()),
+                    (route) => false,
+                  );
                 } else {
                   log("Invalid Data");
                 }

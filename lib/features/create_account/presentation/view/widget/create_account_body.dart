@@ -5,6 +5,7 @@ import 'package:enr_tickets/core/utils/widget/custom_button_register.dart';
 import 'package:enr_tickets/core/utils/widget/custom_logo.dart';
 import 'package:enr_tickets/core/utils/widget/sign_in_via.dart';
 import 'package:enr_tickets/features/create_account/presentation/view/widget/custom_have_account_text_button.dart';
+import 'package:enr_tickets/features/create_account/presentation/view/widget/form_feild_view_sign_in.dart';
 import 'package:enr_tickets/features/create_account/presentation/view/widget/sign_in_methods_view.dart';
 import 'package:enr_tickets/features/log_in/presentation/view/log_in.dart';
 import 'package:flutter/material.dart';
@@ -42,12 +43,19 @@ class _CreateAccountBodyState extends State<CreateAccountBody> {
         key: formKey,
         child: Column(
           children: [
+            Gap(13),
             CustomLogo(),
             Text(
               create_new_account,
               style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900),
             ),
-
+            FormFeildViewSignIn(
+              nameController: nameController,
+              emailController: emailController,
+              phoneController: phoneController,
+              passwordController: passwordController,
+              confirmPasswordController: confirmPasswordController,
+            ),
             Gap(10),
             VerifyButton(
               title: create_new_account,
@@ -65,9 +73,14 @@ class _CreateAccountBodyState extends State<CreateAccountBody> {
             SignInVia(),
             Gap(15),
             SignInMethodsView(),
+            Gap(15),
             CustomHaveAccountTextButton(
               title: arlreadyaccount,
               onPressed: () {
+                Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(builder: (context) => LogIn()),
+                  (route) => false,
+                );
                 log("have account");
               },
             ),

@@ -16,3 +16,9 @@ const String loginword = 'LogIn';
 const String sign_in_with = 'Or Sign in via';
 const String google = 'Google';
 const String facebook = 'Facebook';
+
+//ButtonNavigationnBar
+const String homepage = 'Home';
+const String bookingpage = 'Bookings';
+const String mytickets = 'My Tickets';
+const String settingspage = 'Settings';
