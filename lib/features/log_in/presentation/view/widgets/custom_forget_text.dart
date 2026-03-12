@@ -12,13 +12,19 @@ class Custom_Text_button extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-      onPressed: onPressed,
-      child: Text(
-        title,
-        style: title == forgetpassword
-            ? Styles.textStyle19
-            : Styles.textStyle19.copyWith(color: hintColorForm),
+    return Container(
+         margin: EdgeInsets.only(left: 10),
+              alignment: Alignment.topLeft,
+              width: double.infinity,
+              height: 50,
+      child: TextButton(
+        onPressed: onPressed,
+        child: Text(
+          title,
+          style: title == forgetpassword
+              ? Styles.textStyle19
+              : Styles.textStyle19.copyWith(color: hintColorForm),
+        ),
       ),
     );
   }

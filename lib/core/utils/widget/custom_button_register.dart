@@ -20,7 +20,7 @@ class VerifyButton extends StatelessWidget {
           width: double.infinity,
           alignment: Alignment.center,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(12),
             gradient: const LinearGradient(
               colors: [
                 darkcolor, //darkcolor,
