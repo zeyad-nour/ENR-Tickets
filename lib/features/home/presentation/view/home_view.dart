@@ -14,14 +14,14 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  int _currentIndex = 0;
+  int _currentIndex = 3;
 
   // 4 pages
   final List<Widget> _pages = const [
-    HomePage(),
     BookingPage(),
     MyTicketsPage(),
     SettingsPage(),
+    HomePage(),
   ];
 
   void _onTap(int index) {

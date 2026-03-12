@@ -5,6 +5,7 @@ const String eNR = 'ENR Tickets';
 const String headlogIn = 'Login to ENR Tickets';
 const String subtitlelogIn = 'Welcome to ENR Tickets';
 const String create_new_account = 'Create Account';
+const String headhomepage = 'Book Tickets';
 const String fullnameuser = 'Full name';
 const String email = 'Email';
 const String phoneNumber = 'phone Number';
