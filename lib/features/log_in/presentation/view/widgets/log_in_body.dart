@@ -98,6 +98,11 @@ class _LogInBodyState extends State<LogInBody> {
             VerifyButton(
               title: "LogIn",
               onTap: () {
+                if (formKey.currentState!.validate()) {
+                  log("Valid Data");
+                } else {
+                  log("Invalid Data");
+                }
                 log("Rigister Button");
               },
             ),
