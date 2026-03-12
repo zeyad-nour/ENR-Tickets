@@ -12,7 +12,16 @@ class BackgroundCreateUserImage extends StatelessWidget {
         Positioned.fill(
           child: Image.asset(AssetsData.backgroundimage, fit: BoxFit.cover),
         ),
-        CreateAccountBody(),
+        Positioned(
+          top: MediaQuery.sizeOf(context).height * 0.05,
+          left: 10,
+          right: 10,
+          bottom: 10,
+          child: Scaffold(
+            backgroundColor: Colors.transparent,
+            body: CreateAccountBody(),
+          ),
+        ),
       ],
     );
   }
