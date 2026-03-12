@@ -9,3 +9,5 @@ const String password = 'Password';
 const String forgetpassword = 'Forget Password ?';
 const String loginword = 'LogIn';
 const String sign_in_with = 'Or Sign in via';
+const String google = 'Google';
+const String facebook = 'Facebook';

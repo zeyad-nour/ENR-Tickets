@@ -3,11 +3,14 @@
 import 'dart:developer';
 
 import 'package:enr_tickets/core/utils/strings.dart';
+import 'package:enr_tickets/core/utils/widget/assets.dart';
 import 'package:enr_tickets/core/utils/widget/custom_button_register.dart';
 import 'package:enr_tickets/core/utils/widget/custom_form_feild.dart';
 import 'package:enr_tickets/core/utils/widget/styles.dart';
+import 'package:enr_tickets/features/create_account/presentation/view/create_account.dart';
 import 'package:enr_tickets/features/log_in/presentation/view/widgets/custom_forget_text.dart';
 import 'package:enr_tickets/features/log_in/presentation/view/widgets/custom_logo.dart';
+import 'package:enr_tickets/features/log_in/presentation/view/widgets/sign_in_methods.dart';
 import 'package:enr_tickets/features/log_in/presentation/view/widgets/sign_in_via.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -45,7 +48,7 @@ class LogInBody extends StatelessWidget {
             alignment: Alignment.topLeft,
             width: double.infinity,
             height: 50,
-            child: CustomForgetText(() {
+            child: Custom_Text_button(title: forgetpassword, () {
               log("Forget Password ?");
             }),
           ),
@@ -57,7 +60,35 @@ class LogInBody extends StatelessWidget {
             },
           ),
           Gap(15),
+
           SignInVia(),
+
+          Gap(15),
+
+          Row(
+            children: [
+              SignMethods(
+                () {
+                  log("Rigister google");
+                },
+                image: AssetsData.google,
+                methodName: google,
+              ),
+              SignMethods(
+                () {
+                  log("Rigister facebook");
+                },
+                image: AssetsData.facebook,
+                methodName: facebook,
+              ),
+            ],
+          ),
+          Custom_Text_button(() {
+            log("Dont have account");
+            Navigator.of(
+              context,
+            ).push(MaterialPageRoute(builder: (context) => CreateAccount()));
+          }, title: "Dont have an account ? Signup"),
         ],
       ),
     );
