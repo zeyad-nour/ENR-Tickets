@@ -13,7 +13,7 @@ class BackgroundImage extends StatelessWidget {
           child: Image.asset(AssetsData.backgroundimage, fit: BoxFit.cover),
         ),
         Positioned(
-          top: MediaQuery.sizeOf(context).height * 0.17,
+          top: MediaQuery.sizeOf(context).height * 0.22,
           left: 10,
           right: 10,
           bottom: 10,
