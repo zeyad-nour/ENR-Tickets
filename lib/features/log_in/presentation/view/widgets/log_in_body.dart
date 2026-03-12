@@ -15,81 +15,124 @@ import 'package:enr_tickets/core/utils/widget/sign_in_via.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-class LogInBody extends StatelessWidget {
+class LogInBody extends StatefulWidget {
   const LogInBody({super.key});
 
   @override
+  State<LogInBody> createState() => _LogInBodyState();
+}
+
+class _LogInBodyState extends State<LogInBody> {
+  final GlobalKey<FormState> formKey = GlobalKey();
+
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Column(
-        children: [
-          CustomLogo(),
-          Container(
-            decoration: BoxDecoration(color: Colors.white.withOpacity(0.8)),
-            child: Text(
-              headlogIn,
-              style: Styles.textStyle27.copyWith(
-                fontWeight: FontWeight.bold,
-                fontSize: 33,
+      child: Form(
+        key: formKey,
+        child: Column(
+          children: [
+            CustomLogo(),
+            Container(
+              decoration: BoxDecoration(color: Colors.white.withOpacity(0.8)),
+              child: Text(
+                headlogIn,
+                style: Styles.textStyle27.copyWith(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 33,
+                ),
               ),
             ),
-          ),
-          Container(
-            decoration: BoxDecoration(color: Colors.white.withOpacity(0.88)),
-            child: Text(
-              subtitlelogIn,
-              style: Styles.textStyle19.copyWith(color: Colors.black),
+            Container(
+              decoration: BoxDecoration(color: Colors.white.withOpacity(0.88)),
+              child: Text(
+                subtitlelogIn,
+                style: Styles.textStyle19.copyWith(color: Colors.black),
+              ),
             ),
-          ),
-          CustomFormFeild(hint: email, icon: Icons.email),
-          CustomFormFeild(hint: password, icon: Icons.lock_outline),
-          Container(
-            margin: EdgeInsets.only(left: 10),
-            alignment: Alignment.topLeft,
-            width: double.infinity,
-            height: 50,
-            child: Custom_Text_button(title: forgetpassword, () {
-              log("Forget Password ?");
-            }),
-          ),
-          Gap(13),
-          VerifyButton(
-            title: "LogIn",
-            onTap: () {
-              log("Rigister Button");
-            },
-          ),
-          Gap(15),
+            //email
+            CustomFormFeild(
+              hint: email,
+              icon: Icons.email,
+              controller: emailController,
+              keyboardType: TextInputType.emailAddress,
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return "Email is required";
+                }
+                if (!value.contains("@")) {
+                  return "Enter valid email";
+                }
+                return null;
+              },
+            ),
+            //password
+            CustomFormFeild(
+              hint: password,
+              icon: Icons.lock_outline,
+              controller: passwordController,
+              obscureText: true,
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return "Password is required";
+                }
+                if (value.length < 6) {
+                  return "Password must be at least 6 characters";
+                }
+                return null;
+              },
+            ),
+            Container(
+              margin: EdgeInsets.only(left: 10),
+              alignment: Alignment.topLeft,
+              width: double.infinity,
+              height: 50,
+              child: Custom_Text_button(title: forgetpassword, () {
+                //yet finished logic
+                log("Forget Password ?");
+              }),
+            ),
+            Gap(13),
+            VerifyButton(
+              title: "LogIn",
+              onTap: () {
+                log("Rigister Button");
+              },
+            ),
+            Gap(15),
 
-          SignInVia(),
+            SignInVia(),
 
-          Gap(15),
+            Gap(15),
 
-          Row(
-            children: [
-              SignMethods(
-                () {
-                  log("Rigister google");
-                },
-                image: AssetsData.google,
-                methodName: google,
-              ),
-              SignMethods(
-                () {
-                  log("Rigister facebook");
-                },
-                image: AssetsData.facebook,
-                methodName: facebook,
-              ),
-            ],
-          ),
-          Custom_Text_button(() {
-            log("Dont have account");
-            Navigator.of(
-              context,
-            ).push(MaterialPageRoute(builder: (context) => CreateAccount()));
-          }, title: "Dont have an account ? Signup"),
-        ],
+            Row(
+              children: [
+                SignMethods(
+                  () {
+                    log("Rigister google");
+                  },
+                  image: AssetsData.google,
+                  methodName: google,
+                ),
+                SignMethods(
+                  () {
+                    log("Rigister facebook");
+                  },
+                  image: AssetsData.facebook,
+                  methodName: facebook,
+                ),
+              ],
+            ),
+            Custom_Text_button(() {
+              log("Dont have account");
+              Navigator.of(
+                context,
+              ).push(MaterialPageRoute(builder: (context) => CreateAccount()));
+            }, title: "Dont have an account ? Signup"),
+          ],
+        ),
       ),
     );
   }

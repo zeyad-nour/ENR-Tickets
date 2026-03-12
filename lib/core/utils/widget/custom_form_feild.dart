@@ -5,14 +5,30 @@ import 'package:flutter/material.dart';
 class CustomFormFeild extends StatelessWidget {
   final String hint;
   final IconData icon;
+  final TextEditingController controller;
+  final String? Function(String?)? validator;
+  final bool obscureText;
+  final TextInputType keyboardType;
 
-  const CustomFormFeild({super.key, required this.hint, required this.icon});
+  const CustomFormFeild({
+    super.key,
+    required this.hint,
+    required this.icon,
+    required this.controller,
+    this.validator,
+    this.obscureText = false,
+    this.keyboardType = TextInputType.text,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 10),
       child: TextFormField(
+        controller: controller,
+        validator: validator,
+        obscureText: obscureText,
+        keyboardType: keyboardType,
         decoration: InputDecoration(
           fillColor: formColor,
           filled: true,
@@ -24,7 +40,8 @@ class CustomFormFeild extends StatelessWidget {
             borderRadius: BorderRadius.circular(15),
             borderSide: BorderSide(color: buttonColor, width: 1.6),
           ),
-          hint: Text(hint, style: Styles.hintStyle),
+          hintText: hint,
+          hintStyle: Styles.hintStyle,
           prefixIcon: Icon(icon, color: iconColor),
         ),
       ),
