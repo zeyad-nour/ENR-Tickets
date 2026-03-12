@@ -1,4 +1,4 @@
-import 'package:enr_tickets/features/log_in/log_in.dart';
+import 'package:enr_tickets/features/log_in/presentation/log_in.dart';
 import 'package:flutter/material.dart';
 
 void main() {
