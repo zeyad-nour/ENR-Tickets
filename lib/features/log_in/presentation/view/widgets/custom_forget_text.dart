@@ -10,7 +10,7 @@ class CustomForgetText extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: onPressed,
-      child: Text(forgetpassword, style: Styles.forgetStyle),
+      child: Text(forgetpassword, style: Styles.textStyle19),
     );
   }
 }
