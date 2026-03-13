@@ -2,14 +2,13 @@ import 'package:enr_tickets/features/home/presentation/view/widgets/search_field
 import 'package:enr_tickets/features/home/presentation/view/widgets/stations_list_view.dart';
 import 'package:flutter/material.dart';
 
-
 void showStationsBottomSheet({
   required BuildContext context,
   required List<String> stations,
   required String selectedStation,
   required Function(String) onStationSelected,
 }) {
-
+  List<String> filteredStations = List.from(stations);
   showModalBottomSheet(
     context: context,
     isScrollControlled: true,
@@ -24,6 +23,13 @@ void showStationsBottomSheet({
                 SearchField(
                   onChanged: (value) {
                     setState(() {
+                      filteredStations = stations
+                          .where(
+                            (station) => station.toLowerCase().contains(
+                              value.toLowerCase(),
+                            ),
+                          )
+                          .toList();
                     });
                   },
                 ),
@@ -31,7 +37,7 @@ void showStationsBottomSheet({
                 /// stations list
                 Expanded(
                   child: StationsListView(
-                    stations: stations,
+                    stations: filteredStations,
                     selectedStation: selectedStation,
                     onStationSelected: onStationSelected,
                   ),

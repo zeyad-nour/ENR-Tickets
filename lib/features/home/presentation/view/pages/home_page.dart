@@ -38,7 +38,7 @@ class _HomePageState extends State<HomePage> {
                 print("object");
               },
             ),
-            Gap(20),
+            Gap(10),
             TripTypeSelector(
               selectedType: tripType,
               onChanged: (value) {
