@@ -19,6 +19,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   String tripType = "roundTrip";
+  DateTime travelDate = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
@@ -33,12 +34,24 @@ class _HomePageState extends State<HomePage> {
             Gap(40),
             TravelDateCard(
               title: "Travel Date",
-              date: "13/3/2026",
-              onTap: () {
-                print("object");
+              date: "${travelDate.day}/${travelDate.month}/${travelDate.year}",
+              onTap: () async {
+                DateTime? pickedDate = await showDatePicker(
+                  context: context,
+                  initialDate:
+                      travelDate, // هنا التاريخ الابتدائي يكون تاريخ اليوم
+                  firstDate: DateTime(2023),
+                  lastDate: DateTime(2030),
+                );
+
+                if (pickedDate != null) {
+                  setState(() {
+                    travelDate = pickedDate; // تحديث التاريخ
+                  });
+                }
               },
             ),
-            Gap(10),
+            Gap(20),
             TripTypeSelector(
               selectedType: tripType,
               onChanged: (value) {

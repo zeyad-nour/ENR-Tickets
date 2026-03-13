@@ -16,6 +16,7 @@ class CustomSelectionView extends StatefulWidget {
 class _CustomSelectionViewState extends State<CustomSelectionView> {
   String fromStation = "From Station";
   String toStation = "To Station";
+  //List of stations will convert model and receve api info
   final List<String> stations = [
     "Cairo",
     "Giza",
@@ -54,6 +55,11 @@ class _CustomSelectionViewState extends State<CustomSelectionView> {
             GestureDetector(
               onTap: () {
                 log("Transaction");
+                setState(() {
+                  final temp = fromStation;
+                  fromStation = toStation;
+                  toStation = temp;
+                });
               },
               child: Container(
                 width: 37,
