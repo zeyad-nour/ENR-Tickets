@@ -3,16 +3,49 @@ import 'dart:developer' show log;
 import 'package:enr_tickets/core/utils/colors.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/dash_custom.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/selection_station.dart';
+import 'package:enr_tickets/features/home/presentation/view/widgets/function_show_stations.dart';
 import 'package:flutter/material.dart';
 
-class CustomSelectionView extends StatelessWidget {
+class CustomSelectionView extends StatefulWidget {
   const CustomSelectionView({super.key});
 
+  @override
+  State<CustomSelectionView> createState() => _CustomSelectionViewState();
+}
+
+class _CustomSelectionViewState extends State<CustomSelectionView> {
+  String fromStation = "From Station";
+  String toStation = "To Station";
+  final List<String> stations = [
+    "Cairo",
+    "Giza",
+    "Alexandria",
+    "Tanta",
+    "Mansoura",
+    "Assiut",
+    "Sohag",
+    "Qena",
+    "Luxor",
+    "Aswan",
+  ];
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SelectionStation(title: "From Station"),
+        GestureDetector(
+          onTap: () {
+            showStationsBottomSheet(
+              context: context,
+              stations: stations,
+              onStationSelected: (station) {
+                setState(() {
+                  fromStation = station;
+                });
+              },
+            );
+          },
+          child: SelectionStation(title: "From Station"),
+        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -34,7 +67,20 @@ class CustomSelectionView extends StatelessWidget {
             DashesCustom(),
           ],
         ),
-        SelectionStation(title: "To Station"),
+        GestureDetector(
+          onTap: () {
+            showStationsBottomSheet(
+              context: context,
+              stations: stations,
+              onStationSelected: (station) {
+                setState(() {
+                  toStation = station;
+                });
+              },
+            );
+          },
+          child: SelectionStation(title: "To Station"),
+        ),
       ],
     );
   }

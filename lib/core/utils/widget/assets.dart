@@ -5,4 +5,5 @@ class AssetsData {
   static const String google = 'assets/images/google.jpg';
   static const String facebook = 'assets/images/facebook.jpg';
   static const String iconlogo = 'assets/images/iconlogo.jpg';
+  static const String icontravel = 'assets/images/icon.png';
 }

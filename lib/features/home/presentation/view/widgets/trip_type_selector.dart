@@ -24,7 +24,7 @@ class TripTypeSelector extends StatelessWidget {
             Radio<String>(
               value: "oneWay",
               groupValue: selectedType,
-              activeColor: Colors.red,
+              activeColor: buttonColor,
               onChanged: (value) {
                 onChanged(value!);
               },

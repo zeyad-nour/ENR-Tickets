@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        // backgroundColor: Colors.white,
         body: Column(
           children: [
             CustomHomeLogo(),
@@ -38,6 +38,7 @@ class _HomePageState extends State<HomePage> {
                 print("object");
               },
             ),
+            Gap(20),
             TripTypeSelector(
               selectedType: tripType,
               onChanged: (value) {
