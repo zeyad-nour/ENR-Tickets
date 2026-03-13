@@ -10,6 +10,7 @@ import 'package:enr_tickets/features/home/presentation/view/widgets/trip_type_se
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -25,7 +26,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        // backgroundColor: Colors.white,
+        backgroundColor: Colors.white,
         body: Column(
           children: [
             CustomHomeLogo(),
