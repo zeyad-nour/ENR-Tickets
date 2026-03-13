@@ -5,7 +5,6 @@ import 'package:enr_tickets/core/utils/widget/custom_button_register.dart';
 import 'package:enr_tickets/core/utils/widget/styles.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/custom_home_logo.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/custom_selection_view.dart';
-import 'package:enr_tickets/features/home/presentation/view/widgets/search_results.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/travel_date_card.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/trip_type_selector.dart';
 import 'package:flutter/material.dart';
