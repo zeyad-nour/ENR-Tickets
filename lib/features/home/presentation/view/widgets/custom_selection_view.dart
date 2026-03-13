@@ -35,6 +35,7 @@ class _CustomSelectionViewState extends State<CustomSelectionView> {
         GestureDetector(
           onTap: () {
             showStationsBottomSheet(
+              selectedStation: fromStation,
               context: context,
               stations: stations,
               onStationSelected: (station) {
@@ -44,7 +45,7 @@ class _CustomSelectionViewState extends State<CustomSelectionView> {
               },
             );
           },
-          child: SelectionStation(title: "From Station"),
+          child: SelectionStation(title: fromStation),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -70,6 +71,7 @@ class _CustomSelectionViewState extends State<CustomSelectionView> {
         GestureDetector(
           onTap: () {
             showStationsBottomSheet(
+              selectedStation: toStation,
               context: context,
               stations: stations,
               onStationSelected: (station) {
@@ -79,7 +81,7 @@ class _CustomSelectionViewState extends State<CustomSelectionView> {
               },
             );
           },
-          child: SelectionStation(title: "To Station"),
+          child: SelectionStation(title: toStation),
         ),
       ],
     );
