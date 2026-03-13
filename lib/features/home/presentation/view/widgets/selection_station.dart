@@ -12,7 +12,7 @@ class SelectionStation extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10.0),
       child: Card(
-        elevation: 10,
+        elevation: 3,
         color: Colors.white,
         child: ListTile(
           title: Text(

@@ -7,7 +7,7 @@ class CustomHomeLogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      color: Colors.white.withOpacity(0.2),
       child: Center(
         child: Image.asset(
           AssetsData.iconlogo,

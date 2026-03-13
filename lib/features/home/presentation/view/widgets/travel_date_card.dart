@@ -36,13 +36,20 @@ class TravelDateCard extends StatelessWidget {
             ],
           ),
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              Gap(10),
+              Text("Travel Date"),
+
+              Gap(10),
               const Icon(
                 Icons.calendar_month_outlined,
                 color: iconColor,
                 size: 30,
               ),
-              const SizedBox(width: 10),
+
+              Spacer(),
+              Container(width: 2, height: 50, color: Colors.grey[200]),
               Spacer(),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
