@@ -36,7 +36,7 @@ class FormFeildViewSignIn extends StatelessWidget {
         ),
         CustomFormFeild(
           hint: phoneNumber,
-          icon: Icons.person,
+          icon: Icons.phone,
           controller: phoneController,
           keyboardType: TextInputType.phone,
           validator: Validators.phoneValidator,
