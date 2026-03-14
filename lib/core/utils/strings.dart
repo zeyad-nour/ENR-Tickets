@@ -23,3 +23,6 @@ const String homepage = 'Home';
 const String bookingpage = 'Bookings';
 const String mytickets = 'My Tickets';
 const String settingspage = 'Settings';
+
+//search Reasult title
+const String SearchResultsTitle = 'Search results';
