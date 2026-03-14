@@ -11,3 +11,9 @@ const Color hintColorForm = Color(0xff9a9695);
 //colors Button Register
 const Color darkcolor = Color(0xffc40000);
 const Color deepcolor = Color(0xffff1a1a);
+
+//main Icon Color in search reasult
+
+const Color iconColorSearchPage = Color(0xfff7ead7);
+const Color secoundryIconColorSearchPage = Color(0xffb6b098);
+const Color backgroundSearchReasult = Color(0xffefebea);

@@ -1,3 +1,4 @@
+import 'package:enr_tickets/core/utils/colors.dart';
 import 'package:enr_tickets/core/utils/strings.dart';
 import 'package:enr_tickets/core/utils/widget/styles.dart';
 import 'package:flutter/material.dart';
@@ -11,8 +12,14 @@ class CustomAppBarSearchResults extends StatelessWidget {
     return Row(
       children: [
         IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.arrow_back_ios_new, size: 32),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          icon: Icon(
+            Icons.arrow_back_ios_new,
+            size: 32,
+            color: secoundryIconColorSearchPage,
+          ),
         ),
         Gap(MediaQuery.sizeOf(context).width * 0.16),
         Column(
