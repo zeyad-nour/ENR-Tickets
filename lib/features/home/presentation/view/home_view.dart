@@ -18,10 +18,10 @@ class _HomeViewState extends State<HomeView> {
 
   // 4 pages
   final List<Widget> _pages = const [
-    BookingPage(),
-    MyTicketsPage(),
-    SettingsPage(),
-    HomePage(),
+    SettingsPage(), //0
+    BookingPage(), //1
+    MyTicketsPage(), //2
+    HomePage(), //3
   ];
 
   void _onTap(int index) {
