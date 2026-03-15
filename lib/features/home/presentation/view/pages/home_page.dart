@@ -21,7 +21,9 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   String tripType = "roundTrip";
   DateTime travelDate = DateTime.now();
-
+  ////////////////////////////////
+  String fromStation = "From Station";
+  String toStation = "To Station";
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -31,8 +33,18 @@ class _HomePageState extends State<HomePage> {
           children: [
             CustomHomeLogo(),
             Text(headhomepage, style: Styles.textStyle27),
-            CustomSelectionView(),
+            CustomSelectionView(
+  fromStation: fromStation,
+  toStation: toStation,
+  onStationsChanged: (from, to) {
+    setState(() {
+      fromStation = from;
+      toStation = to;
+    });
+  },
+),
             Gap(40),
+            //Select tady Date
             TravelDateCard(
               title: "Travel Date",
               date: "${travelDate.day}/${travelDate.month}/${travelDate.year}",
@@ -53,6 +65,7 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             Gap(20),
+            //chose oneway or Round Trip
             TripTypeSelector(
               selectedType: tripType,
               onChanged: (value) {
@@ -67,12 +80,21 @@ class _HomePageState extends State<HomePage> {
               child: VerifyButton(
                 title: "Search",
                 onTap: () {
-                  log("Search");
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => SearchResultsPage(),
-                    ),
-                  );
+             
+                  if (fromStation != "From Station" &&
+                      toStation != "To Station") {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => SearchResultsPage(),
+                      ),
+                    );
+                  } else {
+                    showBottomSheet(
+                      context: context,
+                      builder: (context) =>
+                          Text("Pleace chose Stations correctly"),
+                    );
+                  }
                 },
               ),
             ),

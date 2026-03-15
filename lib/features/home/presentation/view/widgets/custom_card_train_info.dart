@@ -9,21 +9,15 @@ import 'package:gap/gap.dart';
 class CustomCardTrainInfo extends StatelessWidget {
   final int trainNumber;
   final String classType;
-
   final String fromStation;
   final String toStation;
-
   final String departTime;
   final String arriveTime;
-
   final String departDate;
   final String arriveDate;
-
   final String duration;
-
   final int availableTickets;
   final int stops;
-
   final VoidCallback onBuy;
   const CustomCardTrainInfo({
     super.key,

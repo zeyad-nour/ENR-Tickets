@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class SearchResultsBody extends StatelessWidget {
-  const SearchResultsBody({super.key});
+  const SearchResultsBody({super.key, });
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class SearchResultsBody extends StatelessWidget {
           child: Column(
             children: [
               Gap(30),
-              CustomAppBarSearchResults(),
+              CustomAppBarSearchResults(arriveStation: '',),
               CustomCardTrainInfoListVeiw(),
             ],
           ),

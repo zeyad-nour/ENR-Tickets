@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class CustomAppBarSearchResults extends StatelessWidget {
-  const CustomAppBarSearchResults({super.key});
+  final String arriveStation;
+  const CustomAppBarSearchResults({super.key, required this.arriveStation});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class CustomAppBarSearchResults extends StatelessWidget {
           children: [
             Gap(20),
             Text(SearchResultsTitle, style: Styles.textStyle27),
-            Subtitlewidget(),
+            Subtitlewidget(staion: arriveStation),
           ],
         ),
       ],
@@ -35,7 +36,8 @@ class CustomAppBarSearchResults extends StatelessWidget {
 }
 
 class Subtitlewidget extends StatelessWidget {
-  const Subtitlewidget({super.key});
+  final String staion;
+  const Subtitlewidget({super.key, required this.staion});
 
   @override
   Widget build(BuildContext context) {

@@ -7,16 +7,23 @@ import 'package:enr_tickets/features/home/presentation/view/widgets/function_sho
 import 'package:flutter/material.dart';
 
 class CustomSelectionView extends StatefulWidget {
-  const CustomSelectionView({super.key});
+  final String fromStation;
+  final String toStation;
+
+  final Function(String from, String to) onStationsChanged;
+
+  const CustomSelectionView({
+    super.key,
+    required this.fromStation,
+    required this.toStation,
+    required this.onStationsChanged,
+  });
 
   @override
   State<CustomSelectionView> createState() => _CustomSelectionViewState();
 }
 
 class _CustomSelectionViewState extends State<CustomSelectionView> {
-  String fromStation = "From Station";
-  String toStation = "To Station";
-  //List of stations will convert model and receve api info
   final List<String> stations = [
     "Cairo",
     "Giza",
@@ -29,10 +36,26 @@ class _CustomSelectionViewState extends State<CustomSelectionView> {
     "Luxor",
     "Aswan",
   ];
+
+  late String fromStation;
+  late String toStation;
+
+  @override
+  void initState() {
+    super.initState();
+    fromStation = widget.fromStation;
+    toStation = widget.toStation;
+  }
+
+  void updateStations() {
+    widget.onStationsChanged(fromStation, toStation);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
+        /// FROM
         GestureDetector(
           onTap: () {
             showStationsBottomSheet(
@@ -43,23 +66,29 @@ class _CustomSelectionViewState extends State<CustomSelectionView> {
                 setState(() {
                   fromStation = station;
                 });
+                updateStations();
               },
             );
           },
           child: SelectionStation(title: fromStation),
         ),
+
+        /// SWAP
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             DashesCustom(),
             GestureDetector(
               onTap: () {
-                log("Transaction");
+                log("Swap Stations");
+
                 setState(() {
                   final temp = fromStation;
                   fromStation = toStation;
                   toStation = temp;
                 });
+
+                updateStations();
               },
               child: Container(
                 width: 37,
@@ -74,6 +103,8 @@ class _CustomSelectionViewState extends State<CustomSelectionView> {
             DashesCustom(),
           ],
         ),
+
+        /// TO
         GestureDetector(
           onTap: () {
             showStationsBottomSheet(
@@ -84,6 +115,7 @@ class _CustomSelectionViewState extends State<CustomSelectionView> {
                 setState(() {
                   toStation = station;
                 });
+                updateStations();
               },
             );
           },
