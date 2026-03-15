@@ -1,4 +1,4 @@
-import 'dart:developer' show log;
+
 
 import 'package:enr_tickets/core/utils/strings.dart';
 import 'package:enr_tickets/core/utils/widget/custom_button_register.dart';

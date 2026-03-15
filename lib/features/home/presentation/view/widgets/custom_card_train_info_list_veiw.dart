@@ -1,3 +1,6 @@
+// ignore_for_file: avoid_print
+
+
 import 'package:enr_tickets/features/home/presentation/view/widgets/custom_card_train_info.dart';
 import 'package:flutter/material.dart';
 

@@ -1,6 +1,9 @@
+// ignore_for_file: avoid_print
+
 import 'package:enr_tickets/core/utils/widget/assets.dart';
 import 'package:enr_tickets/core/utils/widget/styles.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/settings_card_widget.dart';
+import 'package:enr_tickets/features/home/presentation/view/widgets/switch_card_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -22,6 +25,14 @@ class SettingsPageBody extends StatelessWidget {
         Text("Settings", style: Styles.textStyle27),
         SettingsCardWidget(task: "Follow System", title: "Dark Mode"),
         SettingsCardWidget(task: "Languge", title: "English"),
+        SwitchCardSettings(
+          title: "Use biometric of short password",
+          onChanged: (p0) => print("object"),
+        ),
+        SwitchCardSettings(
+          title: "Use biometric of short password",
+          onChanged: (p0) => print("object"),
+        ),
         // SettingsCardWidget(),
       ],
     );
