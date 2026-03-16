@@ -4,10 +4,10 @@ import 'package:enr_tickets/core/utils/strings.dart';
 import 'package:enr_tickets/core/widget/custom_button_register.dart';
 import 'package:enr_tickets/core/widget/styles.dart';
 import 'package:enr_tickets/features/home/presentation/view/pages/search_results_page.dart';
-import 'package:enr_tickets/features/home/presentation/view/widgets/custom_home_logo.dart';
-import 'package:enr_tickets/features/home/presentation/view/widgets/custom_selection_view.dart';
-import 'package:enr_tickets/features/home/presentation/view/widgets/travel_date_card.dart';
-import 'package:enr_tickets/features/home/presentation/view/widgets/trip_type_selector.dart';
+import 'package:enr_tickets/features/home/presentation/view/widgets/home_widgets/custom_home_logo.dart';
+import 'package:enr_tickets/features/home/presentation/view/widgets/home_widgets/custom_selection_view.dart';
+import 'package:enr_tickets/features/home/presentation/view/widgets/home_widgets/travel_date_card.dart';
+import 'package:enr_tickets/features/home/presentation/view/widgets/home_widgets/trip_type_selector.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 

@@ -1,8 +1,8 @@
 import 'package:enr_tickets/core/utils/colors.dart';
 import 'package:enr_tickets/core/widget/styles.dart';
-import 'package:enr_tickets/features/home/presentation/view/widgets/available_tickets_widget.dart';
+import 'package:enr_tickets/features/home/presentation/view/widgets/search_results_widgets/available_tickets_widget.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/stations_widget_info.dart';
-import 'package:enr_tickets/features/home/presentation/view/widgets/train_number_widget.dart';
+import 'package:enr_tickets/features/home/presentation/view/widgets/search_results_widgets/train_number_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 

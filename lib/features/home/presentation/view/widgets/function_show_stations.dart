@@ -1,4 +1,4 @@
-import 'package:enr_tickets/features/home/presentation/view/widgets/search_field.dart';
+import 'package:enr_tickets/features/home/presentation/view/widgets/home_widgets/field_select_station.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/stations_list_view.dart';
 import 'package:flutter/material.dart';
 

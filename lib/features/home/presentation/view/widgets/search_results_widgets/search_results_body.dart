@@ -1,5 +1,5 @@
-import 'package:enr_tickets/features/home/presentation/view/widgets/custom_app_bar_search_results.dart';
-import 'package:enr_tickets/features/home/presentation/view/widgets/custom_card_train_info_list_veiw.dart';
+import 'package:enr_tickets/features/home/presentation/view/widgets/search_results_widgets/custom_app_bar_search_results.dart';
+import 'package:enr_tickets/features/home/presentation/view/widgets/search_results_widgets/custom_card_train_info_list_veiw.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
