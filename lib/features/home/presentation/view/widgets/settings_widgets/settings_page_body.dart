@@ -2,9 +2,9 @@
 
 import 'package:enr_tickets/core/widget/assets.dart';
 import 'package:enr_tickets/core/widget/styles.dart';
-import 'package:enr_tickets/features/home/presentation/view/widgets/settings_card_widget.dart';
-import 'package:enr_tickets/features/home/presentation/view/widgets/switch_card_settings.dart';
-import 'package:enr_tickets/features/home/presentation/view/widgets/text_button_widget.dart';
+import 'package:enr_tickets/features/home/presentation/view/widgets/settings_widgets/settings_card_widget.dart';
+import 'package:enr_tickets/features/home/presentation/view/widgets/settings_widgets/switch_card_settings.dart';
+import 'package:enr_tickets/features/home/presentation/view/widgets/settings_widgets/text_button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
