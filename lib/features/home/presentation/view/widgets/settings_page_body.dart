@@ -1,7 +1,7 @@
 // ignore_for_file: avoid_print
 
-import 'package:enr_tickets/core/utils/widget/assets.dart';
-import 'package:enr_tickets/core/utils/widget/styles.dart';
+import 'package:enr_tickets/core/widget/assets.dart';
+import 'package:enr_tickets/core/widget/styles.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/settings_card_widget.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/switch_card_settings.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/text_button_widget.dart';

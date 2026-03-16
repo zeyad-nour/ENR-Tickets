@@ -1,6 +1,6 @@
 // ignore_for_file: deprecated_member_use
 
-import 'package:enr_tickets/core/utils/widget/assets.dart';
+import 'package:enr_tickets/core/widget/assets.dart';
 import 'package:flutter/material.dart';
 
 class CustomHomeLogo extends StatelessWidget {

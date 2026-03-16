@@ -2,14 +2,14 @@
 
 import 'dart:developer';
 import 'package:enr_tickets/core/utils/strings.dart';
-import 'package:enr_tickets/core/utils/widget/custom_button_register.dart';
-import 'package:enr_tickets/core/utils/widget/styles.dart';
+import 'package:enr_tickets/core/widget/custom_button_register.dart';
+import 'package:enr_tickets/core/widget/styles.dart';
 import 'package:enr_tickets/features/create_account/presentation/view/create_account.dart';
 import 'package:enr_tickets/features/home/presentation/view/home_view.dart';
 import 'package:enr_tickets/features/log_in/presentation/view/widgets/custom_forget_text.dart';
-import 'package:enr_tickets/core/utils/widget/custom_logo.dart';
+import 'package:enr_tickets/core/widget/custom_logo.dart';
 import 'package:enr_tickets/features/log_in/presentation/view/widgets/form_feild_view_login.dart';
-import 'package:enr_tickets/core/utils/widget/sign_in_via.dart';
+import 'package:enr_tickets/core/widget/sign_in_via.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 

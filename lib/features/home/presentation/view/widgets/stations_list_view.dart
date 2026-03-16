@@ -1,6 +1,6 @@
 import 'package:enr_tickets/core/utils/colors.dart';
-import 'package:enr_tickets/core/utils/widget/assets.dart';
-import 'package:enr_tickets/core/utils/widget/styles.dart';
+import 'package:enr_tickets/core/widget/assets.dart';
+import 'package:enr_tickets/core/widget/styles.dart';
 import 'package:flutter/material.dart';
 
 class StationsListView extends StatelessWidget {

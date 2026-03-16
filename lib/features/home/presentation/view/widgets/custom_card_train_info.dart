@@ -1,5 +1,5 @@
 import 'package:enr_tickets/core/utils/colors.dart';
-import 'package:enr_tickets/core/utils/widget/styles.dart';
+import 'package:enr_tickets/core/widget/styles.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/available_tickets_widget.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/stations_widget_info.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/train_number_widget.dart';

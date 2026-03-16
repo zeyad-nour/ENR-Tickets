@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:enr_tickets/core/utils/strings.dart';
-import 'package:enr_tickets/core/utils/widget/assets.dart';
+import 'package:enr_tickets/core/widget/assets.dart';
 import 'package:enr_tickets/features/create_account/presentation/view/widget/sign_in_methods_new_user.dart';
 import 'package:flutter/material.dart';
 

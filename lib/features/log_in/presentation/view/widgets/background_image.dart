@@ -1,4 +1,4 @@
-import 'package:enr_tickets/core/utils/widget/assets.dart';
+import 'package:enr_tickets/core/widget/assets.dart';
 import 'package:enr_tickets/features/log_in/presentation/view/widgets/log_in_body.dart';
 import 'package:flutter/material.dart';
 

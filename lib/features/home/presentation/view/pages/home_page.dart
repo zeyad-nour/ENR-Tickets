@@ -1,8 +1,8 @@
 
 
 import 'package:enr_tickets/core/utils/strings.dart';
-import 'package:enr_tickets/core/utils/widget/custom_button_register.dart';
-import 'package:enr_tickets/core/utils/widget/styles.dart';
+import 'package:enr_tickets/core/widget/custom_button_register.dart';
+import 'package:enr_tickets/core/widget/styles.dart';
 import 'package:enr_tickets/features/home/presentation/view/pages/search_results_page.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/custom_home_logo.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/custom_selection_view.dart';

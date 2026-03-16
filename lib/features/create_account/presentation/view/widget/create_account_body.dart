@@ -1,9 +1,9 @@
 import 'dart:developer';
 
 import 'package:enr_tickets/core/utils/strings.dart';
-import 'package:enr_tickets/core/utils/widget/custom_button_register.dart';
-import 'package:enr_tickets/core/utils/widget/custom_logo.dart';
-import 'package:enr_tickets/core/utils/widget/sign_in_via.dart';
+import 'package:enr_tickets/core/widget/custom_button_register.dart';
+import 'package:enr_tickets/core/widget/custom_logo.dart';
+import 'package:enr_tickets/core/widget/sign_in_via.dart';
 import 'package:enr_tickets/features/create_account/presentation/view/widget/custom_have_account_text_button.dart';
 import 'package:enr_tickets/features/create_account/presentation/view/widget/form_feild_view_sign_in.dart';
 import 'package:enr_tickets/features/create_account/presentation/view/widget/sign_in_methods_view.dart';
