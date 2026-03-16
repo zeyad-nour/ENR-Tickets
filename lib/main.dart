@@ -1,4 +1,4 @@
-import 'package:enr_tickets/features/home/presentation/view/home_view.dart';
+import 'package:enr_tickets/features/create_account/presentation/view/create_account.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(fontFamily: "Quicksand"),
-      home: HomeView(),
+      home: CreateAccount(),
       debugShowCheckedModeBanner: false,
     );
   }

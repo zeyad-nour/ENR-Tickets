@@ -4,11 +4,13 @@ import 'package:enr_tickets/core/utils/strings.dart';
 import 'package:enr_tickets/core/widget/custom_button_register.dart';
 import 'package:enr_tickets/core/widget/custom_logo.dart';
 import 'package:enr_tickets/core/widget/sign_in_via.dart';
+import 'package:enr_tickets/features/create_account/presentation/state_mangement/creat_user_cubit.dart';
 import 'package:enr_tickets/features/create_account/presentation/view/widget/custom_have_account_text_button.dart';
 import 'package:enr_tickets/features/create_account/presentation/view/widget/form_feild_view_sign_in.dart';
 import 'package:enr_tickets/features/create_account/presentation/view/widget/sign_in_methods_view.dart';
 import 'package:enr_tickets/features/log_in/presentation/view/log_in.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 
 class CreateAccountBody extends StatefulWidget {
@@ -26,6 +28,7 @@ class _CreateAccountBodyState extends State<CreateAccountBody> {
   TextEditingController phoneController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
+
   @override
   void dispose() {
     nameController.dispose();
@@ -38,55 +41,70 @@ class _CreateAccountBodyState extends State<CreateAccountBody> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Form(
-        key: formKey,
-        child: Column(
-          children: [
-            Gap(13),
-            CustomLogo(),
-            Text(
-              create_new_account,
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900),
+    return BlocConsumer<CreatUserCubit, CreatUserState>(
+      listener: (context, state) {
+        if (state is CreatUserSuccess) {
+          Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(builder: (_) => LogIn()),
+            (route) => false,
+          );
+        } else if (state is CreatUserFailure) {
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text(state.error)));
+        }
+      },
+      builder: (context, state) {
+        final cubit = context.read<CreatUserCubit>();
+
+        return SingleChildScrollView(
+          child: Form(
+            key: formKey,
+            child: Column(
+              children: [
+                Gap(13),
+                CustomLogo(),
+                Text(
+                  create_new_account,
+                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900),
+                ),
+                FormFeildViewSignIn(
+                  nameController: nameController,
+                  emailController: emailController,
+                  phoneController: phoneController,
+                  passwordController: passwordController,
+                  confirmPasswordController: confirmPasswordController,
+                ),
+                Gap(10),
+                state is CreatUserLoading
+                    ? CircularProgressIndicator()
+                    : VerifyButton(
+                        title: create_new_account,
+                        onTap: () {
+                          if (formKey.currentState!.validate()) {
+                            cubit.CreateUser();
+                          }
+                        },
+                      ),
+                Gap(15),
+                SignInVia(),
+                Gap(15),
+                SignInMethodsView(),
+                Gap(15),
+                CustomHaveAccountTextButton(
+                  title: arlreadyaccount,
+                  onPressed: () {
+                    Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(builder: (_) => LogIn()),
+                      (route) => false,
+                    );
+                  },
+                ),
+              ],
             ),
-            FormFeildViewSignIn(
-              nameController: nameController,
-              emailController: emailController,
-              phoneController: phoneController,
-              passwordController: passwordController,
-              confirmPasswordController: confirmPasswordController,
-            ),
-            Gap(10),
-            VerifyButton(
-              title: create_new_account,
-              onTap: () {
-                if (formKey.currentState!.validate()) {
-                  log("Account Created Successfully");
-                  Navigator.of(context).pushAndRemoveUntil(
-                    MaterialPageRoute(builder: (context) => LogIn()),
-                    (route) => false,
-                  );
-                }
-              },
-            ),
-            Gap(15),
-            SignInVia(),
-            Gap(15),
-            SignInMethodsView(),
-            Gap(15),
-            CustomHaveAccountTextButton(
-              title: arlreadyaccount,
-              onPressed: () {
-                Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(builder: (context) => LogIn()),
-                  (route) => false,
-                );
-                log("have account");
-              },
-            ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }
