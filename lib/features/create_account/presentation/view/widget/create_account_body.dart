@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:enr_tickets/core/utils/strings.dart';
 import 'package:enr_tickets/core/widget/custom_button_register.dart';
@@ -82,7 +81,7 @@ class _CreateAccountBodyState extends State<CreateAccountBody> {
                         title: create_new_account,
                         onTap: () {
                           if (formKey.currentState!.validate()) {
-                            cubit.CreateUser();
+                            cubit.createUser();
                           }
                         },
                       ),

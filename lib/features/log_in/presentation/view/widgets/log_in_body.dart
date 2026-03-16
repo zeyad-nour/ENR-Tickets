@@ -1,17 +1,13 @@
 // ignore_for_file: deprecated_member_use
 
-import 'dart:developer';
 import 'package:enr_tickets/core/utils/strings.dart';
 import 'package:enr_tickets/core/widget/custom_button_register.dart';
-import 'package:enr_tickets/core/widget/styles.dart';
-import 'package:enr_tickets/features/create_account/presentation/view/create_account.dart';
 import 'package:enr_tickets/features/home/presentation/view/home_view.dart';
-import 'package:enr_tickets/features/log_in/presentation/view/widgets/custom_forget_text.dart';
+import 'package:enr_tickets/features/log_in/presentation/state_mangement/log_in_cubit.dart';
 import 'package:enr_tickets/core/widget/custom_logo.dart';
 import 'package:enr_tickets/features/log_in/presentation/view/widgets/form_feild_view_login.dart';
-import 'package:enr_tickets/core/widget/sign_in_via.dart';
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LogInBody extends StatefulWidget {
   const LogInBody({super.key});
@@ -33,65 +29,51 @@ class _LogInBodyState extends State<LogInBody> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Form(
-        key: formKey,
-        child: Column(
-          children: [
-            CustomLogo(),
-            Container(
-              decoration: BoxDecoration(color: Colors.white.withOpacity(0.8)),
-              child: Text(
-                headlogIn,
-                style: Styles.textStyle27.copyWith(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 33,
+    return BlocConsumer<LogInCubit, LogInState>(
+      listener: (context, state) {
+        if (state is LogInSuccess) {
+          Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(builder: (_) => HomeView()),
+            (route) => false,
+          );
+        } else if (state is LogInFailure) {
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text(state.error)));
+        }
+      },
+      builder: (context, state) {
+        final cubit = context.read<LogInCubit>();
+
+        return SingleChildScrollView(
+          child: Form(
+            key: formKey,
+            child: Column(
+              children: [
+                CustomLogo(),
+                Text(headlogIn),
+                FormFeildViewLogin(
+                  emailController: emailController,
+                  passwordController: passwordController,
                 ),
-              ),
+                state is LogInLoding
+                    ? CircularProgressIndicator()
+                    : VerifyButton(
+                        title: "LogIn",
+                        onTap: () {
+                          if (formKey.currentState!.validate()) {
+                            cubit.logIn(
+                              email: emailController.text,
+                              password: passwordController.text,
+                            );
+                          }
+                        },
+                      ),
+              ],
             ),
-            Container(
-              decoration: BoxDecoration(color: Colors.white.withOpacity(0.88)),
-              child: Text(
-                subtitlelogIn,
-                style: Styles.textStyle19.copyWith(color: Colors.black),
-              ),
-            ),
-            //email
-            FormFeildViewLogin(
-              emailController: emailController,
-              passwordController: passwordController,
-            ),
-            Custom_Text_button(title: forgetpassword, () {
-              //yet finished logic
-              log("Forget Password ?");
-            }),
-            Gap(13),
-            VerifyButton(
-              title: "LogIn",
-              onTap: () {
-                if (formKey.currentState!.validate()) {
-                  log("Valid Data");
-                  Navigator.of(context).pushAndRemoveUntil(
-                    MaterialPageRoute(builder: (context) => HomeView()),
-                    (route) => false,
-                  );
-                } else {
-                  log("Invalid Data");
-                }
-              },
-            ),
-            Gap(15),
-            SignInVia(),
-            Gap(15),
-            Custom_Text_button(() {
-              log("Dont have account");
-              Navigator.of(
-                context,
-              ).push(MaterialPageRoute(builder: (context) => CreateAccount()));
-            }, title: "Dont have an account ? Signup"),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }
