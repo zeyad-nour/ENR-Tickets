@@ -4,28 +4,30 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class SearchResultsBody extends StatelessWidget {
-  const SearchResultsBody({super.key, });
+  const SearchResultsBody({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      // appBar: CustomAppBarSearchResults(),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 6.0),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Gap(30),
-              CustomAppBarSearchResults(arriveStation: '',),
-              CustomCardTrainInfoListVeiw(),
-            ],
-          ),
+        child: Column(
+          children: [
+            const Gap(30),
+
+            //Fixed
+            CustomAppBarSearchResults(arriveStation: ''),
+
+            // Scrolling
+            const Expanded(
+              child: CustomCardTrainInfoListVeiw(),
+            ),
+          ],
         ),
       ),
     );
   }
 }
-
 
 // backgroundSearchReasult,
