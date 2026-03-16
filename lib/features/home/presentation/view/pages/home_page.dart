@@ -1,7 +1,7 @@
 import 'package:enr_tickets/core/utils/strings.dart';
 import 'package:enr_tickets/core/widget/custom_button_register.dart';
 import 'package:enr_tickets/core/widget/styles.dart';
-import 'package:enr_tickets/features/home/presentation/state_mangement/cubit/home_cubit.dart';
+import 'package:enr_tickets/features/home/presentation/state_mangement/home_cubit/home_cubit.dart';
 
 import 'package:enr_tickets/features/home/presentation/view/pages/search_results_page.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/home_widgets/custom_home_logo.dart';
@@ -23,7 +23,19 @@ class HomePage extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (_) => SearchResultsPage(from: state.from, to: state.to),
+              builder: (_) => SearchResultsPage(
+                from: state.from,
+                to: state.to,
+                trainNumber: 125,
+                availableTickets: 30,
+                stops: 25,
+                classType: 'ثالثة مكيف',
+                departTime: '1.5',
+                arriveTime: '8.5',
+                departDate: '02:00+',
+                arriveDate: '02:00+',
+                duration: 'duration',
+              ),
             ),
           );
         }

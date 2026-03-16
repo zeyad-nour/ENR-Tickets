@@ -4,12 +4,21 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class SearchResultsBody extends StatelessWidget {
+  final int trainNumber;
+  final int availableTickets;
+  final int stops;
   final String fromStation;
   final String toStation;
+  final String classType;
+  final String departTime;
+  final String arriveTime;
+  final String departDate;
+  final String arriveDate;
+  final String duration;
   const SearchResultsBody({
     super.key,
     required this.fromStation,
-    required this.toStation,
+    required this.toStation, required this.trainNumber, required this.availableTickets, required this.stops, required this.classType, required this.departTime, required this.arriveTime, required this.departDate, required this.arriveDate, required this.duration,
   });
 
   @override
@@ -31,14 +40,14 @@ class SearchResultsBody extends StatelessWidget {
                 trainNumber: 135,
                 availableTickets: 32,
                 stops: 21,
-                classType: "ثالثة مكيف",
+                classType: classType,
                 fromStation: fromStation, //
                 toStation: toStation, //
-                departTime: "departTime",
-                arriveTime: "arriveTime",
-                departDate: "departDate",
-                arriveDate: "arriveDate",
-                duration: "duration",
+                departTime: departTime,
+                arriveTime: arriveTime,
+                departDate: departDate,
+                arriveDate: arriveDate,
+                duration: duration,
               ),
             ),
           ],

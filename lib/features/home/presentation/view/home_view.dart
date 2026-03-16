@@ -1,6 +1,6 @@
 import 'package:enr_tickets/core/utils/colors.dart';
 import 'package:enr_tickets/core/utils/strings.dart';
-import 'package:enr_tickets/features/home/presentation/state_mangement/cubit/home_cubit.dart';
+import 'package:enr_tickets/features/home/presentation/state_mangement/home_cubit/home_cubit.dart';
 import 'package:enr_tickets/features/home/presentation/view/pages/booking_page.dart';
 import 'package:enr_tickets/features/home/presentation/view/pages/home_page.dart';
 import 'package:enr_tickets/features/home/presentation/view/pages/my_tickets_page.dart';
