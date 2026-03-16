@@ -37,10 +37,26 @@ class CustomCardTrainInfoListVeiw extends StatelessWidget {
       child: Column(
         children: [
           CustomCardTrainInfo(
+            trainNumber: trainNumber, //done
+            classType: classType, //done
+            fromStation: fromStation, //done
+            toStation: toStation, //done
+            departTime: departTime, //done
+            arriveTime: arriveTime, //done
+            departDate: departDate, //done
+            arriveDate: arriveDate, //done
+            duration: duration, //done
+            availableTickets: availableTickets, //done
+            stops: 21, //done
+            onBuy: () {
+              print("شراء التذكرة");
+            },
+          ),
+          CustomCardTrainInfo(
             trainNumber: trainNumber,
-            classType: "ثالثة مكيفة (13)",
-            fromStation: fromStation,//done
-            toStation: toStation,//done
+            classType: classType,
+            fromStation: fromStation, //done
+            toStation: toStation, //done
             departTime: departTime,
             arriveTime: arriveTime,
             departDate: departDate,
@@ -53,32 +69,32 @@ class CustomCardTrainInfoListVeiw extends StatelessWidget {
             },
           ),
           CustomCardTrainInfo(
-            trainNumber: 185,
-            classType: "ثالثة مكيفة (13)",
-            fromStation: "القاهرة",
-            toStation: "سوهاج",
-            departTime: "08:45",
-            arriveTime: "00:05",
-            departDate: "2026.02.28",
-            arriveDate: "2026.02.28",
-            duration: "+02:00",
-            availableTickets: 32,
+            trainNumber: trainNumber,
+            classType: classType,
+            fromStation: fromStation, //done
+            toStation: toStation, //done
+            departTime: departTime,
+            arriveTime: arriveTime,
+            departDate: departDate,
+            arriveDate: arriveDate,
+            duration: duration,
+            availableTickets: availableTickets,
             stops: 21,
             onBuy: () {
               print("شراء التذكرة");
             },
           ),
           CustomCardTrainInfo(
-            trainNumber: 185,
-            classType: "ثالثة مكيفة (13)",
-            fromStation: "القاهرة",
-            toStation: "سوهاج",
-            departTime: "08:45",
-            arriveTime: "00:05",
-            departDate: "2026.02.28",
-            arriveDate: "2026.02.28",
-            duration: "+02:00",
-            availableTickets: 32,
+            trainNumber: trainNumber,
+            classType: classType,
+            fromStation: fromStation, //done
+            toStation: toStation, //done
+            departTime: departTime,
+            arriveTime: arriveTime,
+            departDate: departDate,
+            arriveDate: arriveDate,
+            duration: duration,
+            availableTickets: availableTickets,
             stops: 21,
             onBuy: () {
               print("شراء التذكرة");

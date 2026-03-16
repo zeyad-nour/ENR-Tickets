@@ -69,6 +69,7 @@ class CustomCardTrainInfo extends StatelessWidget {
                 arriveTime: arriveTime,
                 arriveDate: arriveDate,
                 toStation: toStation,
+                
               ),
               Gap(10),
               Divider(),

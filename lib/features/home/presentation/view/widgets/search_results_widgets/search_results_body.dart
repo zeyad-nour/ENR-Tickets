@@ -18,7 +18,16 @@ class SearchResultsBody extends StatelessWidget {
   const SearchResultsBody({
     super.key,
     required this.fromStation,
-    required this.toStation, required this.trainNumber, required this.availableTickets, required this.stops, required this.classType, required this.departTime, required this.arriveTime, required this.departDate, required this.arriveDate, required this.duration,
+    required this.toStation,
+    required this.trainNumber,
+    required this.availableTickets,
+    required this.stops,
+    required this.classType,
+    required this.departTime,
+    required this.arriveTime,
+    required this.departDate,
+    required this.arriveDate,
+    required this.duration,
   });
 
   @override
@@ -32,22 +41,22 @@ class SearchResultsBody extends StatelessWidget {
             const Gap(30),
 
             //Fixed
-            CustomAppBarSearchResults(arriveStation: ''),
+            CustomAppBarSearchResults(arriveStation: toStation),
 
             // Scrolling
             Expanded(
               child: CustomCardTrainInfoListVeiw(
-                trainNumber: 135,
-                availableTickets: 32,
-                stops: 21,
-                classType: classType,
-                fromStation: fromStation, //
-                toStation: toStation, //
-                departTime: departTime,
-                arriveTime: arriveTime,
-                departDate: departDate,
-                arriveDate: arriveDate,
-                duration: duration,
+                trainNumber: 135, //done
+                availableTickets: 32, //done
+                stops: 21, //done
+                classType: classType, //done
+                fromStation: fromStation, //done
+                toStation: toStation, //done
+                departTime: departTime, //done
+                arriveTime: arriveTime, //done
+                departDate: departDate, //done
+                arriveDate: arriveDate, //done
+                duration: duration, //done
               ),
             ),
           ],

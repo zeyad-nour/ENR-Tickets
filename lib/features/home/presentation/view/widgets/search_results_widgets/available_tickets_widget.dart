@@ -9,7 +9,7 @@ class AvailableTicketsWidget extends StatelessWidget {
     return Align(
       alignment: AlignmentGeometry.centerRight,
       child: Text(
-        "التذاكر المتوفرة: $availableTickets",
+        "availabel Tickets: $availableTickets",
         style: const TextStyle(
           color: Colors.green,
           fontWeight: FontWeight.bold,
