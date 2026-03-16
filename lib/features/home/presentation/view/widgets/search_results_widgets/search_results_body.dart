@@ -4,7 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class SearchResultsBody extends StatelessWidget {
-  const SearchResultsBody({super.key});
+  final String fromStation;
+  final String toStation;
+  const SearchResultsBody({
+    super.key,
+    required this.fromStation,
+    required this.toStation,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +26,20 @@ class SearchResultsBody extends StatelessWidget {
             CustomAppBarSearchResults(arriveStation: ''),
 
             // Scrolling
-            const Expanded(
-              child: CustomCardTrainInfoListVeiw(),
+            Expanded(
+              child: CustomCardTrainInfoListVeiw(
+                trainNumber: 135,
+                availableTickets: 32,
+                stops: 21,
+                classType: "ثالثة مكيف",
+                fromStation: fromStation, //
+                toStation: toStation, //
+                departTime: "departTime",
+                arriveTime: "arriveTime",
+                departDate: "departDate",
+                arriveDate: "arriveDate",
+                duration: "duration",
+              ),
             ),
           ],
         ),

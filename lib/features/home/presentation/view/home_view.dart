@@ -1,10 +1,12 @@
 import 'package:enr_tickets/core/utils/colors.dart';
 import 'package:enr_tickets/core/utils/strings.dart';
+import 'package:enr_tickets/features/home/presentation/state_mangement/cubit/home_cubit.dart';
 import 'package:enr_tickets/features/home/presentation/view/pages/booking_page.dart';
 import 'package:enr_tickets/features/home/presentation/view/pages/home_page.dart';
 import 'package:enr_tickets/features/home/presentation/view/pages/my_tickets_page.dart';
 import 'package:enr_tickets/features/home/presentation/view/pages/settings_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -16,12 +18,11 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   int _currentIndex = 3;
 
-  // 4 pages
   final List<Widget> _pages = const [
-    SettingsPage(), //0
-    BookingPage(), //1
-    MyTicketsPage(), //2
-    HomePage(), //3
+    SettingsPage(),
+    BookingPage(),
+    MyTicketsPage(),
+    HomePage(),
   ];
 
   void _onTap(int index) {
@@ -32,39 +33,47 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: IndexedStack(index: _currentIndex, children: _pages),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
-        iconSize: 30,
-        elevation: 20,
-        selectedFontSize: 17,
-        showSelectedLabels: true,
-
-        selectedLabelStyle: TextStyle(
-          fontSize: 17,
-          fontWeight: FontWeight.bold,
+    return BlocProvider(
+      create: (context) => HomeCubit(),
+      child: Scaffold(
+        body: IndexedStack(
+          index: _currentIndex,
+          children: _pages,
         ),
-        currentIndex: _currentIndex,
-        onTap: _onTap,
-        type: BottomNavigationBarType.fixed,
-        selectedItemColor: iconColor,
-        unselectedItemColor: Colors.grey[600],
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: settingspage,
+        bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Colors.white,
+          iconSize: 30,
+          elevation: 20,
+          selectedFontSize: 17,
+          showSelectedLabels: true,
+          selectedLabelStyle: const TextStyle(
+            fontSize: 17,
+            fontWeight: FontWeight.bold,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.bookmarks_outlined),
-            label: bookingpage,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_today_outlined),
-            label: mytickets,
-          ),
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: homepage),
-        ],
+          currentIndex: _currentIndex,
+          onTap: _onTap,
+          type: BottomNavigationBarType.fixed,
+          selectedItemColor: iconColor,
+          unselectedItemColor: Colors.grey[600],
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.settings),
+              label: settingspage,
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.bookmarks_outlined),
+              label: bookingpage,
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.calendar_today_outlined),
+              label: mytickets,
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: homepage,
+            ),
+          ],
+        ),
       ),
     );
   }

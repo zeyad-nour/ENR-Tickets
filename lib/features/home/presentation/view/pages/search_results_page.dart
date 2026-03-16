@@ -2,10 +2,15 @@ import 'package:enr_tickets/features/home/presentation/view/widgets/search_resul
 import 'package:flutter/material.dart';
 
 class SearchResultsPage extends StatelessWidget {
-  const SearchResultsPage({super.key});
+  final String from;
+  final String to;
+  const SearchResultsPage({
+    super.key,
+     required this.from, required this.to,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return SearchResultsBody();
+    return SearchResultsBody(fromStation: from, toStation: to);
   }
 }
