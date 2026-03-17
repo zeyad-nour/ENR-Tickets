@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:enr_tickets/features/home/data/model/model.dart';
 import 'package:meta/meta.dart';
 
 part 'search_result_state.dart';
@@ -15,7 +16,7 @@ class SearchResultCubit extends Cubit<SearchResultState> {
       emit(SearchResultLoading());
 
       // محاكاة جلب بيانات من API
-      await Future.delayed(Duration(seconds: 2));
+      await Future.delayed(Duration(seconds: 5));
 
       final trains = <TrainInfo>[
         TrainInfo(

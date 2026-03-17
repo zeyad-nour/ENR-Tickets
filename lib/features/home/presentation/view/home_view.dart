@@ -36,10 +36,7 @@ class _HomeViewState extends State<HomeView> {
     return BlocProvider(
       create: (context) => HomeCubit(),
       child: Scaffold(
-        body: IndexedStack(
-          index: _currentIndex,
-          children: _pages,
-        ),
+        body: IndexedStack(index: _currentIndex, children: _pages),
         bottomNavigationBar: BottomNavigationBar(
           backgroundColor: Colors.white,
           iconSize: 30,
@@ -61,17 +58,14 @@ class _HomeViewState extends State<HomeView> {
               label: settingspage,
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.bookmarks_outlined),
+              icon: Icon(Icons.bookmark_added_sharp),
               label: bookingpage,
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.calendar_today_outlined),
               label: mytickets,
             ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: homepage,
-            ),
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: homepage),
           ],
         ),
       ),

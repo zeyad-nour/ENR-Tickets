@@ -1,5 +1,7 @@
+import 'package:enr_tickets/features/home/presentation/state_mangement/search_result_cubit/search_result_cubit.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/search_results_widgets/search_results_body.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SearchResultsPage extends StatelessWidget {
   final int trainNumber;
@@ -30,18 +32,23 @@ class SearchResultsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SearchResultsBody(
-      fromStation: from,
-      toStation: to,
-      trainNumber: trainNumber,
-      availableTickets: availableTickets,
-      stops: stops,
-      classType: classType,
-      departTime: departTime,
-      arriveTime: arriveTime,
-      departDate: departDate,
-      arriveDate: arriveDate,
-      duration: duration,
+    return BlocProvider(
+      create: (context) =>
+          SearchResultCubit()
+            ..fetchResults(from: from, to: to, date: DateTime.now()),
+      child: SearchResultsBody(
+        fromStation: from,
+        toStation: to,
+        trainNumber: trainNumber,
+        availableTickets: availableTickets,
+        stops: stops,
+        classType: classType,
+        departTime: departTime,
+        arriveTime: arriveTime,
+        departDate: departDate,
+        arriveDate: arriveDate,
+        duration: duration,
+      ),
     );
   }
 }
