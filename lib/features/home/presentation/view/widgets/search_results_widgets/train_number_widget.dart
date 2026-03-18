@@ -1,3 +1,4 @@
+import 'package:enr_tickets/core/utils/strings.dart';
 import 'package:enr_tickets/core/widget/styles.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +15,7 @@ class TrainNumberRow extends StatelessWidget {
         TrainNumberBadge(trainNumber: trainNumber),
 
         Text(
-          "رقم القطار: $trainNumber",
+          "$train_number: $trainNumber",
           style: Styles.textStyle19.copyWith(color: Colors.black),
         ),
       ],

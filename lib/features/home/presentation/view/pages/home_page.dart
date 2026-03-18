@@ -32,8 +32,8 @@ class HomePage extends StatelessWidget {
                 classType: 'ثالثة مكيف',
                 departTime: '1.5',
                 arriveTime: '8.5',
-                departDate: '02:00+',
-                arriveDate: '02:00+',
+                departDate: '18/3/2026',
+                arriveDate: '19/3/2026',
                 duration: 'duration',
               ),
             ),
@@ -72,7 +72,7 @@ class HomePage extends StatelessWidget {
 
                     /// Travel Date
                     TravelDateCard(
-                      title: "Travel Date",
+                      title: travelDate,
                       date:
                           "${cubit.travelDate.day}/${cubit.travelDate.month}/${cubit.travelDate.year}",
                       onTap: () async {
@@ -98,8 +98,6 @@ class HomePage extends StatelessWidget {
                         cubit.updateTripType(value);
                       },
                     ),
-
-                
 
                     /// Search Button
                     Padding(

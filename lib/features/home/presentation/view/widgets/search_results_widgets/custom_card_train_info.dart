@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:enr_tickets/core/utils/colors.dart';
 import 'package:enr_tickets/core/widget/styles.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/search_results_widgets/available_tickets_widget.dart';
+import 'package:enr_tickets/features/home/presentation/view/widgets/search_results_widgets/ticket_text_button_widget.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/settings_widgets/stations_widget_info.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/search_results_widgets/train_number_widget.dart';
 import 'package:flutter/material.dart';
@@ -69,7 +72,6 @@ class CustomCardTrainInfo extends StatelessWidget {
                 arriveTime: arriveTime,
                 arriveDate: arriveDate,
                 toStation: toStation,
-                
               ),
               Gap(10),
               Divider(),
@@ -83,6 +85,7 @@ class CustomCardTrainInfo extends StatelessWidget {
               ),
 
               Gap(12),
+              
               AvailableTicketsWidget(availableTickets: "32"),
 
               Divider(),
@@ -91,14 +94,18 @@ class CustomCardTrainInfo extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("+$stops توقف", style: Styles.textStyle19),
+                  TicketTextButtonWidget(
+                    text: "توقف",
+                    onTap: () {
+                      log("Stope");
+                    },
+                  ),
                   Container(height: 30, width: 1, color: Colors.grey.shade300),
-                  GestureDetector(
-                    onTap: onBuy,
-                    child: const Text(
-                      "عملية الشراء",
-                      style: Styles.textStyle19,
-                    ),
+                  TicketTextButtonWidget(
+                    text: "عملية شراء",
+                    onTap: () {
+                      log("Bay process");
+                    },
                   ),
                 ],
               ),

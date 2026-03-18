@@ -2,6 +2,7 @@
 
 import 'dart:developer';
 
+import 'package:enr_tickets/core/utils/strings.dart';
 import 'package:enr_tickets/core/widget/assets.dart';
 import 'package:enr_tickets/core/widget/styles.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/settings_widgets/settings_card_widget.dart';
@@ -25,23 +26,23 @@ class SettingsPageBody extends StatelessWidget {
             child: Image.asset(AssetsData.iconlogo),
           ),
         ),
-        Text("Settings", style: Styles.textStyle27),
-        SettingsCardWidget(task: "Follow System", title: "Dark Mode"),
-        SettingsCardWidget(task: "Languge", title: "English"),
+        Text(settings, style: Styles.textStyle27),
+        SettingsCardWidget(task: followsystem, title: darkmode),
+        SettingsCardWidget(task: languge, title: "English"),
         Gap(30),
         SwitchCardSettings(
-          title: "Use biometric of short password",
+          title: use_biometaic,
           onChanged: (p0) => print("object"),
         ),
         SwitchCardSettings(
-          title: "Use biometric of short password",
+          title: use_biometaic,
           onChanged: (p0) => print("object"),
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: TextButtonWidget(
             onPressed: () => log("Change password"),
-            task: "Change password",
+            task:changepassword,
             icon: Icons.lock_outline_rounded,
           ),
         ),
@@ -51,7 +52,7 @@ class SettingsPageBody extends StatelessWidget {
           child: TextButtonWidget(
             
             onPressed: () => log("Delete Account"),
-            task: "Delete Account",
+            task: deleteaccount,
 
             icon: Icons.delete_outline_rounded,
           ),
