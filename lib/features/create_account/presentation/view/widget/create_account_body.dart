@@ -1,4 +1,3 @@
-
 import 'package:enr_tickets/core/utils/strings.dart';
 import 'package:enr_tickets/core/widget/custom_button_register.dart';
 import 'package:enr_tickets/core/widget/custom_logo.dart';
@@ -99,6 +98,7 @@ class _CreateAccountBodyState extends State<CreateAccountBody> {
                     );
                   },
                 ),
+           
               ],
             ),
           ),

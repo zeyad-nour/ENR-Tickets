@@ -19,23 +19,20 @@ class CustomLogo extends StatelessWidget {
                 color: const Color.fromARGB(255, 194, 28, 28),
               ),
             ),
-            Text("N", style: Styles.textStyle70),
+            Text(
+              "N",
+              style: Styles.textStyle70.copyWith(color: Colors.grey[200]),
+            ),
             Text("R", style: Styles.textStyle70),
           ],
         ),
+
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(width: 40, height: 2, color: iconColor),
             Gap(10),
-            Text(
-              eNR,
-              style: TextStyle(
-                fontSize: 19,
-                fontWeight: FontWeight.w900,
-                color: const Color.fromARGB(255, 194, 28, 28),
-              ),
-            ),
+            Text(eNR, style: Styles.textStyle19.copyWith(color: buttonColor)),
             Gap(10),
             Container(width: 40, height: 2, color: iconColor),
           ],

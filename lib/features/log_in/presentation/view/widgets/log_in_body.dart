@@ -2,12 +2,17 @@
 
 import 'package:enr_tickets/core/utils/strings.dart';
 import 'package:enr_tickets/core/widget/custom_button_register.dart';
+import 'package:enr_tickets/features/create_account/presentation/view/create_account.dart';
+import 'package:enr_tickets/features/create_account/presentation/view/widget/custom_have_account_text_button.dart';
 import 'package:enr_tickets/features/home/presentation/view/home_view.dart';
 import 'package:enr_tickets/features/log_in/presentation/state_mangement/log_in_cubit.dart';
 import 'package:enr_tickets/core/widget/custom_logo.dart';
+import 'package:enr_tickets/features/log_in/presentation/view/widgets/custom_forget_text.dart';
 import 'package:enr_tickets/features/log_in/presentation/view/widgets/form_feild_view_login.dart';
+import 'package:enr_tickets/features/log_in/presentation/view/widgets/sign_methods_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gap/gap.dart';
 
 class LogInBody extends StatefulWidget {
   const LogInBody({super.key});
@@ -56,6 +61,7 @@ class _LogInBodyState extends State<LogInBody> {
                   emailController: emailController,
                   passwordController: passwordController,
                 ),
+                Custom_Text_button(() {}, title: forgetpassword),
                 state is LogInLoding
                     ? CircularProgressIndicator()
                     : VerifyButton(
@@ -69,6 +75,18 @@ class _LogInBodyState extends State<LogInBody> {
                           }
                         },
                       ),
+                Gap(80),
+                Center(child: SignMethodsView()),
+                Gap(20),
+                CustomHaveAccountTextButton(
+                  title: "I dont have account",
+                  onPressed: () {
+                    Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(builder: (context) => CreateAccount()),
+                      (route) => false,
+                    );
+                  },
+                ),
               ],
             ),
           ),

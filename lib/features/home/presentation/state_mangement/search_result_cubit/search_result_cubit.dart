@@ -8,9 +8,15 @@ class SearchResultCubit extends Cubit<SearchResultState> {
   SearchResultCubit() : super(SearchResultInitial());
 
   Future<void> fetchResults({
+    required String classType,
     required String from,
     required String to,
-    required DateTime date,
+    required String departTime,
+    required String arriveTime,
+    required String departDate,
+    required String arriveDate,
+    required String duration,
+   
   }) async {
     try {
       emit(SearchResultLoading());
@@ -23,14 +29,14 @@ class SearchResultCubit extends Cubit<SearchResultState> {
           trainNumber: 135,
           availableTickets: 32,
           stops: 3,
-          classType: "ثالثة مكيفة (13)",
+          classType: classType,
           fromStation: from,
           toStation: to,
-          departTime: "08:45",
-          arriveTime: "10:45",
-          departDate: "2026.02.16",
-          arriveDate: "2026.02.16",
-          duration: "02:00",
+          departTime: departTime,
+          arriveTime: arriveTime,
+          departDate: departDate,
+          arriveDate: arriveDate,
+          duration:duration,
         ),
       ];
 

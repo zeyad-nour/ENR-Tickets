@@ -53,66 +53,68 @@ class HomePage extends StatelessWidget {
           return SafeArea(
             child: Scaffold(
               backgroundColor: Colors.white,
-              body: Column(
-                children: [
-                  CustomHomeLogo(),
-                  Text(headhomepage, style: Styles.textStyle27),
+              body: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    CustomHomeLogo(),
+                    Text(headhomepage, style: Styles.textStyle27),
 
-                  /// Stations
-                  CustomSelectionView(
-                    fromStation: cubit.fromStation,
-                    toStation: cubit.toStation,
-                    onStationsChanged: (from, to) {
-                      cubit.updateStations(from, to);
-                    },
-                  ),
-
-                  const Gap(40),
-
-                  /// Travel Date
-                  TravelDateCard(
-                    title: "Travel Date",
-                    date:
-                        "${cubit.travelDate.day}/${cubit.travelDate.month}/${cubit.travelDate.year}",
-                    onTap: () async {
-                      DateTime? pickedDate = await showDatePicker(
-                        context: context,
-                        initialDate: cubit.travelDate,
-                        firstDate: DateTime(2023),
-                        lastDate: DateTime(2050),
-                      );
-
-                      if (pickedDate != null) {
-                        cubit.updateDate(pickedDate);
-                      }
-                    },
-                  ),
-
-                  const Gap(20),
-
-                  /// Trip Type
-                  TripTypeSelector(
-                    selectedType: cubit.tripType,
-                    onChanged: (value) {
-                      cubit.updateTripType(value);
-                    },
-                  ),
-
-                  const Spacer(),
-
-                  /// Search Button
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                    child: VerifyButton(
-                      title: "Search",
-                      onTap: () {
-                        context.read<HomeCubit>().searchTrip();
+                    /// Stations
+                    CustomSelectionView(
+                      fromStation: cubit.fromStation,
+                      toStation: cubit.toStation,
+                      onStationsChanged: (from, to) {
+                        cubit.updateStations(from, to);
                       },
                     ),
-                  ),
 
-                  const Gap(20),
-                ],
+                    const Gap(40),
+
+                    /// Travel Date
+                    TravelDateCard(
+                      title: "Travel Date",
+                      date:
+                          "${cubit.travelDate.day}/${cubit.travelDate.month}/${cubit.travelDate.year}",
+                      onTap: () async {
+                        DateTime? pickedDate = await showDatePicker(
+                          context: context,
+                          initialDate: cubit.travelDate,
+                          firstDate: DateTime(2023),
+                          lastDate: DateTime(2050),
+                        );
+
+                        if (pickedDate != null) {
+                          cubit.updateDate(pickedDate);
+                        }
+                      },
+                    ),
+
+                    const Gap(20),
+
+                    /// Trip Type
+                    TripTypeSelector(
+                      selectedType: cubit.tripType,
+                      onChanged: (value) {
+                        cubit.updateTripType(value);
+                      },
+                    ),
+
+                
+
+                    /// Search Button
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      child: VerifyButton(
+                        title: "Search",
+                        onTap: () {
+                          context.read<HomeCubit>().searchTrip();
+                        },
+                      ),
+                    ),
+
+                    const Gap(20),
+                  ],
+                ),
               ),
             ),
           );

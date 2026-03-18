@@ -1,6 +1,6 @@
 import 'package:enr_tickets/features/home/presentation/state_mangement/search_result_cubit/search_result_cubit.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/search_results_widgets/custom_app_bar_search_results.dart';
-import 'package:enr_tickets/features/home/presentation/view/widgets/search_results_widgets/custom_card_train_info_list_veiw.dart';
+import 'package:enr_tickets/features/home/presentation/view/widgets/search_results_widgets/custom_card_train_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -56,10 +56,9 @@ class SearchResultsBody extends StatelessWidget {
                       itemCount: state.trains.length,
 
                       itemBuilder: (context, index) {
-                        return CustomCardTrainInfoListVeiw(
-                          trainNumber: 135, //done
-                          availableTickets: 32, //done
-                          stops: 21, //done
+                        final train = state.trains[index];
+                        return CustomCardTrainInfo(
+                          trainNumber: trainNumber, //done
                           classType: classType, //done
                           fromStation: fromStation, //done
                           toStation: toStation, //done
@@ -68,6 +67,11 @@ class SearchResultsBody extends StatelessWidget {
                           departDate: departDate, //done
                           arriveDate: arriveDate, //done
                           duration: duration, //done
+                          availableTickets: availableTickets, //done
+                          stops: 21, //done
+                          onBuy: () {
+                            print("شراء التذكرة");
+                          },
                         );
                       },
                     ),

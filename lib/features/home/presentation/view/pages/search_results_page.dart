@@ -33,9 +33,18 @@ class SearchResultsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          SearchResultCubit()
-            ..fetchResults(from: from, to: to, date: DateTime.now()),
+      create: (context) => SearchResultCubit()
+        ..fetchResults(
+          classType: classType,
+          from: from,
+          to: to,
+          departTime: departTime,
+          arriveTime: arriveTime,
+          departDate: departDate,
+          arriveDate: arriveDate,
+          duration: duration,
+       
+        ),
       child: SearchResultsBody(
         fromStation: from,
         toStation: to,
