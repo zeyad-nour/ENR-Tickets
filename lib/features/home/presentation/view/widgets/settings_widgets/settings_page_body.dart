@@ -1,5 +1,7 @@
 // ignore_for_file: avoid_print
 
+import 'dart:developer';
+
 import 'package:enr_tickets/core/widget/assets.dart';
 import 'package:enr_tickets/core/widget/styles.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/settings_widgets/settings_card_widget.dart';
@@ -35,9 +37,25 @@ class SettingsPageBody extends StatelessWidget {
           title: "Use biometric of short password",
           onChanged: (p0) => print("object"),
         ),
-        TextButtonWidget(task: "Change password"),
-        TextButtonWidget(task: "Change password"),
-        TextButtonWidget(task: "Change password"),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: TextButtonWidget(
+            onPressed: () => log("Change password"),
+            task: "Change password",
+            icon: Icons.lock_outline_rounded,
+          ),
+        ),
+
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: TextButtonWidget(
+            
+            onPressed: () => log("Delete Account"),
+            task: "Delete Account",
+
+            icon: Icons.delete_outline_rounded,
+          ),
+        ),
       ],
     );
   }

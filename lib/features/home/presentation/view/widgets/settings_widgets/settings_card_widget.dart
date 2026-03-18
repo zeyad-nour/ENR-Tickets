@@ -32,6 +32,7 @@ class SettingsCardWidget extends StatelessWidget {
                 Text(title, style: Styles.textStyle17),
                 Spacer(),
                 TextButtonWidget(
+                  icon: Icons.arrow_forward_ios_rounded,
                   task: task,
                   onPressed: () {
                     print("Text button");
