@@ -6,7 +6,12 @@ import 'package:gap/gap.dart';
 
 class CustomAppBarSearchResults extends StatelessWidget {
   final String arriveStation;
-  const CustomAppBarSearchResults({super.key, required this.arriveStation});
+  final String dateday;
+  const CustomAppBarSearchResults({
+    super.key,
+    required this.arriveStation,
+    required this.dateday,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +32,7 @@ class CustomAppBarSearchResults extends StatelessWidget {
           children: [
             Gap(20),
             Text(SearchResultsTitle, style: Styles.textStyle27),
-            Subtitlewidget(staion: arriveStation),
+            Subtitlewidget(staion: arriveStation, dateday: dateday),
           ],
         ),
       ],
@@ -37,21 +42,23 @@ class CustomAppBarSearchResults extends StatelessWidget {
 
 class Subtitlewidget extends StatelessWidget {
   final String staion;
-  const Subtitlewidget({super.key, required this.staion});
+  final String dateday;
+  const Subtitlewidget({
+    super.key,
+    required this.staion,
+    required this.dateday,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Text(
-          "Sohag",
-          style: Styles.hintStyle.copyWith(color: Colors.grey[800]),
-        ),
+        Text("To $staion", style: Styles.hintStyle.copyWith(color: iconColor)),
         Gap(10),
         Icon(Icons.arrow_forward, size: 20),
         Gap(10),
         Text(
-          "8/2/206",
+          dateday,
           style: Styles.hintStyle.copyWith(color: Colors.grey[800]),
         ),
       ],

@@ -1,3 +1,5 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
@@ -20,7 +22,7 @@ class HomeCubit extends Cubit<HomeState> {
     try {
       emit(HomeLoding());
 
-      // TODO: replace with API later
+  
       await Future.delayed(const Duration(seconds: 2));
 
       stations = [

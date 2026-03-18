@@ -1,3 +1,5 @@
+import 'dart:developer' show log;
+
 import 'package:enr_tickets/features/home/presentation/state_mangement/search_result_cubit/search_result_cubit.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/search_results_widgets/custom_app_bar_search_results.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/search_results_widgets/custom_card_train_info.dart';
@@ -48,7 +50,10 @@ class SearchResultsBody extends StatelessWidget {
                   const Gap(30),
 
                   //Fixed
-                  CustomAppBarSearchResults(arriveStation: toStation),
+                  CustomAppBarSearchResults(
+                    arriveStation: toStation,
+                    dateday: arriveDate,
+                  ),
 
                   // Scrolling
                   Expanded(
@@ -58,19 +63,19 @@ class SearchResultsBody extends StatelessWidget {
                       itemBuilder: (context, index) {
                         final train = state.trains[index];
                         return CustomCardTrainInfo(
-                          trainNumber: trainNumber, //done
-                          classType: classType, //done
-                          fromStation: fromStation, //done
-                          toStation: toStation, //done
-                          departTime: departTime, //done
-                          arriveTime: arriveTime, //done
-                          departDate: departDate, //done
-                          arriveDate: arriveDate, //done
-                          duration: duration, //done
-                          availableTickets: availableTickets, //done
+                          trainNumber: train.trainNumber, //done
+                          classType: train.classType, //done
+                          fromStation: train.fromStation, //done
+                          toStation: train.toStation, //done
+                          departTime: train.departTime, //done
+                          arriveTime: train.arriveTime, //done
+                          departDate: train.departDate, //done
+                          arriveDate: train.arriveDate, //done
+                          duration: train.duration, //done
+                          availableTickets: train.availableTickets, //done
                           stops: 21, //done
                           onBuy: () {
-                            print("شراء التذكرة");
+                            log("Bay Ticket");
                           },
                         );
                       },
