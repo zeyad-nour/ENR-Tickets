@@ -17,12 +17,13 @@ class CustomCardTrainInfo extends StatelessWidget {
   final String toStation;
   final String departTime;
   final String arriveTime;
-  final String departDate;
+  final DateTime departDate;
   final String arriveDate;
   final String duration;
   final int availableTickets;
   final int stops;
   final VoidCallback onBuy;
+  final List<String>stopStations;
   const CustomCardTrainInfo({
     super.key,
     required this.trainNumber,
@@ -36,7 +37,7 @@ class CustomCardTrainInfo extends StatelessWidget {
     required this.duration,
     required this.availableTickets,
     required this.stops,
-    required this.onBuy,
+    required this.onBuy, required this.stopStations,
   });
 
   @override
@@ -100,7 +101,7 @@ class CustomCardTrainInfo extends StatelessWidget {
                     onTap: () {
                       Navigator.of(
                         context,
-                      ).push(MaterialPageRoute(builder: (context) => Stpoes(stops: stops,)));
+                      ).push(MaterialPageRoute(builder: (context) => Stpoes(stops: stops,stopStations: stopStations,)));
                     },
                   ),
                   Container(height: 30, width: 1, color: Colors.grey.shade300),

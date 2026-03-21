@@ -24,17 +24,18 @@ class HomePage extends StatelessWidget {
             context,
             MaterialPageRoute(
               builder: (_) => SearchResultsPage(
+                stopStations:state.stopStation,
                 from: state.from,
                 to: state.to,
                 trainNumber: 125,
                 availableTickets: 10,
                 stops: 11,
-                classType: 'ثالثة مكيف',
-                departTime: '1.5',
-                arriveTime: '8.5',
-                departDate: '18/3/2026',
-                arriveDate: '19/3/2026',
-                duration: 'duration',
+                classType: 'ثالثة مكيف',//comin from api
+                departTime: '1.5', //comain from api
+                arriveTime: '8.5',  //comain from api
+                departDate:state.date ,  //local (day travel)
+                arriveDate: '19/3/2026',  //comain from api
+                duration: 'duration',    //comain from api
               ),
             ),
           );

@@ -10,11 +10,12 @@ class SearchResultsPage extends StatelessWidget {
   final String classType;
   final String departTime;
   final String arriveTime;
-  final String departDate;
+  final DateTime departDate;
   final String arriveDate;
   final String duration;
   final String from;
   final String to;
+  final List<String> stopStations;
   const SearchResultsPage({
     super.key,
     required this.from,
@@ -28,6 +29,7 @@ class SearchResultsPage extends StatelessWidget {
     required this.departDate,
     required this.arriveDate,
     required this.duration,
+    required this.stopStations,
   });
 
   @override
@@ -35,6 +37,7 @@ class SearchResultsPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => SearchResultCubit()
         ..fetchResults(
+          stopeStations: stopStations,
           classType: classType,
           from: from,
           to: to,
@@ -46,6 +49,7 @@ class SearchResultsPage extends StatelessWidget {
           availableTickets: availableTickets,
         ),
       child: SearchResultsBody(
+        stopeStation: stopStations,
         fromStation: from,
         toStation: to,
         trainNumber: trainNumber,

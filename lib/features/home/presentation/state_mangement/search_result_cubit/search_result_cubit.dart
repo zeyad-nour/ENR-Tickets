@@ -15,10 +15,11 @@ class SearchResultCubit extends Cubit<SearchResultState> {
     required String to,
     required String departTime,
     required String arriveTime,
-    required String departDate,
+    required DateTime departDate,
     required String arriveDate,
     required String duration,
     required int availableTickets,
+    required List<String> stopeStations,
   }) async {
     try {
       emit(SearchResultLoading());
@@ -39,6 +40,7 @@ class SearchResultCubit extends Cubit<SearchResultState> {
           departDate: departDate,
           arriveDate: arriveDate,
           duration: duration,
+          stopeStations: stopeStations,
         ),
       ];
 

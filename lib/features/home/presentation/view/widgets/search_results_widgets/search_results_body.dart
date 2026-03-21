@@ -16,9 +16,10 @@ class SearchResultsBody extends StatelessWidget {
   final String classType;
   final String departTime;
   final String arriveTime;
-  final String departDate;
+  final DateTime departDate;
   final String arriveDate;
   final String duration;
+  final List<String> stopeStation;
   const SearchResultsBody({
     super.key,
     required this.fromStation,
@@ -31,7 +32,7 @@ class SearchResultsBody extends StatelessWidget {
     required this.arriveTime,
     required this.departDate,
     required this.arriveDate,
-    required this.duration,
+    required this.duration, required this.stopeStation,
   });
 
   @override
@@ -63,17 +64,19 @@ class SearchResultsBody extends StatelessWidget {
                       itemBuilder: (context, index) {
                         final train = state.trains[index];
                         return CustomCardTrainInfo(
+                          stopStations:stopeStation,      //done
                           trainNumber: train.trainNumber, //done
-                          classType: train.classType, //done
+                          classType: train.classType,     //done
                           fromStation: train.fromStation, //done
-                          toStation: train.toStation, //done
-                          departTime: train.departTime, //done
-                          arriveTime: train.arriveTime, //done
-                          departDate: train.departDate, //done
-                          arriveDate: train.arriveDate, //done
-                          duration: train.duration, //done
+                          toStation: train.toStation,     //done
+                          departTime: train.departTime,   //done
+                          arriveTime: train.arriveTime,   //done
+                          departDate: train.departDate,   //done
+                          arriveDate: train.arriveDate,  //done
+                          duration: train.duration,     //done
                           availableTickets: train.availableTickets, //done
-                          stops: stops, //done
+                          stops: stops,                 //done
+
                           onBuy: () {
                             log("Bay Ticket");
                           },

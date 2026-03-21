@@ -10,6 +10,20 @@ class HomeCubit extends Cubit<HomeState> {
 
   /// Stations list
   List<String> stations = [];
+  List<String> stopStations =    [
+    "Cairo",
+    "Giza",
+    "Beni Suef",
+    "Maghagha",
+    "Minya",
+    "Malawi",
+    "Deirut",
+    "Asyut",
+    "Tema",
+    "Tahta",
+    "Sohag",
+  ];
+
 
   /// Selected Data
   String fromStation = "From Station";
@@ -22,7 +36,6 @@ class HomeCubit extends Cubit<HomeState> {
     try {
       emit(HomeLoding());
 
-  
       await Future.delayed(const Duration(seconds: 2));
 
       stations = [
@@ -70,11 +83,15 @@ class HomeCubit extends Cubit<HomeState> {
       return;
     }
 
-    emit(HomeSearchSuccess(
-      from: fromStation,
-      to: toStation,
-      date: travelDate,
-      tripType: tripType,
-    ));
+    emit(
+      HomeSearchSuccess(
+      
+        from: fromStation,
+        to: toStation,
+        date: travelDate,
+        tripType: tripType,
+        stopStation: stopStations
+      ),
+    );
   }
 }

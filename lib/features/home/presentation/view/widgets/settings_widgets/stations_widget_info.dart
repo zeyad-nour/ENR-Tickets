@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 class StationsRow extends StatelessWidget {
   final String departTime;
-  final String departDate;
+  final DateTime departDate;
   final String fromStation;
   final String arriveTime;
   final String arriveDate;
@@ -40,7 +40,7 @@ class StationsRow extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Text(departDate),
+              Text("$departDate"),
               const SizedBox(height: 6),
               Text(fromStation, style: const TextStyle(fontSize: 16)),
             ],

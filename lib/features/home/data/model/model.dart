@@ -7,9 +7,10 @@ class TrainInfo {
   final String toStation;
   final String departTime;
   final String arriveTime;
-  final String departDate;
+  final DateTime departDate;
   final String arriveDate;
   final String duration;
+  final List<String> stopeStations;
 
   TrainInfo({
     required this.trainNumber,
@@ -22,6 +23,6 @@ class TrainInfo {
     required this.arriveTime,
     required this.departDate,
     required this.arriveDate,
-    required this.duration,
+    required this.duration, required this.stopeStations,
   });
 }
