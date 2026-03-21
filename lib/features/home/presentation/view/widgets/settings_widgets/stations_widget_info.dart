@@ -2,6 +2,7 @@ import 'package:enr_tickets/core/utils/colors.dart';
 import 'package:enr_tickets/core/utils/strings.dart';
 import 'package:enr_tickets/core/widget/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class StationsRow extends StatelessWidget {
   final String departTime;
@@ -40,10 +41,8 @@ class StationsRow extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              //             Text(
-              //   DateFormat('yyyy-MM-dd').format(departDate),
-              // ),
-              Text(departDate.toString()),
+              Text(DateFormat('yyyy-MM-dd').format(departDate)),
+              // Text(departDate.toString()),
               const SizedBox(height: 6),
               Text(fromStation, style: const TextStyle(fontSize: 16)),
             ],
@@ -68,6 +67,7 @@ class StationsRow extends StatelessWidget {
                 ),
               ),
               Text(arriveDate),
+              // Text(DateFormat('yyyy-MM-dd').format(arriveDate)),
               const SizedBox(height: 6),
               Text(toStation, style: const TextStyle(fontSize: 16)),
             ],
