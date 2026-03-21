@@ -24,6 +24,7 @@ const String oneWay = 'One Way';
 const String round_trip = 'Round Trip';
 
 //Strings used in serach_result page
+const String SearchResultsTitle = 'Search results';
 const String available_tickets = 'Available tickets';
 const String train_number = 'Train number';
 
@@ -32,7 +33,6 @@ const String train_number = 'Train number';
 const String settings = 'Settings';
 const String followsystem = 'Follow System';
 const String languge = 'Languge';
-
 const String darkmode = 'Dark Mode';
 const String use_biometaic = 'Use biometric of short password';
 const String changepassword = 'Change password';
@@ -47,4 +47,4 @@ const String mytickets = 'My Tickets';
 const String settingspage = 'Settings';
 
 //search Reasult title
-const String SearchResultsTitle = 'Search results';
+

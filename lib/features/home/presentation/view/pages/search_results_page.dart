@@ -43,7 +43,7 @@ class SearchResultsPage extends StatelessWidget {
           departDate: departDate,
           arriveDate: arriveDate,
           duration: duration,
-       
+          availableTickets: availableTickets,
         ),
       child: SearchResultsBody(
         fromStation: from,

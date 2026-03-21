@@ -18,7 +18,7 @@ class SearchResultCubit extends Cubit<SearchResultState> {
     required String departDate,
     required String arriveDate,
     required String duration,
-   
+    required int availableTickets,
   }) async {
     try {
       emit(SearchResultLoading());
@@ -29,7 +29,7 @@ class SearchResultCubit extends Cubit<SearchResultState> {
       final trains = <TrainInfo>[
         TrainInfo(
           trainNumber: 135,
-          availableTickets: 32,
+          availableTickets: availableTickets,
           stops: 3,
           classType: classType,
           fromStation: from,
@@ -38,7 +38,7 @@ class SearchResultCubit extends Cubit<SearchResultState> {
           arriveTime: arriveTime,
           departDate: departDate,
           arriveDate: arriveDate,
-          duration:duration,
+          duration: duration,
         ),
       ];
 

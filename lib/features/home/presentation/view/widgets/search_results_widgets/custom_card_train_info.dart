@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:enr_tickets/core/utils/colors.dart';
 import 'package:enr_tickets/core/widget/styles.dart';
+import 'package:enr_tickets/features/home/presentation/view/pages/stpoes.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/search_results_widgets/available_tickets_widget.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/search_results_widgets/ticket_text_button_widget.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/settings_widgets/stations_widget_info.dart';
@@ -85,8 +86,8 @@ class CustomCardTrainInfo extends StatelessWidget {
               ),
 
               Gap(12),
-              
-              AvailableTicketsWidget(availableTickets: "32"),
+
+              AvailableTicketsWidget(availableTickets: availableTickets),
 
               Divider(),
 
@@ -95,9 +96,11 @@ class CustomCardTrainInfo extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   TicketTextButtonWidget(
-                    text: "توقف",
+                    text: "Stops $stops",
                     onTap: () {
-                      log("Stope");
+                      Navigator.of(
+                        context,
+                      ).push(MaterialPageRoute(builder: (context) => Stpoes(stops: stops,)));
                     },
                   ),
                   Container(height: 30, width: 1, color: Colors.grey.shade300),
