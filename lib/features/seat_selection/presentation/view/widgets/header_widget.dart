@@ -1,3 +1,4 @@
+import 'package:enr_tickets/core/widget/styles.dart';
 import 'package:flutter/material.dart';
 
 class HeaderWidget extends StatelessWidget {
@@ -8,25 +9,42 @@ class HeaderWidget extends StatelessWidget {
     return Column(
       children: [
         /// Steps
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: const [
-            Text("1 Timetable"),
-            Text("2 Select seat"),
-            Text("3 Personal"),
-          ],
+        Container(
+          height: MediaQuery.sizeOf(context).height * 0.05,
+          color: Colors.grey,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Text(
+                "1 Timetable",
+                style: Styles.textStyle19.copyWith(color: Colors.white),
+              ),
+              Text(
+                "2 Select seat",
+                style: Styles.textStyle19.copyWith(color: Colors.white),
+              ),
+              Text(
+                "3 Personal",
+                style: Styles.textStyle19.copyWith(color: Colors.white),
+              ),
+            ],
+          ),
         ),
 
-        const SizedBox(height: 10),
+        // const SizedBox(height: 15),
 
         /// Legend
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            _legend("Available", Colors.white),
-            _legend("Selected", Colors.red),
-            _legend("Booked", Colors.black),
-          ],
+        Container(
+          height: MediaQuery.sizeOf(context).height * 0.05,
+          color: Colors.white,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              _legend("Available", Colors.white),
+              _legend("Selected", Colors.red),
+              _legend("Booked", Colors.black),
+            ],
+          ),
         ),
       ],
     );

@@ -16,50 +16,39 @@ class SeatWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color bgColor;
-    Color textColor;
+    Color iconColor;
 
     switch (state) {
       case SeatState.available:
-        bgColor = Colors.white;
-        textColor = Colors.black;
+        iconColor = Colors.grey.shade300;
         break;
       case SeatState.selected:
-        bgColor = Colors.red;
-        textColor = Colors.white;
+        iconColor = Colors.red;
         break;
       case SeatState.booked:
-        bgColor = Colors.black;
-        textColor = Colors.white;
+        iconColor = Colors.black;
         break;
     }
 
     return GestureDetector(
       onTap: onTap,
-      child: Container(
-        margin: const EdgeInsets.all(6),
+      child: SizedBox(
         width: 50,
         height: 50,
-        decoration: BoxDecoration(
-          color: bgColor,
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: Colors.grey.shade300),
-          boxShadow: const [
-            BoxShadow(
-              blurRadius: 5,
-              color: Colors.black12,
-              offset: Offset(0, 3),
-            )
-          ],
-        ),
-        child: Center(
-          child: Text(
-            number.toString(),
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: textColor,
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            Icon(Icons.event_seat, size: 40, color: iconColor),
+            Text(
+              number.toString(),
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: state == SeatState.available
+                    ? Colors.black
+                    : Colors.white,
+              ),
             ),
-          ),
+          ],
         ),
       ),
     );

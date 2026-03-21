@@ -2,6 +2,7 @@
 
 import 'package:enr_tickets/core/utils/strings.dart';
 import 'package:enr_tickets/core/widget/custom_button_register.dart';
+import 'package:enr_tickets/core/widget/sign_in_via.dart';
 import 'package:enr_tickets/features/create_account/presentation/view/create_account.dart';
 import 'package:enr_tickets/features/create_account/presentation/view/widget/custom_have_account_text_button.dart';
 import 'package:enr_tickets/features/home/presentation/view/home_view.dart';
@@ -75,7 +76,9 @@ class _LogInBodyState extends State<LogInBody> {
                           }
                         },
                       ),
-                Gap(80),
+                Gap(60),
+                SignInVia(),
+                Gap(20),
                 Center(child: SignMethodsView()),
                 Gap(20),
                 CustomHaveAccountTextButton(

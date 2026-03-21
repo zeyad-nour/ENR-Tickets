@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:enr_tickets/features/seat_selection/presentation/view/widgets/seat_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -19,8 +21,18 @@ class SeatRowWidget extends StatelessWidget {
         /// Left seats
         Row(
           children: [
-            SeatWidget(number: leftStart, state: SeatState.available, onTap: () {}),
-            SeatWidget(number: leftStart + 1, state: SeatState.available, onTap: () {}),
+            SeatWidget(
+              number: leftStart,
+              state: SeatState.available,
+              onTap: () {
+                log("xxxxxxxxxxxxxxx");
+              },
+            ),
+            SeatWidget(
+              number: leftStart + 1,
+              state: SeatState.available,
+              onTap: () {},
+            ),
           ],
         ),
 
@@ -30,8 +42,16 @@ class SeatRowWidget extends StatelessWidget {
         /// Right seats
         Row(
           children: [
-            SeatWidget(number: rightStart, state: SeatState.available, onTap: () {}),
-            SeatWidget(number: rightStart + 1, state: SeatState.available, onTap: () {}),
+            SeatWidget(
+              number: rightStart,
+              state: SeatState.available,
+              onTap: () {},
+            ),
+            SeatWidget(
+              number: rightStart + 1,
+              state: SeatState.available,
+              onTap: () {},
+            ),
           ],
         ),
       ],

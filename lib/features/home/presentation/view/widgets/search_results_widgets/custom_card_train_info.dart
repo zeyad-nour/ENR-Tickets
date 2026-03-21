@@ -7,6 +7,7 @@ import 'package:enr_tickets/features/home/presentation/view/widgets/search_resul
 import 'package:enr_tickets/features/home/presentation/view/widgets/search_results_widgets/ticket_text_button_widget.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/settings_widgets/stations_widget_info.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/search_results_widgets/train_number_widget.dart';
+import 'package:enr_tickets/features/seat_selection/presentation/view/seat_page.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -112,7 +113,9 @@ class CustomCardTrainInfo extends StatelessWidget {
                   TicketTextButtonWidget(
                     text: "Choosing a seat",
                     onTap: () {
-                      log("Bay process");
+                      Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => SeatPage()),
+                      );
                     },
                   ),
                 ],
