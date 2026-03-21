@@ -10,7 +10,9 @@ class HomeCubit extends Cubit<HomeState> {
 
   /// Stations list
   List<String> stations = [];
-  List<String> stopStations =    [
+
+  /// Stop Stations
+  List<String> stopStations = [
     "Cairo",
     "Giza",
     "Beni Suef",
@@ -22,8 +24,8 @@ class HomeCubit extends Cubit<HomeState> {
     "Tema",
     "Tahta",
     "Sohag",
+    "gerga",
   ];
-
 
   /// Selected Data
   String fromStation = "From Station";
@@ -57,14 +59,14 @@ class HomeCubit extends Cubit<HomeState> {
     }
   }
 
-  /// Update Stations
+  /// Update Stations (change defult value to navigator)
   void updateStations(String from, String to) {
     fromStation = from;
     toStation = to;
     emit(HomeSuccess(stations: stations));
   }
 
-  /// Update Date
+  /// Update Date  (change defult value date )
   void updateDate(DateTime date) {
     travelDate = date;
     emit(HomeSuccess(stations: stations));
@@ -85,12 +87,11 @@ class HomeCubit extends Cubit<HomeState> {
 
     emit(
       HomeSearchSuccess(
-      
         from: fromStation,
         to: toStation,
         date: travelDate,
         tripType: tripType,
-        stopStation: stopStations
+        stopStation: stopStations,
       ),
     );
   }

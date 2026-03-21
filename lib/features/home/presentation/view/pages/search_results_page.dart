@@ -37,6 +37,8 @@ class SearchResultsPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => SearchResultCubit()
         ..fetchResults(
+          stops: stops,
+          trainNumber: trainNumber,
           stopeStations: stopStations,
           classType: classType,
           from: from,

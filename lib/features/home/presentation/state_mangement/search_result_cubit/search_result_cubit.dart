@@ -11,6 +11,9 @@ class SearchResultCubit extends Cubit<SearchResultState> {
 
   Future<void> fetchResults({
     required String classType,
+    required int trainNumber,
+    required int stops,
+
     required String from,
     required String to,
     required String departTime,
@@ -29,18 +32,18 @@ class SearchResultCubit extends Cubit<SearchResultState> {
 
       final trains = <TrainInfo>[
         TrainInfo(
-          trainNumber: 135,
-          availableTickets: availableTickets,
-          stops: 3,
-          classType: classType,
-          fromStation: from,
-          toStation: to,
-          departTime: departTime,
-          arriveTime: arriveTime,
-          departDate: departDate,
-          arriveDate: arriveDate,
-          duration: duration,
-          stopeStations: stopeStations,
+          trainNumber: trainNumber, //comaing from api
+          availableTickets: availableTickets, //comaing from api
+          stops: stops, //comaing from api
+          classType: classType, //comaing from api
+          fromStation: from, //local 
+          toStation: to,      //local
+          departTime: departTime, //comaing from api
+          arriveTime: arriveTime, //comaing from api
+          departDate: departDate, //comaing from api
+          arriveDate: arriveDate, //comaing from api
+          duration: duration, //comaing from api
+          stopeStations: stopeStations, //comaing from api
         ),
       ];
 

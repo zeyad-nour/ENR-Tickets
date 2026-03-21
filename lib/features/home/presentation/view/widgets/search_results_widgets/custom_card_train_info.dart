@@ -23,7 +23,7 @@ class CustomCardTrainInfo extends StatelessWidget {
   final int availableTickets;
   final int stops;
   final VoidCallback onBuy;
-  final List<String>stopStations;
+  final List<String> stopStations;
   const CustomCardTrainInfo({
     super.key,
     required this.trainNumber,
@@ -37,7 +37,8 @@ class CustomCardTrainInfo extends StatelessWidget {
     required this.duration,
     required this.availableTickets,
     required this.stops,
-    required this.onBuy, required this.stopStations,
+    required this.onBuy,
+    required this.stopStations,
   });
 
   @override
@@ -99,14 +100,17 @@ class CustomCardTrainInfo extends StatelessWidget {
                   TicketTextButtonWidget(
                     text: "Stops $stops",
                     onTap: () {
-                      Navigator.of(
-                        context,
-                      ).push(MaterialPageRoute(builder: (context) => Stpoes(stops: stops,stopStations: stopStations,)));
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              Stpoes(stops: stops, stopStations: stopStations),
+                        ),
+                      );
                     },
                   ),
                   Container(height: 30, width: 1, color: Colors.grey.shade300),
                   TicketTextButtonWidget(
-                    text: "عملية شراء",
+                    text: "pay process",
                     onTap: () {
                       log("Bay process");
                     },
