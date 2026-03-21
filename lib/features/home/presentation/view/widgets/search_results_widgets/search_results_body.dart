@@ -73,7 +73,7 @@ class SearchResultsBody extends StatelessWidget {
                           arriveTime: train.arriveTime,   //done
                           departDate: train.departDate,   //done
                           arriveDate: train.arriveDate,  //done
-                          duration: train.duration,     //done
+                          duration: train.duration,      //done
                           availableTickets: train.availableTickets, //done
                           stops: stops,                 //done
 

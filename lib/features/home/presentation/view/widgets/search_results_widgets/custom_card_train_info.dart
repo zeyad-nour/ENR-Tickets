@@ -110,7 +110,7 @@ class CustomCardTrainInfo extends StatelessWidget {
                   ),
                   Container(height: 30, width: 1, color: Colors.grey.shade300),
                   TicketTextButtonWidget(
-                    text: "pay process",
+                    text: "Choosing a seat",
                     onTap: () {
                       log("Bay process");
                     },

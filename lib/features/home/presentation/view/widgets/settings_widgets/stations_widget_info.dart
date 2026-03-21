@@ -29,7 +29,7 @@ class StationsRow extends StatelessWidget {
             children: [
               /// Departure station
               Text(
-            departurestation,
+                departurestation,
                 style: Styles.hintStyle.copyWith(color: iconColor),
               ),
               Divider(),
@@ -40,7 +40,10 @@ class StationsRow extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Text("$departDate"),
+              //             Text(
+              //   DateFormat('yyyy-MM-dd').format(departDate),
+              // ),
+              Text(departDate.toString()),
               const SizedBox(height: 6),
               Text(fromStation, style: const TextStyle(fontSize: 16)),
             ],
