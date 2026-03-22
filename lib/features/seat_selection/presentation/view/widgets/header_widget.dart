@@ -1,3 +1,4 @@
+import 'package:enr_tickets/core/utils/colors.dart';
 import 'package:enr_tickets/core/widget/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -13,7 +14,7 @@ class HeaderWidget extends StatelessWidget {
         Container(
           alignment: Alignment.center,
           height: MediaQuery.sizeOf(context).height * 0.05,
-          color: Colors.red,
+          color: buttonColor,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -35,7 +36,7 @@ class HeaderWidget extends StatelessWidget {
           ),
         ),
 
-        // const SizedBox(height: 15),
+      
 
         /// Legend
         Container(
@@ -44,8 +45,8 @@ class HeaderWidget extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              _legend("Available", Colors.white),
-              _legend("Selected", Colors.red),
+              _legend("Available", cardColor),
+              _legend("Selected", buttonColor),
               _legend("Booked", Colors.black),
             ],
           ),

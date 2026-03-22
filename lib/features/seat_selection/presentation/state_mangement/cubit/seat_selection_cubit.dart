@@ -57,4 +57,13 @@ class SeatSelectionCubit extends Cubit<SeatSelectionState> {
 
     emit(SeatSelectionLoaded(seats: updated));
   }
+  List<SeatModel> getSelectedSeats() {
+  if (state is! SeatSelectionLoaded) return [];
+
+  final current = state as SeatSelectionLoaded;
+
+  return current.seats
+      .where((seat) => seat.status == SeatStatus.selected)
+      .toList();
+}
 }

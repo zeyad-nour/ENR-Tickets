@@ -1,5 +1,6 @@
-import 'package:enr_tickets/features/seat_selection/data/model/seatMode.dart';
+
 import 'package:enr_tickets/features/seat_selection/presentation/state_mangement/cubit/seat_selection_cubit.dart';
+import 'package:enr_tickets/features/seat_selection/presentation/view/widgets/convert_status.dart';
 import 'package:enr_tickets/features/seat_selection/presentation/view/widgets/seat_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -83,13 +84,3 @@ class SeatRowWidget extends StatelessWidget {
   }
 }
 
-SeatState convert(SeatStatus status) {
-  switch (status) {
-    case SeatStatus.available:
-      return SeatState.available;
-    case SeatStatus.selected:
-      return SeatState.selected;
-    case SeatStatus.booked:
-      return SeatState.booked;
-  }
-}
