@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 
 enum SeatState { available, selected, booked }
 
@@ -48,7 +47,7 @@ class SeatWidget extends StatelessWidget {
               number.toString(),
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 16, // حجم الرقم مناسب
+                fontSize: 16, 
                 color: state == SeatState.available
                     ? Colors.black
                     : Colors.white,

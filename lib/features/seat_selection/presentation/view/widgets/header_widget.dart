@@ -1,5 +1,6 @@
 import 'package:enr_tickets/core/widget/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 class HeaderWidget extends StatelessWidget {
   const HeaderWidget({super.key});
@@ -10,8 +11,9 @@ class HeaderWidget extends StatelessWidget {
       children: [
         /// Steps
         Container(
+          alignment: Alignment.center,
           height: MediaQuery.sizeOf(context).height * 0.05,
-          color: Colors.grey,
+          color: Colors.red,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -19,10 +21,12 @@ class HeaderWidget extends StatelessWidget {
                 "1 Timetable",
                 style: Styles.textStyle19.copyWith(color: Colors.white),
               ),
+              Gap(10),
               Text(
                 "2 Select seat",
                 style: Styles.textStyle19.copyWith(color: Colors.white),
               ),
+              Gap(10),
               Text(
                 "3 Personal",
                 style: Styles.textStyle19.copyWith(color: Colors.white),

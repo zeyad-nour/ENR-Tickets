@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:enr_tickets/core/utils/colors.dart';
 import 'package:enr_tickets/core/widget/styles.dart';

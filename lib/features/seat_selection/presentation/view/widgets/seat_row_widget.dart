@@ -1,7 +1,9 @@
-import 'dart:developer';
-
+import 'package:enr_tickets/features/seat_selection/data/model/seatMode.dart';
+import 'package:enr_tickets/features/seat_selection/presentation/state_mangement/cubit/seat_selection_cubit.dart';
 import 'package:enr_tickets/features/seat_selection/presentation/view/widgets/seat_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gap/gap.dart';
 
 class SeatRowWidget extends StatelessWidget {
   final int leftStart;
@@ -15,46 +17,79 @@ class SeatRowWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        /// Left seats
-        Row(
+    return BlocBuilder<SeatSelectionCubit, SeatSelectionState>(
+      builder: (context, state) {
+        if (state is! SeatSelectionLoaded) {
+          return const SizedBox();
+        }
+
+        /// get seats from cubit
+        final seat1 = state.seats.firstWhere((e) => e.number == leftStart);
+        final seat2 = state.seats.firstWhere((e) => e.number == leftStart + 1);
+        final seat3 = state.seats.firstWhere((e) => e.number == rightStart);
+        final seat4 = state.seats.firstWhere((e) => e.number == rightStart + 1);
+
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SeatWidget(
-              number: leftStart,
-              state: SeatState.available,
-              onTap: () {
-                log("xxxxxxxxxxxxxxx");
-              },
+            /// Left seats
+            Row(
+              children: [
+                SeatWidget(
+                  number: seat1.number,
+                  state: convert(seat1.status),
+                  onTap: () {
+                    context.read<SeatSelectionCubit>().toggleSeat(seat1.number);
+                  },
+                ),
+                const Gap(10),
+                SeatWidget(
+                  number: seat2.number,
+                  state: convert(seat2.status),
+                  onTap: () {
+                    context.read<SeatSelectionCubit>().toggleSeat(seat2.number);
+                  },
+                ),
+              ],
             ),
-            SeatWidget(
-              number: leftStart + 1,
-              state: SeatState.available,
-              onTap: () {},
+
+            /// aisle
+            const SizedBox(width: 40),
+
+            /// Right seats
+            Row(
+              children: [
+                SeatWidget(
+                  number: seat3.number,
+                  state: convert(seat3.status),
+                  onTap: () {
+                    context.read<SeatSelectionCubit>().toggleSeat(seat3.number);
+                  },
+                ),
+                const Gap(10),
+                SeatWidget(
+                  number: seat4.number,
+                  state: convert(seat4.status),
+                  onTap: () {
+                    context.read<SeatSelectionCubit>().toggleSeat(seat4.number);
+                  },
+                ),
+              ],
             ),
           ],
-        ),
-
-        /// aisle
-        const SizedBox(width: 40),
-
-        /// Right seats
-        Row(
-          children: [
-            SeatWidget(
-              number: rightStart,
-              state: SeatState.available,
-              onTap: () {},
-            ),
-            SeatWidget(
-              number: rightStart + 1,
-              state: SeatState.available,
-              onTap: () {},
-            ),
-          ],
-        ),
-      ],
+        );
+      },
     );
+  }
+}
+
+SeatState convert(SeatStatus status) {
+  switch (status) {
+    case SeatStatus.available:
+      return SeatState.available;
+    case SeatStatus.selected:
+      return SeatState.selected;
+    case SeatStatus.booked:
+      return SeatState.booked;
   }
 }
