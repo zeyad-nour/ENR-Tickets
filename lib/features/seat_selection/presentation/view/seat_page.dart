@@ -10,7 +10,7 @@ class SeatPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => SeatSelectionCubit()..initSeats(),
+      create: (_) => SeatSelectionCubit()..loadSeats(),
       child: Scaffold(
         appBar: AppBar(title: const Text("Select Seat")),
         body: Padding(
