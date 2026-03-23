@@ -1,3 +1,5 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:enr_tickets/core/widget/custom_dialog.dart';
 import 'package:enr_tickets/features/seat_selection/data/model/seatMode.dart'
     show SeatStatus;
 import 'package:enr_tickets/features/seat_selection/presentation/state_mangement/cubit/seat_selection_cubit.dart';
@@ -39,14 +41,30 @@ class SeatPage extends StatelessWidget {
                       }
 
                       return BookingBotton(
-                        onPressed: hasSelection
-                            ? () {
-                                final cubit = context
-                                    .read<SeatSelectionCubit>();
-                                final selectedSeats = cubit.getSelectedSeats();
-                                print(selectedSeats);
-                              }
-                            : null,
+                        onPressed: () {
+                          final cubit = context.read<SeatSelectionCubit>();
+                          if (cubit.getSelectedSeats().isEmpty) {
+                            CustomDialog.show(
+                              context: context,
+
+                              title: "Noticeable",
+                              description: "You must choose your seat first.",
+                              dialogType: DialogType.noHeader,
+                            );
+                          } else {
+                            CustomDialog.show(
+                              context: context,
+
+                              title: "Alert",
+                              description: "Are you sure about this booking?",
+                              dialogType: DialogType.noHeader,
+                              btnOkOnPress: () {
+                                print("correct");
+                                // completed booking
+                              },
+                            );
+                          }
+                        },
                       );
                     },
                   ),
