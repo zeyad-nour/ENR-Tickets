@@ -1,6 +1,7 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:enr_tickets/core/widget/custom_dialog.dart';
 import 'package:enr_tickets/core/widget/styles.dart';
+import 'package:enr_tickets/features/payment_way/presentation/view/payment_way.dart';
 import 'package:enr_tickets/features/seat_selection/data/model/seatMode.dart'
     show SeatStatus;
 import 'package:enr_tickets/features/seat_selection/presentation/state_mangement/cubit/seat_selection_cubit.dart';
@@ -34,11 +35,9 @@ class SeatPage extends StatelessWidget {
                 icon: Icon(Icons.arrow_back_ios, color: Colors.white),
               ),
 
-              /// نخلي الخلفية شفافة
               backgroundColor: Colors.transparent,
               elevation: 0,
 
-              /// 🔥 هنا نحط الـ gradient
               flexibleSpace: Container(
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
@@ -55,7 +54,6 @@ class SeatPage extends StatelessWidget {
                 ),
               ),
 
-              /// لون النص
               titleTextStyle: const TextStyle(
                 color: Colors.white,
                 fontSize: 20,
@@ -77,6 +75,7 @@ class SeatPage extends StatelessWidget {
 
                     BlocBuilder<SeatSelectionCubit, SeatSelectionState>(
                       builder: (context, state) {
+                        // ignore: unused_local_variable
                         bool hasSelection = false;
 
                         if (state is SeatSelectionLoaded) {
@@ -104,8 +103,11 @@ class SeatPage extends StatelessWidget {
                                 description: "Are you sure about this booking?",
                                 dialogType: DialogType.noHeader,
                                 btnOkOnPress: () {
-                                  print("correct");
-                                  // completed booking
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) => PaymentWay(),
+                                    ),
+                                  );
                                 },
                               );
                             }
