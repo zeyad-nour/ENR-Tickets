@@ -10,7 +10,7 @@ class SeatGridWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<SeatSelectionCubit, SeatSelectionState>(
       builder: (context, state) {
-        /// 🔄 Loading
+        ///  Loading
         if (state is SeatSelectionLoading) {
           return const Expanded(
             child: Center(child: CircularProgressIndicator()),

@@ -1,3 +1,4 @@
+import 'package:enr_tickets/core/utils/colors.dart';
 import 'package:flutter/material.dart';
 
 enum SeatState { available, selected, booked }
@@ -23,7 +24,7 @@ class SeatWidget extends StatelessWidget {
         iconColor = Colors.grey.shade300;
         break;
       case SeatState.selected:
-        iconColor = Colors.red;
+        iconColor = buttonColor;
         break;
       case SeatState.booked:
         iconColor = Colors.black;
@@ -47,7 +48,7 @@ class SeatWidget extends StatelessWidget {
               number.toString(),
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 16, 
+                fontSize: 16,
                 color: state == SeatState.available
                     ? Colors.black
                     : Colors.white,

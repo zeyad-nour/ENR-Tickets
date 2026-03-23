@@ -1,4 +1,4 @@
-
+import 'package:enr_tickets/core/utils/colors.dart';
 import 'package:enr_tickets/features/seat_selection/presentation/state_mangement/cubit/seat_selection_cubit.dart';
 import 'package:enr_tickets/features/seat_selection/presentation/view/widgets/convert_status.dart';
 import 'package:enr_tickets/features/seat_selection/presentation/view/widgets/seat_widget.dart';
@@ -54,8 +54,8 @@ class SeatRowWidget extends StatelessWidget {
               ],
             ),
 
-            /// aisle
-            const SizedBox(width: 40),
+            /// this widget special UI
+            Seperatedwidget(),
 
             /// Right seats
             Row(
@@ -84,3 +84,18 @@ class SeatRowWidget extends StatelessWidget {
   }
 }
 
+class Seperatedwidget extends StatelessWidget {
+  const Seperatedwidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: MediaQuery.sizeOf(context).width * 0.1,
+      height: MediaQuery.sizeOf(context).height * 0.1,
+      decoration: BoxDecoration(
+        border: Border.all(color: hintColorForm, width: 0.2),
+        color: cardColor,
+      ),
+    );
+  }
+}

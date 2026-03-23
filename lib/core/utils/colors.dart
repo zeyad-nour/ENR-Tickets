@@ -1,5 +1,7 @@
 import 'dart:ui';
 
+import 'package:flutter/material.dart';
+
 const Color buttonColor = Color(0xffd10100);
 const Color iconColor = Color(0xff8e0b11);
 const Color backgroundpageColor = Color(0xfff6f0fa);
@@ -20,3 +22,8 @@ const Color backgroundSearchReasult = Color(0xffefebea);
 
 // chose tecket
 const Color elevationColor = Color(0xffE9DFC7);
+//colors Gradient
+Color redOne = Colors.red.shade800;
+Color redTow = Colors.red.shade400;
+
+Color white = Colors.grey.shade200;

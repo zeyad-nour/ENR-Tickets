@@ -14,29 +14,53 @@ class HeaderWidget extends StatelessWidget {
         Container(
           alignment: Alignment.center,
           height: MediaQuery.sizeOf(context).height * 0.05,
-          color: buttonColor,
+
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(0), // اختياري
+            /// 🔥 نفس Gradient الزرار
+            gradient: LinearGradient(
+              colors: [
+                Colors.red.shade800,
+                Colors.red.shade400,
+                Colors.red.shade400,
+
+                Colors.grey.shade200,
+              ],
+              stops: const [0.0, 0.35, 0.65, 1.0],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Text(
                 "1 Timetable",
-                style: Styles.textStyle19.copyWith(color: Colors.white),
+                style: Styles.textStyle19.copyWith(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-              Gap(10),
+              const Gap(10),
               Text(
                 "2 Select seat",
-                style: Styles.textStyle19.copyWith(color: Colors.white),
+                style: Styles.textStyle19.copyWith(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-              Gap(10),
+              const Gap(10),
               Text(
                 "3 Personal",
-                style: Styles.textStyle19.copyWith(color: Colors.white),
+                style: Styles.textStyle19.copyWith(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ],
           ),
         ),
-
-      
 
         /// Legend
         Container(
