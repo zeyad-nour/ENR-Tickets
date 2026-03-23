@@ -2,6 +2,7 @@ import 'package:enr_tickets/core/utils/colors.dart';
 import 'package:enr_tickets/core/widget/styles.dart';
 import 'package:enr_tickets/features/payment_way/presentation/view/widgets/custom_divider.dart';
 import 'package:enr_tickets/features/payment_way/presentation/view/widgets/custom_text.dart';
+import 'package:enr_tickets/features/payment_way/presentation/view/widgets/custom_widget_card.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -11,6 +12,7 @@ class PaymentWay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(
           "Complete Payment",
@@ -46,6 +48,8 @@ class PaymentWay extends StatelessWidget {
             title: "Choose Payment Method :",
             stylestitle: Styles.textStyle20,
           ),
+          Gap(20),
+          CustomWidgetCard(title: "Bank Cards"),
         ],
       ),
     );
