@@ -17,17 +17,17 @@ class CustomDialog {
     AwesomeDialog(
       context: context,
       dialogType: dialogType,
-      borderSide: BorderSide(color: borderColor ?? buttonColor, width: 2.2),
+      borderSide: BorderSide(color: borderColor ?? buttonColor, width: 1.2),
 
       width: MediaQuery.of(context).size.width * 0.8,
       buttonsBorderRadius: const BorderRadius.all(Radius.circular(15)),
 
       headerAnimationLoop: false,
       animType: AnimType.scale,
-      dialogBackgroundColor: formColor,
+      dialogBackgroundColor: Colors.transparent,
       title: title,
-      titleTextStyle: Styles.textStyle19,
-      descTextStyle: Styles.textStyle17,
+      titleTextStyle: Styles.textStyle19.copyWith(color: Colors.amber),
+      descTextStyle: Styles.textStyle17.copyWith(color: Colors.white),
       desc: description,
       showCloseIcon: false,
       btnOkText: "OK",
