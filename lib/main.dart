@@ -26,8 +26,7 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(
               brightness: Brightness.light,
               fontFamily: "Quicksand",
-              scaffoldBackgroundColor:
-                  Colors.white, // 👈 لون الـ Scaffold في Light
+              scaffoldBackgroundColor: Colors.white,
               cardColor: Colors.white,
               primaryColor: Colors.blue,
               iconTheme: const IconThemeData(color: Colors.black),
@@ -40,9 +39,7 @@ class MyApp extends StatelessWidget {
             darkTheme: ThemeData(
               brightness: Brightness.dark,
               fontFamily: "Quicksand",
-              scaffoldBackgroundColor: const Color(
-                0xFF121212,
-              ), // 👈 لون الـ Scaffold في Dark
+              scaffoldBackgroundColor: Colors.black,
               cardColor: const Color(0xFF1E1E1E),
               primaryColor: Colors.blue,
               iconTheme: const IconThemeData(color: Colors.white),

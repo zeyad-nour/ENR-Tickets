@@ -1,4 +1,3 @@
-import 'package:enr_tickets/core/utils/colors.dart';
 import 'package:enr_tickets/core/widget/assets.dart';
 import 'package:enr_tickets/core/widget/styles.dart';
 import 'package:flutter/material.dart';
@@ -17,26 +16,30 @@ class StationsListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return ListView.builder(
       itemCount: stations.length,
       itemBuilder: (context, index) {
         final station = stations[index];
 
         return Card(
-          color: Colors.white,
+          color: theme.primaryColorDark,
           child: ListTile(
             title: Text(
               station,
-              style: Styles.textStyle20,
+              style: Styles.textStyle20.copyWith(
+                color: theme.textTheme.bodyLarge!.color,
+              ),
             ),
 
-            leading: Image.asset(
-              AssetsData.icontravel,
-              width: 30,
-            ),
+            leading: Image.asset(AssetsData.icontravel, width: 30),
 
             trailing: station == selectedStation
-                ? const Icon(Icons.check, color: buttonColor)
+                ? Icon(
+                    Icons.check,
+                    color: theme.primaryColor,
+                  ) 
                 : null,
 
             onTap: () {

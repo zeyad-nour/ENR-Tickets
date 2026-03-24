@@ -18,6 +18,8 @@ class TravelDateCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10.0),
       child: GestureDetector(
@@ -26,11 +28,13 @@ class TravelDateCard extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
           height: 80,
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: theme.cardColor, // ✅ ديناميكي حسب Theme
             borderRadius: BorderRadius.circular(8),
             boxShadow: [
               BoxShadow(
-                color: Colors.black12,
+                color: theme.brightness == Brightness.dark
+                    ? Colors.black45
+                    : Colors.black12, // ✅ ظل مناسب لكل Theme
                 blurRadius: 6,
                 offset: const Offset(0, 3),
               ),
@@ -39,36 +43,56 @@ class TravelDateCard extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Gap(10),
-              Text(travelDate, style: Styles.textStyle17),
+              const Gap(10),
+              Text(
+                travelDate,
+                style: Styles.textStyle17.copyWith(
+                  color: theme.textTheme.bodyLarge!.color,
+                ),
+              ),
 
-              Gap(10),
-              const Icon(
+              const Gap(10),
+              Icon(
                 Icons.calendar_month_outlined,
-                color: iconColor,
+                color: theme.iconTheme.color, // ✅ أيقونة ديناميكية
                 size: 30,
               ),
 
-              Spacer(),
-              Container(width: 2, height: 50, color: Colors.grey[200]),
-              Spacer(),
+              const Spacer(),
+              Container(
+                width: 2,
+                height: 50,
+                color: theme.dividerColor, // ✅ divider ديناميكي
+              ),
+              const Spacer(),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     title,
-                    style: Styles.textStyle19.copyWith(color: Colors.black),
+                    style: Styles.textStyle19.copyWith(
+                      color: theme.textTheme.bodyLarge!.color,
+                    ),
                   ),
                   const SizedBox(height: 3),
-                  Text(date, style: Styles.textStyle19),
+                  Text(
+                    date,
+                    style: Styles.textStyle19.copyWith(
+                      color: theme.textTheme.bodyLarge!.color,
+                    ),
+                  ),
                 ],
               ),
 
-              Gap(30),
+              const Gap(30),
 
-              const Icon(Icons.arrow_forward_ios, size: 25, color: Colors.grey),
+              Icon(
+                Icons.arrow_forward_ios,
+                size: 25,
+                color: theme.disabledColor, // ✅ السهم يتغير حسب Theme
+              ),
 
-              Gap(30),
+              const Gap(30),
             ],
           ),
         ),

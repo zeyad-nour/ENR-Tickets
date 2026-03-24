@@ -8,16 +8,23 @@ class CustomHomeLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // اختار الصورة حسب الـ Theme الحالي
-    final String logo = Theme.of(context).brightness == Brightness.dark
-        ? AssetsData
-              .logo // صورة Dark Mode
-        : AssetsData.iconlogo; // صورة Light Mode
+    final bool isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Container(
-      color: Colors.white.withOpacity(0.2), // ممكن تخليها دايناميك بعدين
+      // 👈 لون ديناميكي حسب الثيم
+      color: isDark
+          ? Colors.black.withOpacity(0.2) // Dark Mode
+          : Colors.white.withOpacity(0.2), // Light Mode
       child: Center(
-        child: Image.asset(logo, width: 250, height: 250, fit: BoxFit.cover),
+        child: Image.asset(
+          isDark
+              ? AssetsData
+                    .logo // صورة للـ Dark Mode
+              : AssetsData.iconlogo, // صورة للـ Light Mode
+          width: 250,
+          height: 250,
+          fit: BoxFit.cover,
+        ),
       ),
     );
   }

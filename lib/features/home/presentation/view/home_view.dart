@@ -38,7 +38,7 @@ class _HomeViewState extends State<HomeView> {
       child: Scaffold(
         body: IndexedStack(index: _currentIndex, children: _pages),
         bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Colors.white,
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           iconSize: 30,
           elevation: 20,
           selectedFontSize: 17,
@@ -50,8 +50,11 @@ class _HomeViewState extends State<HomeView> {
           currentIndex: _currentIndex,
           onTap: _onTap,
           type: BottomNavigationBarType.fixed,
-          selectedItemColor: iconColor,
-          unselectedItemColor: Colors.grey[600],
+          selectedItemColor: iconColor, // لون ثابت للمحدد
+          unselectedItemColor: Theme.of(context).brightness == Brightness.dark
+              ? Colors
+                    .white // أبيض في الداكن
+              : Colors.grey[600], // رمادي في الفاتح
           items: const [
             BottomNavigationBarItem(
               icon: Icon(Icons.settings),
