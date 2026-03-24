@@ -8,6 +8,7 @@ class TrainNumberRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -16,7 +17,9 @@ class TrainNumberRow extends StatelessWidget {
 
         Text(
           "$train_number: $trainNumber",
-          style: Styles.textStyle19.copyWith(color: Colors.black),
+          style: Styles.textStyle19.copyWith(
+            color: theme.textTheme.bodyLarge!.color, // ✅ ديناميكي حسب الثيم
+          ),
         ),
       ],
     );
@@ -30,46 +33,31 @@ class TrainNumberBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Container(
       height: 34,
       padding: const EdgeInsets.symmetric(horizontal: 18),
       alignment: Alignment.center,
-      decoration: const BoxDecoration(
-        color: Color(0xffE9DFC7),
-        borderRadius: BorderRadius.only(
+      decoration: BoxDecoration(
+        color: theme.brightness == Brightness.dark
+            ? Colors.grey[700] // ✅ Badge غامق في الداكن
+            : const Color(0xffE9DFC7), // فاتح في الوضع الطبيعي
+        borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(16),
           bottomLeft: Radius.circular(16),
         ),
       ),
       child: Text(
         "$trainNumber",
-        style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+        style: TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.w600,
+          color: theme.brightness == Brightness.dark
+              ? Colors.white
+              : Colors.black, // ✅ نص Badge يتغير حسب الثيم
+        ),
       ),
     );
   }
-}
-
-class TrainNumberClipper extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    Path path = Path();
-
-    path.moveTo(0, size.height);
-
-    path.quadraticBezierTo(
-      size.width * 0.25,
-      size.height * 0.4,
-      size.width * 0.45,
-      size.height * 0.2,
-    );
-
-    path.lineTo(size.width, 0);
-    path.lineTo(size.width, size.height);
-    path.close();
-
-    return path;
-  }
-
-  @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }

@@ -32,13 +32,15 @@ class SearchResultsBody extends StatelessWidget {
     required this.arriveTime,
     required this.departDate,
     required this.arriveDate,
-    required this.duration, required this.stopeStation,
+    required this.duration,
+    required this.stopeStation,
   });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+
       body: BlocBuilder<SearchResultCubit, SearchResultState>(
         builder: (context, state) {
           if (state is SearchResultLoading) {
@@ -64,18 +66,18 @@ class SearchResultsBody extends StatelessWidget {
                       itemBuilder: (context, index) {
                         final train = state.trains[index];
                         return CustomCardTrainInfo(
-                          stopStations:stopeStation,      //done
+                          stopStations: stopeStation, //done
                           trainNumber: train.trainNumber, //done
-                          classType: train.classType,     //done
+                          classType: train.classType, //done
                           fromStation: train.fromStation, //done
-                          toStation: train.toStation,     //done
-                          departTime: train.departTime,   //done
-                          arriveTime: train.arriveTime,   //done
-                          departDate: train.departDate,   //done
-                          arriveDate: train.arriveDate,  //done
-                          duration: train.duration,      //done
+                          toStation: train.toStation, //done
+                          departTime: train.departTime, //done
+                          arriveTime: train.arriveTime, //done
+                          departDate: train.departDate, //done
+                          arriveDate: train.arriveDate, //done
+                          duration: train.duration, //done
                           availableTickets: train.availableTickets, //done
-                          stops: stops,                 //done
+                          stops: stops, //done
 
                           onBuy: () {
                             log("Bay Ticket");

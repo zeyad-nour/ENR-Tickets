@@ -1,4 +1,3 @@
-
 import 'package:enr_tickets/core/utils/colors.dart';
 import 'package:enr_tickets/core/widget/styles.dart';
 import 'package:enr_tickets/features/home/presentation/view/pages/stpoes.dart';
@@ -51,9 +50,14 @@ class CustomCardTrainInfo extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: Theme.of(context).cardColor,
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: elevationColor, width: 1.2),
+            border: Border.all(
+              color: Theme.of(context).brightness == Brightness.dark
+                  ? Colors.grey[700]!
+                  : Colors.grey.shade300,
+              width: 1.2,
+            ),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -62,8 +66,13 @@ class CustomCardTrainInfo extends StatelessWidget {
               TrainNumberRow(trainNumber: trainNumber),
               Divider(),
               Gap(6),
-
-              Text(classType, style: Styles.textStyle17), // type tarin
+              //Train Number
+              Text(
+                classType,
+                style: Styles.textStyle17.copyWith(
+                  color: Theme.of(context).textTheme.bodyLarge!.color,
+                ),
+              ),
               Divider(),
               const SizedBox(height: 10),
 
