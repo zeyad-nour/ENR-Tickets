@@ -1,5 +1,3 @@
-// ignore_for_file: deprecated_member_use
-
 import 'package:enr_tickets/core/utils/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +9,8 @@ class VerifyButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return GestureDetector(
       onTap: onTap,
       child: Padding(
@@ -21,14 +21,16 @@ class VerifyButton extends StatelessWidget {
           alignment: Alignment.center,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
-            gradient: const LinearGradient(
-              colors: [
-                darkcolor, //darkcolor,
-                deepcolor, //deepcolor,
-              ],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
+            gradient: isDark
+                ? null // لو Dark نخلي مفيش gradient
+                : const LinearGradient(
+                    colors: [darkcolor, deepcolor],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+            color: isDark
+                ? Colors.white.withOpacity(0.1)
+                : null, // شفافية بسيطة
             boxShadow: [
               BoxShadow(
                 color: Colors.red.withOpacity(.4),
@@ -40,22 +42,24 @@ class VerifyButton extends StatelessWidget {
           child: Stack(
             children: [
               /// light effect
-              Positioned(
-                right: 0,
-                bottom: 0,
-                child: Container(
-                  height: 40,
-                  width: 120,
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        Colors.orange.withOpacity(.6),
-                        Colors.transparent,
-                      ],
+              if (!isDark)
+                Positioned(
+                  right: 0,
+                  bottom: 0,
+                  child: Container(
+                    height: 40,
+                    width: 120,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [
+                          Colors.white,
+                          Colors.transparent,
+                          Colors.transparent,
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
 
               /// Text
               Center(

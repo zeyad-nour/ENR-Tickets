@@ -1,4 +1,3 @@
-import 'package:enr_tickets/core/utils/colors.dart';
 import 'package:enr_tickets/core/utils/strings.dart';
 import 'package:enr_tickets/core/widget/styles.dart';
 import 'package:flutter/material.dart';

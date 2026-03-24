@@ -7,7 +7,6 @@ import 'package:enr_tickets/features/home/presentation/view/pages/search_results
 import 'package:enr_tickets/features/home/presentation/view/widgets/home_widgets/custom_home_logo.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/home_widgets/custom_selection_view.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/home_widgets/travel_date_card.dart';
-import 'package:enr_tickets/features/home/presentation/view/widgets/home_widgets/trip_type_selector.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';

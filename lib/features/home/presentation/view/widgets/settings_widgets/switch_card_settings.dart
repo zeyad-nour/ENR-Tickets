@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:enr_tickets/core/utils/colors.dart';
 import 'package:enr_tickets/core/widget/styles.dart';
 import 'package:flutter/material.dart';
@@ -31,9 +33,7 @@ class _SwitchCardSettingsState extends State<SwitchCardSettings> {
               ).textTheme.bodyLarge!.color, // 👈 نص ديناميكي
             ),
           ),
-          activeColor: Theme.of(
-            context,
-          ).iconTheme.color, // 👈 لون السويتش ديناميكي
+          activeColor: buttonColor,
           value: value,
           onChanged: (newValue) {
             setState(() {
