@@ -21,8 +21,8 @@ const Color backgroundSearchReasult = Color(0xffefebea);
 
 // chose tecket
 const Color elevationColor = Color(0xffE9DFC7);
+
 //colors Gradient
 Color redOne = Colors.red.shade800;
 Color redTow = Colors.red.shade400;
-
 Color white = Colors.grey.shade200;

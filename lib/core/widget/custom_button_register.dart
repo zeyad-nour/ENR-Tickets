@@ -24,9 +24,9 @@ class VerifyButton extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
             gradient: isDark
-                ? null // لو Dark نخلي مفيش gradient
+                ? null
                 : const LinearGradient(
-                    colors: [darkcolor, deepcolor],
+                    colors: [darkcolor, deepcolor, deepcolor, darkcolor],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                   ),
@@ -35,7 +35,7 @@ class VerifyButton extends StatelessWidget {
                 : null, // شفافية بسيطة
             boxShadow: [
               BoxShadow(
-                color: Colors.red.withOpacity(.4),
+                color: Colors.red.withOpacity(0.4),
                 blurRadius: 10,
                 offset: const Offset(0, 4),
               ),
@@ -53,11 +53,7 @@ class VerifyButton extends StatelessWidget {
                     width: 120,
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
-                        colors: [
-                          Colors.white,
-                          Colors.transparent,
-                          Colors.transparent,
-                        ],
+                        colors: [Colors.transparent, Colors.transparent],
                       ),
                     ),
                   ),

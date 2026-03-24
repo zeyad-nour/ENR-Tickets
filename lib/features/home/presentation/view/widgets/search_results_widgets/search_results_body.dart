@@ -18,7 +18,7 @@ class SearchResultsBody extends StatelessWidget {
   final String arriveTime;
   final DateTime departDate;
   final String arriveDate;
-  final String duration;
+  final String price;
   final List<String> stopeStation;
   const SearchResultsBody({
     super.key,
@@ -32,7 +32,7 @@ class SearchResultsBody extends StatelessWidget {
     required this.arriveTime,
     required this.departDate,
     required this.arriveDate,
-    required this.duration,
+    required this.price,
     required this.stopeStation,
   });
 

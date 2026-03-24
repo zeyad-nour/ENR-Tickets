@@ -12,7 +12,7 @@ class SearchResultsPage extends StatelessWidget {
   final String arriveTime;
   final DateTime departDate;
   final String arriveDate;
-  final String duration;
+  final String price;
   final String from;
   final String to;
   final List<String> stopStations;
@@ -28,7 +28,7 @@ class SearchResultsPage extends StatelessWidget {
     required this.arriveTime,
     required this.departDate,
     required this.arriveDate,
-    required this.duration,
+    required this.price,
     required this.stopStations,
   });
 
@@ -47,7 +47,7 @@ class SearchResultsPage extends StatelessWidget {
           arriveTime: arriveTime,
           departDate: departDate,
           arriveDate: arriveDate,
-          duration: duration,
+          duration: price,
           availableTickets: availableTickets,
         ),
       child: SearchResultsBody(
@@ -62,7 +62,7 @@ class SearchResultsPage extends StatelessWidget {
         arriveTime: arriveTime,
         departDate: departDate,
         arriveDate: arriveDate,
-        duration: duration,
+        price: price,
       ),
     );
   }

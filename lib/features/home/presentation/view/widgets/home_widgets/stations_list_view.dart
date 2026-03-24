@@ -1,3 +1,7 @@
+// ignore_for_file: unrelated_type_equality_checks
+
+import 'package:enr_tickets/core/utils/colors.dart';
+import 'package:enr_tickets/core/utils/strings.dart';
 import 'package:enr_tickets/core/widget/assets.dart';
 import 'package:enr_tickets/core/widget/styles.dart';
 import 'package:flutter/material.dart';
@@ -24,8 +28,9 @@ class StationsListView extends StatelessWidget {
         final station = stations[index];
 
         return Card(
-          color: theme.primaryColorDark,
+          color: theme == darkmode ? const Color(0xFF1E1E1E) : cardColor,
           child: ListTile(
+          
             title: Text(
               station,
               style: Styles.textStyle20.copyWith(
@@ -36,10 +41,7 @@ class StationsListView extends StatelessWidget {
             leading: Image.asset(AssetsData.icontravel, width: 30),
 
             trailing: station == selectedStation
-                ? Icon(
-                    Icons.check,
-                    color: theme.primaryColor,
-                  ) 
+                ? Icon(Icons.check, color: Colors.green)
                 : null,
 
             onTap: () {

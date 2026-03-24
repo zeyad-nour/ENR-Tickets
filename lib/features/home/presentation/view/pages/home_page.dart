@@ -34,7 +34,7 @@ class HomePage extends StatelessWidget {
                 arriveTime: '8.5', //comain from api
                 departDate: state.date, //local (day travel)
                 arriveDate: '19/3/2026', //comain from api
-                duration: 'duration', //comain from api
+                price: '350', //comain from api
               ),
             ),
           );
@@ -95,14 +95,6 @@ class HomePage extends StatelessWidget {
                     ),
 
                     const Gap(80),
-
-                    /// Trip Type
-                    // TripTypeSelector(
-                    //   selectedType: cubit.tripType,
-                    //   onChanged: (value) {
-                    //     cubit.updateTripType(value);
-                    //   },
-                    // ),
 
                     /// Search Button
                     Padding(

@@ -91,7 +91,7 @@ class CustomCardTrainInfo extends StatelessWidget {
               /// Duration
               Center(
                 child: Text(
-                  duration,
+                  "Price $duration",
                   style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
               ),

@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
               fontFamily: "Quicksand",
               scaffoldBackgroundColor: Colors.white,
               cardColor: Colors.white,
-              primaryColor: Colors.blue,
+
               iconTheme: const IconThemeData(color: Colors.black),
               textTheme: const TextTheme(
                 bodyLarge: TextStyle(color: Colors.black),
@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
               fontFamily: "Quicksand",
               scaffoldBackgroundColor: Colors.black,
               cardColor: const Color(0xFF1E1E1E),
-              primaryColor: Colors.blue,
+
               iconTheme: const IconThemeData(color: Colors.white),
               textTheme: const TextTheme(
                 bodyLarge: TextStyle(color: Colors.white),
