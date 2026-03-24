@@ -20,21 +20,25 @@ class _SwitchCardSettingsState extends State<SwitchCardSettings> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
       child: Card(
-        color: Colors.grey[200],
+        color: Theme.of(context).cardColor, // 👈 ديناميكي حسب الثيم
         child: SwitchListTile(
           title: Text(
             widget.title,
-            style: Styles.hintStyle.copyWith(fontSize: 15),
+            style: Styles.hintStyle.copyWith(
+              fontSize: 15,
+              color: Theme.of(
+                context,
+              ).textTheme.bodyLarge!.color, // 👈 نص ديناميكي
+            ),
           ),
-          // ignore: deprecated_member_use
-          activeColor: iconColor,
-          activeTrackColor: Colors.red,
+          activeColor: Theme.of(
+            context,
+          ).iconTheme.color, // 👈 لون السويتش ديناميكي
           value: value,
           onChanged: (newValue) {
             setState(() {
               value = newValue;
             });
-
             widget.onChanged?.call(newValue);
           },
         ),

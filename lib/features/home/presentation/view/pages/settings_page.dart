@@ -7,7 +7,10 @@ class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(backgroundColor: Colors.white, body: SettingsPageBody()),
+      child: Scaffold(
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        body: SettingsPageBody(),
+      ),
     );
   }
 }

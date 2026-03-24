@@ -42,30 +42,34 @@ class _CustomFormFeildState extends State<CustomFormFeild> {
         validator: widget.validator,
         obscureText: isObscure,
         keyboardType: widget.keyboardType,
-        decoration: InputDecoration(
-          fillColor: formColor,
-          filled: true,
 
+        style: TextStyle(color: Colors.black), // النص أسود دائمًا
+
+        decoration: InputDecoration(
+          filled: true,
+          fillColor: Colors.white, // الحقل أبيض دائمًا
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(color: buttonColor, width: 1.6),
+            borderSide: BorderSide(
+              color: Theme.of(context).colorScheme.primary,
+              width: 1.6,
+            ),
           ),
-
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15),
-            borderSide: BorderSide(color: buttonColor, width: 1.6),
+            borderSide: BorderSide(
+              color: Theme.of(context).colorScheme.primary,
+              width: 1.6,
+            ),
           ),
-
           hintText: widget.hint,
           hintStyle: Styles.hintStyle,
-
           prefixIcon: Icon(widget.icon, color: iconColor),
-
-          /// 👁 Eye Icon
           suffixIcon: widget.obscureText
               ? IconButton(
                   icon: Icon(
                     isObscure ? Icons.visibility_off : Icons.visibility,
+                    color: iconColor,
                   ),
                   onPressed: () {
                     setState(() {

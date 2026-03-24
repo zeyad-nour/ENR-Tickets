@@ -9,10 +9,13 @@ import 'package:flutter/material.dart';
 class SettingsCardWidget extends StatelessWidget {
   final String title;
   final String task;
+  final VoidCallback? onTap;
+
   const SettingsCardWidget({
     super.key,
     required this.title,
     required this.task,
+    this.onTap,
   });
 
   @override
@@ -21,26 +24,37 @@ class SettingsCardWidget extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 10),
-            width: MediaQuery.sizeOf(context).width * 0.88,
-            height: MediaQuery.sizeOf(context).height * 0.056,
-            decoration: BoxDecoration(
-              color: Colors.grey[200],
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Row(
-              children: [
-                Text(title, style: Styles.textStyle17),
-                Spacer(),
-                TextButtonWidget(
-                  icon: Icons.arrow_forward_ios_rounded,
-                  task: task,
-                  onPressed: () {
-                    log("Text button");
-                  },
-                ),
-              ],
+          child: GestureDetector(
+            onTap: onTap,
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              width: MediaQuery.sizeOf(context).width * 0.88,
+              height: MediaQuery.sizeOf(context).height * 0.056,
+
+              // 👈 هنا نستخدم cardColor من Theme
+              decoration: BoxDecoration(
+                color: Theme.of(context).cardColor,
+                borderRadius: BorderRadius.circular(10),
+              ),
+
+              child: Row(
+                children: [
+                  Text(
+                    title,
+                    style: Styles.textStyle17.copyWith(
+                      color: Theme.of(
+                        context,
+                      ).textTheme.bodyLarge!.color, // نص ديناميكي
+                    ),
+                  ),
+                  const Spacer(),
+                  TextButtonWidget(
+                    icon: Icons.arrow_forward_ios_rounded,
+                    task: task,
+                    onPressed: onTap,
+                  ),
+                ],
+              ),
             ),
           ),
         ),

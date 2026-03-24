@@ -53,12 +53,17 @@ class HomePage extends StatelessWidget {
 
           return SafeArea(
             child: Scaffold(
-              backgroundColor: Colors.white,
+              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
               body: SingleChildScrollView(
                 child: Column(
                   children: [
                     CustomHomeLogo(),
-                    Text(headhomepage, style: Styles.textStyle27),
+                    Text(
+                      headhomepage,
+                      style: Styles.textStyle27.copyWith(
+                        color: Theme.of(context).textTheme.bodyLarge!.color,
+                      ),
+                    ),
 
                     /// Stations
                     CustomSelectionView(
@@ -90,15 +95,15 @@ class HomePage extends StatelessWidget {
                       },
                     ),
 
-                    const Gap(20),
+                    const Gap(80),
 
                     /// Trip Type
-                    TripTypeSelector(
-                      selectedType: cubit.tripType,
-                      onChanged: (value) {
-                        cubit.updateTripType(value);
-                      },
-                    ),
+                    // TripTypeSelector(
+                    //   selectedType: cubit.tripType,
+                    //   onChanged: (value) {
+                    //     cubit.updateTripType(value);
+                    //   },
+                    // ),
 
                     /// Search Button
                     Padding(

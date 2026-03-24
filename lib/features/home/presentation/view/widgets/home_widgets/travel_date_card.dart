@@ -40,7 +40,7 @@ class TravelDateCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Gap(10),
-              Text(travelDate),
+              Text(travelDate, style: Styles.textStyle17),
 
               Gap(10),
               const Icon(
