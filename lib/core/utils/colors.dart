@@ -19,7 +19,7 @@ const Color iconColorSearchPage = Color(0xfff7ead7);
 const Color secoundryIconColorSearchPage = Color(0xffb6b098);
 const Color backgroundSearchReasult = Color(0xffefebea);
 
-// chose tecket
+// chose teck
 const Color elevationColor = Color(0xffE9DFC7);
 
 //colors Gradient

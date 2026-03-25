@@ -1,4 +1,4 @@
-import 'package:enr_tickets/core/utils/strings.dart';
+import 'package:enr_tickets/core/utils/app_strings.dart';
 import 'package:enr_tickets/core/utils/validators.dart';
 import 'package:enr_tickets/core/widget/custom_form_feild.dart';
 import 'package:flutter/material.dart';
@@ -23,33 +23,33 @@ class FormFeildViewSignIn extends StatelessWidget {
     return Column(
       children: [
         CustomFormFeild(
-          hint: fullnameuser,
+          hint: AppStrings.of(context, "fullNameUser"),
           icon: Icons.person,
           controller: nameController,
           validator: Validators.nameValidator,
         ),
         CustomFormFeild(
-          hint: email,
+          hint: AppStrings.of(context, "email"),
           icon: Icons.email_rounded,
           controller: emailController,
           validator: Validators.emailValidator,
         ),
         CustomFormFeild(
-          hint: phoneNumber,
+          hint: AppStrings.of(context, "phoneNumber"),
           icon: Icons.phone,
           controller: phoneController,
           keyboardType: TextInputType.phone,
           validator: Validators.phoneValidator,
         ),
         CustomFormFeild(
-          hint: password,
+          hint: AppStrings.of(context, "password"),
           icon: Icons.lock_outline,
           controller: passwordController,
           obscureText: true,
           validator: Validators.passwordValidator,
         ),
         CustomFormFeild(
-          hint: confirmpassword,
+          hint: AppStrings.of(context, "confirmpassword"),
           icon: Icons.lock_outline,
           controller: confirmPasswordController,
           obscureText: true,

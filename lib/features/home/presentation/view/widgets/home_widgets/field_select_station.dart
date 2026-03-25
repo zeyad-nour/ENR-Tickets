@@ -1,4 +1,4 @@
-import 'package:enr_tickets/core/utils/strings.dart';
+import 'package:enr_tickets/core/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 
 class SearchField extends StatelessWidget {
@@ -12,7 +12,7 @@ class SearchField extends StatelessWidget {
       padding: const EdgeInsets.all(12),
       child: TextField(
         decoration: InputDecoration(
-          hintText: Searchstation,
+          hintText: AppStrings.of(context, "Searchstation"),
           prefixIcon: const Icon(Icons.search),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),

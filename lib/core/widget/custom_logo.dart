@@ -1,5 +1,5 @@
+import 'package:enr_tickets/core/utils/app_strings.dart';
 import 'package:enr_tickets/core/utils/colors.dart';
-import 'package:enr_tickets/core/utils/strings.dart';
 import 'package:enr_tickets/core/widget/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -32,7 +32,10 @@ class CustomLogo extends StatelessWidget {
           children: [
             Container(width: 40, height: 2, color: iconColor),
             Gap(10),
-            Text(eNR, style: Styles.textStyle19.copyWith(color: buttonColor)),
+            Text(
+              AppStrings.of(context, "ENR"),
+              style: Styles.textStyle19.copyWith(color: buttonColor),
+            ),
             Gap(10),
             Container(width: 40, height: 2, color: iconColor),
           ],

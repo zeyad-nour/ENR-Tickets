@@ -1,4 +1,4 @@
-import 'package:enr_tickets/core/utils/strings.dart';
+import 'package:enr_tickets/core/utils/app_strings.dart';
 import 'package:enr_tickets/core/widget/custom_button_register.dart';
 import 'package:enr_tickets/core/widget/custom_logo.dart';
 import 'package:enr_tickets/core/widget/sign_in_via.dart';
@@ -63,7 +63,7 @@ class _CreateAccountBodyState extends State<CreateAccountBody> {
                 Gap(13),
                 CustomLogo(),
                 Text(
-                  create_new_account,
+                  AppStrings.of(context, "signInWith"),
                   style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900),
                 ),
                 FormFeildViewSignIn(
@@ -77,7 +77,7 @@ class _CreateAccountBodyState extends State<CreateAccountBody> {
                 state is CreatUserLoading
                     ? CircularProgressIndicator()
                     : VerifyButton(
-                        title: create_new_account,
+                        title: AppStrings.of(context, "createNewAccount"),
                         onTap: () {
                           if (formKey.currentState!.validate()) {
                             cubit.createUser();
@@ -90,7 +90,7 @@ class _CreateAccountBodyState extends State<CreateAccountBody> {
                 SignInMethodsView(),
                 Gap(15),
                 CustomHaveAccountTextButton(
-                  title: arlreadyaccount,
+                  title: AppStrings.of(context, "alreadyAccount"),
                   onPressed: () {
                     Navigator.of(context).pushAndRemoveUntil(
                       MaterialPageRoute(builder: (_) => LogIn()),
@@ -98,7 +98,6 @@ class _CreateAccountBodyState extends State<CreateAccountBody> {
                     );
                   },
                 ),
-           
               ],
             ),
           ),

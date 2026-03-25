@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:enr_tickets/core/utils/strings.dart';
+import 'package:enr_tickets/core/utils/app_strings.dart';
 import 'package:enr_tickets/core/widget/assets.dart';
 import 'package:enr_tickets/features/create_account/presentation/view/widget/sign_in_methods_new_user.dart';
 import 'package:flutter/material.dart';
@@ -18,14 +18,14 @@ class SignInMethodsView extends StatelessWidget {
             log("Rigister google");
           },
           image: AssetsData.google,
-          methodName: google,
+          methodName: AppStrings.of(context, "google"),
         ),
         SignMethodCreateAccount(
           () {
             log("Rigister facebook");
           },
           image: AssetsData.facebook,
-          methodName: facebook,
+          methodName: AppStrings.of(context, "facebook"),
         ),
       ],
     );

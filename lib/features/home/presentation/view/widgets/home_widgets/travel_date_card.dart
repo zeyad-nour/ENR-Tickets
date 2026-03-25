@@ -1,4 +1,4 @@
-import 'package:enr_tickets/core/utils/strings.dart';
+import 'package:enr_tickets/core/utils/app_strings.dart';
 import 'package:enr_tickets/core/widget/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -27,13 +27,13 @@ class TravelDateCard extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
           height: 80,
           decoration: BoxDecoration(
-            color: theme.cardColor, // ✅ ديناميكي حسب Theme
+            color: theme.cardColor, 
             borderRadius: BorderRadius.circular(8),
             boxShadow: [
               BoxShadow(
                 color: theme.brightness == Brightness.dark
                     ? Colors.black45
-                    : Colors.black12, // ✅ ظل مناسب لكل Theme
+                    : Colors.black12, 
                 blurRadius: 6,
                 offset: const Offset(0, 3),
               ),
@@ -44,7 +44,7 @@ class TravelDateCard extends StatelessWidget {
             children: [
               const Gap(10),
               Text(
-                travelDate,
+                AppStrings.of(context, "travelDate"),
                 style: Styles.textStyle17.copyWith(
                   color: theme.textTheme.bodyLarge!.color,
                 ),
@@ -53,7 +53,7 @@ class TravelDateCard extends StatelessWidget {
               const Gap(10),
               Icon(
                 Icons.calendar_month_outlined,
-                color: theme.iconTheme.color, // ✅ أيقونة ديناميكية
+                color: theme.iconTheme.color, 
                 size: 30,
               ),
 
@@ -61,7 +61,7 @@ class TravelDateCard extends StatelessWidget {
               Container(
                 width: 2,
                 height: 50,
-                color: theme.dividerColor, // ✅ divider ديناميكي
+                color: theme.dividerColor, 
               ),
               const Spacer(),
               Column(
@@ -88,7 +88,7 @@ class TravelDateCard extends StatelessWidget {
               Icon(
                 Icons.arrow_forward_ios,
                 size: 25,
-                color: theme.disabledColor, // ✅ السهم يتغير حسب Theme
+                color: theme.disabledColor,
               ),
 
               const Gap(30),

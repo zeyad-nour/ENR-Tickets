@@ -1,5 +1,5 @@
+import 'package:enr_tickets/core/utils/app_strings.dart';
 import 'package:enr_tickets/core/utils/colors.dart';
-import 'package:enr_tickets/core/utils/strings.dart';
 import 'package:enr_tickets/core/widget/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -30,7 +30,7 @@ class StationsRow extends StatelessWidget {
             children: [
               /// Departure station
               Text(
-                departurestation,
+                AppStrings.of(context, "departurestation"),
                 style: Styles.hintStyle.copyWith(color: iconColor),
               ),
               Divider(),
@@ -55,7 +55,7 @@ class StationsRow extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                arrivalstation,
+                AppStrings.of(context, "arrivalstation"),
                 style: Styles.hintStyle.copyWith(color: iconColor),
               ),
               Divider(),

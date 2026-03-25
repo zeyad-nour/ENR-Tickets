@@ -1,5 +1,5 @@
+import 'package:enr_tickets/core/utils/app_strings.dart';
 import 'package:enr_tickets/core/utils/colors.dart';
-import 'package:enr_tickets/core/utils/strings.dart';
 import 'package:enr_tickets/core/widget/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -16,7 +16,7 @@ class SignInVia extends StatelessWidget {
         Gap(10),
         Center(
           child: Text(
-            sign_in_with,
+            AppStrings.of(context, "signInWith"),
             style: Styles.hintStyle.copyWith(
               fontSize: 20,
               fontWeight: FontWeight.w800,

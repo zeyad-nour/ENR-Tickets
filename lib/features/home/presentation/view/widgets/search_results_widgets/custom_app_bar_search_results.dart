@@ -1,4 +1,4 @@
-import 'package:enr_tickets/core/utils/strings.dart';
+import 'package:enr_tickets/core/utils/app_strings.dart';
 import 'package:enr_tickets/core/widget/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -31,7 +31,7 @@ class CustomAppBarSearchResults extends StatelessWidget {
           children: [
             Gap(20),
             Text(
-              SearchResultsTitle,
+              AppStrings.of(context, "SearchResultsTitle"),
               style: Styles.textStyle27.copyWith(
                 color: Theme.of(context).textTheme.bodyLarge!.color,
               ),

@@ -2,7 +2,7 @@
 
 import 'dart:developer';
 
-import 'package:enr_tickets/core/utils/strings.dart';
+import 'package:enr_tickets/core/utils/app_strings.dart';
 import 'package:enr_tickets/core/widget/assets.dart';
 import 'package:enr_tickets/core/widget/styles.dart';
 import 'package:enr_tickets/features/home/presentation/state_mangement/settings_cubit/settings_cubit.dart';
@@ -26,15 +26,14 @@ class SettingsPageBody extends StatelessWidget {
             width: MediaQuery.sizeOf(context).width * 0.6,
             child: Image.asset(
               Theme.of(context).brightness == Brightness.dark
-                  ? AssetsData
-                        .logo // 👈 صورة للـ Dark Mode
-                  : AssetsData.iconlogo, // 👈 صورة للـ Light Mode
+                  ? AssetsData.logo
+                  : AssetsData.iconlogo,
             ),
           ),
         ),
-        Text(settings, style: Styles.textStyle27),
+        Text(AppStrings.of(context, "settings"), style: Styles.textStyle27),
         SettingsCardWidget(
-          title: darkmode,
+          title: AppStrings.of(context, "darkMode"),
           task: context.watch<SettingsCubit>().themeText,
           onTap: () {
             showModalBottomSheet(
@@ -76,21 +75,52 @@ class SettingsPageBody extends StatelessWidget {
             );
           },
         ),
-        SettingsCardWidget(task: languge, title: "English"),
+        SettingsCardWidget(
+          title: "Language",
+          task: context.watch<SettingsCubit>().locale.languageCode == "en"
+              ? "English"
+              : "العربية",
+          onTap: () {
+            showModalBottomSheet(
+              context: context,
+              builder: (_) {
+                return Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    ListTile(
+                      title: const Text("English"),
+                      onTap: () {
+                        context.read<SettingsCubit>().changeLanguage("en");
+                        Navigator.pop(context);
+                      },
+                    ),
+                    ListTile(
+                      title: const Text("العربية"),
+                      onTap: () {
+                        context.read<SettingsCubit>().changeLanguage("ar");
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ],
+                );
+              },
+            );
+          },
+        ),
         Gap(30),
         SwitchCardSettings(
-          title: use_biometaic,
+          title: AppStrings.of(context, "useBiometric"),
           onChanged: (p0) => print("object"),
         ),
         SwitchCardSettings(
-          title: use_biometaic,
+          title: AppStrings.of(context, "useBiometric"),
           onChanged: (p0) => print("object"),
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: TextButtonWidget(
             onPressed: () => log("Change password"),
-            task: changepassword,
+            task: AppStrings.of(context, "changePassword"),
             icon: Icons.lock_outline_rounded,
           ),
         ),
@@ -99,7 +129,7 @@ class SettingsPageBody extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: TextButtonWidget(
             onPressed: () => log("Delete Account"),
-            task: deleteaccount,
+            task: AppStrings.of(context, "deleteAccount"),
 
             icon: Icons.delete_outline_rounded,
           ),

@@ -34,4 +34,11 @@ class SettingsCubit extends Cubit<SettingsState> {
         return "Dark Mode";
     }
   }
+
+  Locale locale = const Locale('en');
+
+  void changeLanguage(String langCode) {
+    locale = Locale(langCode);
+    emit(SettingsChange());
+  }
 }

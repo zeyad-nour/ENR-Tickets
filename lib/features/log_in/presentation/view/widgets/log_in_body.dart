@@ -1,6 +1,6 @@
 // ignore_for_file: deprecated_member_use
 
-import 'package:enr_tickets/core/utils/strings.dart';
+import 'package:enr_tickets/core/utils/app_strings.dart';
 import 'package:enr_tickets/core/widget/custom_button_register.dart';
 import 'package:enr_tickets/core/widget/sign_in_via.dart';
 import 'package:enr_tickets/features/create_account/presentation/view/create_account.dart';
@@ -57,12 +57,12 @@ class _LogInBodyState extends State<LogInBody> {
             child: Column(
               children: [
                 CustomLogo(),
-                Text(headlogIn),
+                Text(AppStrings.of(context, "headlogIn")),
                 FormFeildViewLogin(
                   emailController: emailController,
                   passwordController: passwordController,
                 ),
-                Custom_Text_button(() {}, title: forgetpassword),
+                Custom_Text_button(() {}, title: AppStrings.of(context,"forgetpassword")),
                 state is LogInLoding
                     ? CircularProgressIndicator()
                     : VerifyButton(

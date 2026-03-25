@@ -1,7 +1,7 @@
 // ignore_for_file: deprecated_member_use
 
+import 'package:enr_tickets/core/utils/app_strings.dart';
 import 'package:enr_tickets/core/utils/colors.dart';
-import 'package:enr_tickets/core/utils/strings.dart';
 import 'package:flutter/material.dart';
 
 class TripTypeSelector extends StatelessWidget {
@@ -21,7 +21,10 @@ class TripTypeSelector extends StatelessWidget {
       children: [
         Row(
           children: [
-            const Text(oneWay, style: TextStyle(fontSize: 14)),
+            Text(
+              AppStrings.of(context, "oneWay"),
+              style: TextStyle(fontSize: 14),
+            ),
             Radio<String>(
               value: "oneWay",
               groupValue: selectedType,
@@ -37,7 +40,7 @@ class TripTypeSelector extends StatelessWidget {
 
         Row(
           children: [
-            const Text(round_trip, style: TextStyle(fontSize: 14)),
+            Text(AppStrings.of(context, "roundTrip"), style: TextStyle(fontSize: 14)),
             Radio<String>(
               value: "roundTrip",
               groupValue: selectedType,

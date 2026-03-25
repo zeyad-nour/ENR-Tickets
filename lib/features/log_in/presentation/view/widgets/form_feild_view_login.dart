@@ -1,4 +1,4 @@
-import 'package:enr_tickets/core/utils/strings.dart';
+import 'package:enr_tickets/core/utils/app_strings.dart';
 import 'package:enr_tickets/core/utils/validators.dart';
 import 'package:enr_tickets/core/widget/custom_form_feild.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +18,7 @@ class FormFeildViewLogin extends StatelessWidget {
       children: [
         //email 
         CustomFormFeild(
-          hint: email,
+          hint: AppStrings.of(context, "email"),
           icon: Icons.email,
           controller: emailController,
           keyboardType: TextInputType.emailAddress,
@@ -26,7 +26,7 @@ class FormFeildViewLogin extends StatelessWidget {
         ),
         //password
         CustomFormFeild(
-          hint: password,
+          hint: AppStrings.of(context, "password"),
           icon: Icons.lock_outline,
           controller: passwordController,
           obscureText: true,

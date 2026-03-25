@@ -1,5 +1,5 @@
+import 'package:enr_tickets/core/utils/app_strings.dart';
 import 'package:enr_tickets/core/utils/colors.dart';
-import 'package:enr_tickets/core/utils/strings.dart';
 import 'package:enr_tickets/features/home/presentation/state_mangement/home_cubit/home_cubit.dart';
 import 'package:enr_tickets/features/home/presentation/view/pages/booking_page.dart';
 import 'package:enr_tickets/features/home/presentation/view/pages/home_page.dart';
@@ -50,25 +50,28 @@ class _HomeViewState extends State<HomeView> {
           currentIndex: _currentIndex,
           onTap: _onTap,
           type: BottomNavigationBarType.fixed,
-          selectedItemColor: iconColor, // لون ثابت للمحدد
+          selectedItemColor: iconColor, 
           unselectedItemColor: Theme.of(context).brightness == Brightness.dark
               ? Colors
-                    .white // أبيض في الداكن
-              : Colors.grey[600], // رمادي في الفاتح
-          items: const [
+                    .white 
+              : Colors.grey[600],
+          items: [
             BottomNavigationBarItem(
               icon: Icon(Icons.settings),
-              label: settingspage,
+              label: AppStrings.of(context, "settingsPage"),
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.bookmark_added_sharp),
-              label: bookingpage,
+              label: AppStrings.of(context, "bookingPage"),
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.calendar_today_outlined),
-              label: mytickets,
+              label: AppStrings.of(context, "myTickets"),
             ),
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: homepage),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: AppStrings.of(context, "homePage"),
+            ),
           ],
         ),
       ),

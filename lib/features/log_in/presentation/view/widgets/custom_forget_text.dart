@@ -1,7 +1,7 @@
 // ignore_for_file: camel_case_types
 
+import 'package:enr_tickets/core/utils/app_strings.dart';
 import 'package:enr_tickets/core/utils/colors.dart';
-import 'package:enr_tickets/core/utils/strings.dart';
 import 'package:enr_tickets/core/widget/styles.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +21,7 @@ class Custom_Text_button extends StatelessWidget {
         onPressed: onPressed,
         child: Text(
           title,
-          style: title == forgetpassword
+          style: title == AppStrings.of(context, "forgetpassword")
               ? Styles.textStyle19
               : Styles.textStyle19.copyWith(color: hintColorForm),
         ),

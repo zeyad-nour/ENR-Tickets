@@ -1,4 +1,4 @@
-import 'package:enr_tickets/core/utils/strings.dart';
+import 'package:enr_tickets/core/utils/app_strings.dart';
 import 'package:enr_tickets/core/widget/custom_button_register.dart';
 import 'package:enr_tickets/core/widget/styles.dart';
 import 'package:enr_tickets/features/home/presentation/state_mangement/home_cubit/home_cubit.dart';
@@ -58,7 +58,7 @@ class HomePage extends StatelessWidget {
                   children: [
                     CustomHomeLogo(),
                     Text(
-                      headhomepage,
+                      AppStrings.of(context, "headHomePage"),
                       style: Styles.textStyle27.copyWith(
                         color: Theme.of(context).textTheme.bodyLarge!.color,
                       ),
@@ -77,7 +77,7 @@ class HomePage extends StatelessWidget {
 
                     /// Travel Date
                     TravelDateCard(
-                      title: travelDate,
+                      title: AppStrings.of(context, "travelDate"),
                       date:
                           "${cubit.travelDate.day}/${cubit.travelDate.month}/${cubit.travelDate.year}",
                       onTap: () async {

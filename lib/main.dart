@@ -3,6 +3,9 @@ import 'package:enr_tickets/features/home/presentation/state_mangement/settings_
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+// 👇 مهم
+import 'package:flutter_localizations/flutter_localizations.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -20,6 +23,21 @@ class MyApp extends StatelessWidget {
 
           return MaterialApp(
             debugShowCheckedModeBanner: false,
+
+            /// 👇 اللغة
+            locale: cubit.locale,
+
+            supportedLocales: const [
+              Locale('en'),
+              Locale('ar'),
+            ],
+
+            localizationsDelegates: const [
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+
             themeMode: cubit.themeMode,
 
             /// Light Theme
@@ -28,7 +46,6 @@ class MyApp extends StatelessWidget {
               fontFamily: "Quicksand",
               scaffoldBackgroundColor: Colors.white,
               cardColor: Colors.white,
-
               iconTheme: const IconThemeData(color: Colors.black),
               textTheme: const TextTheme(
                 bodyLarge: TextStyle(color: Colors.black),
@@ -41,7 +58,6 @@ class MyApp extends StatelessWidget {
               fontFamily: "Quicksand",
               scaffoldBackgroundColor: Colors.black,
               cardColor: const Color(0xFF1E1E1E),
-
               iconTheme: const IconThemeData(color: Colors.white),
               textTheme: const TextTheme(
                 bodyLarge: TextStyle(color: Colors.white),

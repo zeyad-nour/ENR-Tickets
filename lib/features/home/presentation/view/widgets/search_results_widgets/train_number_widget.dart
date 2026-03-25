@@ -1,13 +1,15 @@
-import 'package:enr_tickets/core/utils/strings.dart';
+import 'package:enr_tickets/core/utils/app_strings.dart';
 import 'package:enr_tickets/core/widget/styles.dart';
 import 'package:flutter/material.dart';
 
 class TrainNumberRow extends StatelessWidget {
   final int trainNumber;
+
   const TrainNumberRow({super.key, required this.trainNumber});
 
   @override
   Widget build(BuildContext context) {
+    final String train_number = AppStrings.of(context, "trainNumber");
     final theme = Theme.of(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -18,7 +20,7 @@ class TrainNumberRow extends StatelessWidget {
         Text(
           "$train_number: $trainNumber",
           style: Styles.textStyle19.copyWith(
-            color: theme.textTheme.bodyLarge!.color, // ✅ ديناميكي حسب الثيم
+            color: theme.textTheme.bodyLarge!.color,
           ),
         ),
       ],
@@ -41,8 +43,8 @@ class TrainNumberBadge extends StatelessWidget {
       alignment: Alignment.center,
       decoration: BoxDecoration(
         color: theme.brightness == Brightness.dark
-            ? Colors.grey[700] // ✅ Badge غامق في الداكن
-            : const Color(0xffE9DFC7), // فاتح في الوضع الطبيعي
+            ? Colors.grey[700]
+            : const Color(0xffE9DFC7),
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(16),
           bottomLeft: Radius.circular(16),
@@ -55,7 +57,7 @@ class TrainNumberBadge extends StatelessWidget {
           fontWeight: FontWeight.w600,
           color: theme.brightness == Brightness.dark
               ? Colors.white
-              : Colors.black, // ✅ نص Badge يتغير حسب الثيم
+              : Colors.black,
         ),
       ),
     );
