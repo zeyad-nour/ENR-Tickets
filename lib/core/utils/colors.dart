@@ -19,7 +19,7 @@ const Color iconColorSearchPage = Color(0xfff7ead7);
 const Color secoundryIconColorSearchPage = Color(0xffb6b098);
 const Color backgroundSearchResult = Color(0xffefebea);
 
-// chose teck
+// chose ticket
 const Color elevationColor = Color(0xffE9DFC7);
 
 //colors Gradient

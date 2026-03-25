@@ -3,7 +3,7 @@ import 'package:enr_tickets/features/home/presentation/state_mangement/settings_
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-// 👇 مهم
+
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {

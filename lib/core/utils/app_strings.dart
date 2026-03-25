@@ -99,7 +99,7 @@ class AppStrings {
     },
   };
 
-  // دالة ترجمة
+/// translation Function
   static String of(BuildContext context, String key) {
     final lang = context.read<SettingsCubit>().locale.languageCode;
     return _localizedValues[lang]![key] ?? key;

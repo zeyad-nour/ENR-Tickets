@@ -3,7 +3,7 @@ import 'package:enr_tickets/core/widget/styles.dart';
 import 'package:flutter/material.dart';
 
 class TrainNumberRow extends StatelessWidget {
-  final int trainNumber; // الرقم الفعلي
+  final int trainNumber;
 
   const TrainNumberRow({super.key, required this.trainNumber});
 
@@ -11,7 +11,7 @@ class TrainNumberRow extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    // Label النصي "Train number" حسب اللغة
+  
     final String trainNumberLabel = AppStrings.of(context, "trainNumber");
 
     return Row(
