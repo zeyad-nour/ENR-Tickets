@@ -3,22 +3,26 @@ import 'package:enr_tickets/core/widget/styles.dart';
 import 'package:flutter/material.dart';
 
 class TrainNumberRow extends StatelessWidget {
-  final int trainNumber;
+  final int trainNumber; // الرقم الفعلي
 
   const TrainNumberRow({super.key, required this.trainNumber});
 
   @override
   Widget build(BuildContext context) {
-    final String train_number = AppStrings.of(context, "trainNumber");
     final theme = Theme.of(context);
+
+    // Label النصي "Train number" حسب اللغة
+    final String trainNumberLabel = AppStrings.of(context, "trainNumber");
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         /// Train Number Badge
         TrainNumberBadge(trainNumber: trainNumber),
 
+        /// Text: "Train number: 123"
         Text(
-          "$train_number: $trainNumber",
+          "$trainNumberLabel: $trainNumber",
           style: Styles.textStyle19.copyWith(
             color: theme.textTheme.bodyLarge!.color,
           ),
@@ -27,7 +31,6 @@ class TrainNumberRow extends StatelessWidget {
     );
   }
 }
-
 class TrainNumberBadge extends StatelessWidget {
   final int trainNumber;
 
