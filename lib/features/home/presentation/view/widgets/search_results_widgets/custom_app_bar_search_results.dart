@@ -6,6 +6,7 @@ import 'package:gap/gap.dart';
 class CustomAppBarSearchResults extends StatelessWidget {
   final String arriveStation;
   final String dateday;
+
   const CustomAppBarSearchResults({
     super.key,
     required this.arriveStation,
@@ -14,6 +15,7 @@ class CustomAppBarSearchResults extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Row(
       children: [
         IconButton(

@@ -43,24 +43,18 @@ class _CustomFormFeildState extends State<CustomFormFeild> {
         obscureText: isObscure,
         keyboardType: widget.keyboardType,
 
-        style: TextStyle(color: Colors.black), // النص أسود دائمًا
+        style: TextStyle(color: Colors.black), //text is black
 
         decoration: InputDecoration(
           filled: true,
-          fillColor: Colors.white, // الحقل أبيض دائمًا
+          fillColor: Colors.white,
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(
-              color: Theme.of(context).colorScheme.primary,
-              width: 1.6,
-            ),
+            borderSide: BorderSide(color: buttonColor, width: 1.6),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15),
-            borderSide: BorderSide(
-              color: Theme.of(context).colorScheme.primary,
-              width: 1.6,
-            ),
+            borderSide: BorderSide(color: buttonColor, width: 1.6),
           ),
           hintText: widget.hint,
           hintStyle: Styles.hintStyle,

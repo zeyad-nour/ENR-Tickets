@@ -2,11 +2,10 @@ import 'package:enr_tickets/core/widget/styles.dart';
 import 'package:flutter/material.dart';
 
 class SignMethods extends StatelessWidget {
-
   final void Function()? onTap;
   final String image;
   final String methodName;
-  
+
   const SignMethods(
     this.onTap, {
     super.key,
@@ -24,7 +23,7 @@ class SignMethods extends StatelessWidget {
           width: MediaQuery.sizeOf(context).width * 0.43,
           height: MediaQuery.sizeOf(context).height * 0.06,
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: Colors.transparent,
             borderRadius: BorderRadius.circular(20),
             border: Border(left: BorderSide.none),
           ),

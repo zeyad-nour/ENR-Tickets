@@ -63,8 +63,12 @@ class _CreateAccountBodyState extends State<CreateAccountBody> {
                 Gap(13),
                 CustomLogo(),
                 Text(
-                  AppStrings.of(context, "signInWith"),
-                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900),
+                  AppStrings.of(context, "createNewAccount"),
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.w900,
+                    color: Colors.black,
+                  ),
                 ),
                 FormFeildViewSignIn(
                   nameController: nameController,

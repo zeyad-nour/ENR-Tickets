@@ -49,6 +49,20 @@ class AppStrings {
       "bookingPage": "Bookings",
       "myTickets": "My Tickets",
       "settingsPage": "Settings",
+
+      //verify button
+      "search": "Search",
+
+      //custom_card_info
+      "departurestation": "Departure Station",
+      "arrivalstation": "Arrival Station",
+      "price": "price",
+      "stops": "stops",
+      "choosingSeat": "Choosing Seat",
+      "availabletickets": "Available Tickets",
+
+      //AppBar
+      "SearchResultsTitle": "Search Results",
     },
 
     "ar": {
@@ -96,10 +110,27 @@ class AppStrings {
       "bookingPage": "الحجوزات",
       "myTickets": "تذاكري",
       "settingsPage": "الإعدادات",
+
+      //verify button
+      "search": "بحث",
+
+      //custom_card_info
+      "Price": "السعر",
+
+      //custom_card_info
+      "departurestation": "محطة المغادرة",
+      "arrivalstation": "محطة الوصول",
+
+      "price": "السعر",
+      "stops": "الوقوف",
+      "choosingSeat": "اختيار المقعد",
+      "availabletickets": "التذاكر المتوفره",
+
+      "SearchResultsTitle": "نتايج البحث",
     },
   };
 
-/// translation Function
+  /// translation Function
   static String of(BuildContext context, String key) {
     final lang = context.read<SettingsCubit>().locale.languageCode;
     return _localizedValues[lang]![key] ?? key;

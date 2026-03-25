@@ -2,11 +2,10 @@ import 'package:enr_tickets/core/widget/styles.dart';
 import 'package:flutter/material.dart';
 
 class SignMethodCreateAccount extends StatelessWidget {
-
   final void Function()? onTap;
   final String image;
   final String methodName;
-  
+
   const SignMethodCreateAccount(
     this.onTap, {
     super.key,
@@ -24,7 +23,7 @@ class SignMethodCreateAccount extends StatelessWidget {
           width: MediaQuery.sizeOf(context).width * 0.43,
           height: MediaQuery.sizeOf(context).height * 0.06,
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: Colors.transparent,
             borderRadius: BorderRadius.circular(20),
             border: Border(left: BorderSide.none),
           ),
@@ -37,7 +36,10 @@ class SignMethodCreateAccount extends StatelessWidget {
                 child: Image.asset(image, width: 50, height: 50),
               ),
 
-              Text(methodName, style: Styles.textStyle20),
+              Text(
+                methodName,
+                style: Styles.textStyle20.copyWith(color: Colors.white),
+              ),
             ],
           ),
         ),

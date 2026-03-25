@@ -1,3 +1,4 @@
+import 'package:enr_tickets/core/utils/app_strings.dart';
 import 'package:enr_tickets/core/utils/colors.dart';
 import 'package:enr_tickets/core/widget/styles.dart';
 import 'package:enr_tickets/features/home/presentation/view/pages/stpoes.dart';
@@ -23,6 +24,7 @@ class CustomCardTrainInfo extends StatelessWidget {
   final int stops;
   final VoidCallback onBuy;
   final List<String> stopStations;
+
   const CustomCardTrainInfo({
     super.key,
     required this.trainNumber,
@@ -42,6 +44,13 @@ class CustomCardTrainInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    // Strings translate
+    final String priceLabel = AppStrings.of(context, "price");
+    final String stopsLabel = AppStrings.of(context, "stops");
+    final String choosingSeatLabel = AppStrings.of(context, "choosingSeat");
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 8),
       child: Card(
@@ -50,10 +59,10 @@ class CustomCardTrainInfo extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: Theme.of(context).cardColor,
+            color: theme.cardColor,
             borderRadius: BorderRadius.circular(16),
             border: Border.all(
-              color: Theme.of(context).brightness == Brightness.dark
+              color: theme.brightness == Brightness.dark
                   ? Colors.grey[700]!
                   : Colors.grey.shade300,
               width: 1.2,
@@ -62,15 +71,16 @@ class CustomCardTrainInfo extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              /// Top Row
+              /// Top Row: رقم القطار
               TrainNumberRow(trainNumber: trainNumber),
               Divider(),
               Gap(6),
-              //Train Number
+
+              // نوع القطار
               Text(
                 classType,
                 style: Styles.textStyle17.copyWith(
-                  color: Theme.of(context).textTheme.bodyLarge!.color,
+                  color: theme.textTheme.bodyLarge!.color,
                 ),
               ),
               Divider(),
@@ -88,26 +98,27 @@ class CustomCardTrainInfo extends StatelessWidget {
               Gap(10),
               Divider(),
 
-              /// Duration
+              /// Duration with price label
               Center(
                 child: Text(
-                  "Price $duration",
+                  "$priceLabel $duration",
                   style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
               ),
 
               Gap(12),
 
+              /// Available tickets
               AvailableTicketsWidget(availableTickets: availableTickets),
 
               Divider(),
 
-              /// Bottom Row
+              /// Bottom Row: Stops & Choose seat
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   TicketTextButtonWidget(
-                    text: "Stops $stops",
+                    text: "$stopsLabel $stops",
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
@@ -119,7 +130,7 @@ class CustomCardTrainInfo extends StatelessWidget {
                   ),
                   Container(height: 30, width: 1, color: Colors.grey.shade300),
                   TicketTextButtonWidget(
-                    text: "Choosing a seat",
+                    text: choosingSeatLabel,
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(builder: (context) => SeatPage()),

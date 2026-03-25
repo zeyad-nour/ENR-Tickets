@@ -3,7 +3,6 @@ import 'package:enr_tickets/features/home/presentation/state_mangement/settings_
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
@@ -24,13 +23,10 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
 
-            /// 👇 اللغة
+            ///langue
             locale: cubit.locale,
 
-            supportedLocales: const [
-              Locale('en'),
-              Locale('ar'),
-            ],
+            supportedLocales: const [Locale('en'), Locale('ar')],
 
             localizationsDelegates: const [
               GlobalMaterialLocalizations.delegate,

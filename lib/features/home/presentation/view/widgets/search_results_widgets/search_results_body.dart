@@ -98,5 +98,3 @@ class SearchResultsBody extends StatelessWidget {
     );
   }
 }
-
-// backgroundSearchReasult,

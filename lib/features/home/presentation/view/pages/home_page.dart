@@ -100,7 +100,7 @@ class HomePage extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 10.0),
                       child: VerifyButton(
-                        title: "Search",
+                        title: AppStrings.of(context, "search"),
                         onTap: () {
                           context.read<HomeCubit>().searchTrip();
                         },
