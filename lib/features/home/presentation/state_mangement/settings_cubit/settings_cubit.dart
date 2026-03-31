@@ -1,26 +1,34 @@
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:bloc/bloc.dart';
+import 'package:enr_tickets/core/utils/local_storage.dart';
 import 'package:flutter/material.dart';
 
 part 'settings_state.dart';
 
 class SettingsCubit extends Cubit<SettingsState> {
-  SettingsCubit() : super(SettingsInitial());
+  SettingsCubit() : super(SettingsInitial()) {
+    _loadSettings();
+  }
 
-  /// فتح / قفل الاختيارات
   bool isThemeOpen = false;
-
-  /// الثيم الحالي
   ThemeMode themeMode = ThemeMode.system;
+  Locale locale = const Locale('en');
+
+  void _loadSettings() async {
+    themeMode = await LocalStorage.getThemeMode();
+    locale = Locale(await LocalStorage.getLanguage());
+    emit(SettingsChange());
+  }
 
   void toggleTheme() {
     isThemeOpen = !isThemeOpen;
     emit(SettingsChange());
   }
 
-  void changeTheme(ThemeMode mode) {
+  void changeTheme(ThemeMode mode) async {
     themeMode = mode;
+    await LocalStorage.saveThemeMode(mode); // حفظ
     emit(SettingsChange());
   }
 
@@ -35,10 +43,9 @@ class SettingsCubit extends Cubit<SettingsState> {
     }
   }
 
-  Locale locale = const Locale('en');
-
-  void changeLanguage(String langCode) {
+  void changeLanguage(String langCode) async {
     locale = Locale(langCode);
+    await LocalStorage.saveLanguage(langCode); // حفظ
     emit(SettingsChange());
   }
 }
