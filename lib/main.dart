@@ -1,13 +1,12 @@
 import 'package:enr_tickets/features/create_account/presentation/view/create_account.dart';
 import 'package:enr_tickets/features/home/presentation/state_mangement/settings_cubit/settings_cubit.dart';
+import 'package:enr_tickets/features/seat_selection/presentation/state_mangement/cubit/seat_selection_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
-    WidgetsFlutterBinding.ensureInitialized();
-
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -16,8 +15,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => SettingsCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<SettingsCubit>(create: (_) => SettingsCubit()),
+        BlocProvider<SeatSelectionCubit>(create: (_) => SeatSelectionCubit()),
+      ],
       child: BlocBuilder<SettingsCubit, SettingsState>(
         builder: (context, state) {
           final cubit = context.watch<SettingsCubit>();
@@ -25,20 +27,17 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
 
-            ///langue
+            /// Language
             locale: cubit.locale,
-
             supportedLocales: const [Locale('en'), Locale('ar')],
-
             localizationsDelegates: const [
               GlobalMaterialLocalizations.delegate,
               GlobalWidgetsLocalizations.delegate,
               GlobalCupertinoLocalizations.delegate,
             ],
 
+            /// Theme
             themeMode: cubit.themeMode,
-
-            /// Light Theme
             theme: ThemeData(
               brightness: Brightness.light,
               fontFamily: "Quicksand",
@@ -49,8 +48,6 @@ class MyApp extends StatelessWidget {
                 bodyLarge: TextStyle(color: Colors.black),
               ),
             ),
-
-            /// Dark Theme
             darkTheme: ThemeData(
               brightness: Brightness.dark,
               fontFamily: "Quicksand",

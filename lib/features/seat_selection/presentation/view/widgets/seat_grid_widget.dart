@@ -17,7 +17,6 @@ class SeatGridWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<SeatSelectionCubit, SeatSelectionState>(
       builder: (context, state) {
-        ///  Loading
         if (state is SeatSelectionLoading) {
           return const Expanded(
             child: Center(child: CircularProgressIndicator()),
@@ -29,25 +28,23 @@ class SeatGridWidget extends StatelessWidget {
         }
 
         if (state is SeatSelectionLoaded) {
+       
           int rows = (seatCount / 4).ceil();
 
           return Expanded(
-            child: SizedBox(
-              width: double.infinity,
-              child: ListView.builder(
-                itemCount: rows,
-                itemBuilder: (context, index) {
-                  int leftStart = index * 4 + 1;
-                  int rightStart = index * 4 + 3;
+            child: ListView.builder(
+              itemCount: rows,
+              itemBuilder: (context, index) {
+                int leftStart = index * 4 + 1;
+                int rightStart = index * 4 + 3;
 
-                  return SeatRowWidget(
-                    leftStart: leftStart,
-                    rightStart: rightStart,
-                    maxSeats: seatCount,
-                    isFirstClass: trainType.contains("أولى"),
-                  );
-                },
-              ),
+                return SeatRowWidget(
+                  leftStart: leftStart,
+                  rightStart: rightStart,
+                  maxSeats: seatCount,
+                  isFirstClass: trainType.contains("VIP"),
+                );
+              },
             ),
           );
         }
