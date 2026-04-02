@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter/foundation.dart';
-import 'dart:html' as html;
+import 'package:url_launcher/url_launcher.dart';
 
 import 'package:enr_tickets/features/payment_way/presentation/manager/payment_cubit.dart';
 import 'package:enr_tickets/features/payment_way/presentation/view/payment_screens/payment_webview.dart';
@@ -21,6 +20,16 @@ class PaymentWay extends StatelessWidget {
     required this.price,
     required this.name,
   });
+
+  Future<void> _openUrl(BuildContext context, String url) async {
+    final Uri uri = Uri.parse(url);
+
+    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text("Cannot open payment page")));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,8 +51,8 @@ class PaymentWay extends StatelessWidget {
         body: BlocConsumer<PaymentCubit, PaymentState>(
           listener: (context, state) async {
             if (state is PaymentSuccess) {
-              if (kIsWeb && state.paymentUrl != null) {
-                html.window.location.href = state.paymentUrl!;
+              if (state.paymentUrl != null) {
+                await _openUrl(context, state.paymentUrl!);
               } else if (state.paymentKey != null) {
                 Navigator.push(
                   context,
