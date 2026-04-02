@@ -4,7 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SeatGridWidget extends StatelessWidget {
-  const SeatGridWidget({super.key});
+  final int seatCount;
+  final String trainType;
+
+  const SeatGridWidget({
+    super.key,
+    required this.seatCount,
+    required this.trainType,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -17,23 +24,30 @@ class SeatGridWidget extends StatelessWidget {
           );
         }
 
-        ///  Error
         if (state is SeatSelectionFailure) {
           return Expanded(child: Center(child: Text(state.error)));
         }
 
-        ///  Success
         if (state is SeatSelectionLoaded) {
-          
-          return Expanded(
-            child: ListView.builder(
-              itemCount: 7,
-              itemBuilder: (context, index) {
-                int left = index * 4 + 1;
-                int right = index * 4 + 3;
+          int rows = (seatCount / 4).ceil();
 
-                return SeatRowWidget(leftStart: left, rightStart: right);
-              },
+          return Expanded(
+            child: SizedBox(
+              width: double.infinity,
+              child: ListView.builder(
+                itemCount: rows,
+                itemBuilder: (context, index) {
+                  int leftStart = index * 4 + 1;
+                  int rightStart = index * 4 + 3;
+
+                  return SeatRowWidget(
+                    leftStart: leftStart,
+                    rightStart: rightStart,
+                    maxSeats: seatCount,
+                    isFirstClass: trainType.contains("أولى"),
+                  );
+                },
+              ),
             ),
           );
         }

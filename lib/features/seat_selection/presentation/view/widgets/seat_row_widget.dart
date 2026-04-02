@@ -1,20 +1,31 @@
-import 'package:enr_tickets/core/utils/colors.dart';
+import 'package:enr_tickets/features/seat_selection/data/model/seatMode.dart';
 import 'package:enr_tickets/features/seat_selection/presentation/state_mangement/cubit/seat_selection_cubit.dart';
 import 'package:enr_tickets/features/seat_selection/presentation/view/widgets/convert_status.dart';
 import 'package:enr_tickets/features/seat_selection/presentation/view/widgets/seat_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gap/gap.dart';
 
 class SeatRowWidget extends StatelessWidget {
   final int leftStart;
   final int rightStart;
+  final int maxSeats;
+  final bool isFirstClass;
 
   const SeatRowWidget({
     super.key,
     required this.leftStart,
     required this.rightStart,
+    required this.maxSeats,
+    required this.isFirstClass,
   });
+
+  SeatModel? getSeat(List<SeatModel> seats, int number) {
+    try {
+      return seats.firstWhere((e) => e.number == number);
+    } catch (e) {
+      return null;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,78 +35,74 @@ class SeatRowWidget extends StatelessWidget {
           return const SizedBox();
         }
 
-        /// get seats from cubit
-        final seat1 = state.seats.firstWhere((e) => e.number == leftStart);
-        final seat2 = state.seats.firstWhere((e) => e.number == leftStart + 1);
-        final seat3 = state.seats.firstWhere((e) => e.number == rightStart);
-        final seat4 = state.seats.firstWhere((e) => e.number == rightStart + 1);
+        final List<SeatModel> seats = state.seats;
 
-        return Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            /// Left seats
-            Row(
-              children: [
-                SeatWidget(
-                  number: seat1.number,
-                  state: convert(seat1.status),
-                  onTap: () {
-                    context.read<SeatSelectionCubit>().toggleSeat(seat1.number);
-                  },
-                ),
-                const Gap(10),
-                SeatWidget(
-                  number: seat2.number,
-                  state: convert(seat2.status),
-                  onTap: () {
-                    context.read<SeatSelectionCubit>().toggleSeat(seat2.number);
-                  },
-                ),
-              ],
-            ),
+        final seat1 = getSeat(seats, leftStart);
+        final seat2 = getSeat(seats, leftStart + 1);
+        final seat3 = getSeat(seats, rightStart);
+        final seat4 = getSeat(seats, rightStart + 1);
 
-            /// this widget special UI
-            Seperatedwidget(),
+        Widget buildSeat(SeatModel? seat) {
+          if (seat == null || seat.number > maxSeats) {
+            return const SizedBox(width: 45);
+          }
 
-            /// Right seats
-            Row(
-              children: [
-                SeatWidget(
-                  number: seat3.number,
-                  state: convert(seat3.status),
-                  onTap: () {
-                    context.read<SeatSelectionCubit>().toggleSeat(seat3.number);
-                  },
+          return SeatWidget(
+            number: seat.number,
+            state: convert(seat.status),
+            onTap: () {
+              context.read<SeatSelectionCubit>().toggleSeat(seat.number);
+            },
+          );
+        }
+
+        return Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Row(
+                children: [
+                  buildSeat(seat1),
+                  const SizedBox(width: 6),
+                  buildSeat(seat2),
+                ],
+              ),
+
+              const SizedBox(width: 15),
+
+              Container(
+                width: 25,
+                height: 45,
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade200,
+                  borderRadius: BorderRadius.circular(6),
                 ),
-                const Gap(10),
-                SeatWidget(
-                  number: seat4.number,
-                  state: convert(seat4.status),
-                  onTap: () {
-                    context.read<SeatSelectionCubit>().toggleSeat(seat4.number);
-                  },
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: List.generate(
+                    3,
+                    (index) =>
+                        Container(width: 12, height: 2, color: Colors.grey),
+                  ),
                 ),
-              ],
-            ),
-          ],
+              ),
+
+              const SizedBox(width: 15),
+
+              isFirstClass
+                  ? buildSeat(seat3)
+                  : Row(
+                      children: [
+                        buildSeat(seat3),
+                        const SizedBox(width: 6),
+                        buildSeat(seat4),
+                      ],
+                    ),
+            ],
+          ),
         );
       },
-    );
-  }
-}
-
-class Seperatedwidget extends StatelessWidget {
-  const Seperatedwidget({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.sizeOf(context).width * 0.1,
-      height: MediaQuery.sizeOf(context).height * 0.1,
-      decoration: BoxDecoration(
-        border: Border.all(color: hintColorForm, width: 0.2),
-        color: cardColor,
-      ),
     );
   }
 }

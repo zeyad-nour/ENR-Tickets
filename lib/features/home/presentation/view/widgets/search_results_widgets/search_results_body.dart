@@ -1,11 +1,11 @@
 import 'dart:developer' show log;
-
 import 'package:enr_tickets/features/home/presentation/state_mangement/search_result_cubit/search_result_cubit.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/search_results_widgets/custom_app_bar_search_results.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/search_results_widgets/custom_card_train_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+
 
 class SearchResultsBody extends StatelessWidget {
   final int trainNumber;
@@ -65,6 +65,7 @@ class SearchResultsBody extends StatelessWidget {
 
                       itemBuilder: (context, index) {
                         final train = state.trains[index];
+                        // return card
                         return CustomCardTrainInfo(
                           stopStations: stopeStation, //done
                           trainNumber: train.trainNumber, //done

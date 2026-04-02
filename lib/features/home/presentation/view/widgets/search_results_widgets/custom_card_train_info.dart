@@ -6,8 +6,10 @@ import 'package:enr_tickets/features/home/presentation/view/widgets/search_resul
 import 'package:enr_tickets/features/home/presentation/view/widgets/search_results_widgets/ticket_text_button_widget.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/settings_widgets/stations_widget_info.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/search_results_widgets/train_number_widget.dart';
+import 'package:enr_tickets/features/seat_selection/presentation/state_mangement/cubit/seat_selection_cubit.dart';
 import 'package:enr_tickets/features/seat_selection/presentation/view/seat_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 
 class CustomCardTrainInfo extends StatelessWidget {
@@ -122,8 +124,15 @@ class CustomCardTrainInfo extends StatelessWidget {
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) =>
-                              Stpoes(stops: stops, stopStations: stopStations),
+                          builder: (context) => BlocProvider(
+                            create: (_) => SeatSelectionCubit()..loadSeats(60),
+
+                            child: SeatPage(
+                              trainNumber: trainNumber,
+                              from: fromStation,
+                              to: toStation,
+                            ),
+                          ),
                         ),
                       );
                     },
@@ -133,7 +142,17 @@ class CustomCardTrainInfo extends StatelessWidget {
                     text: choosingSeatLabel,
                     onTap: () {
                       Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => SeatPage()),
+                        MaterialPageRoute(
+                          builder: (context) => BlocProvider(
+                            create: (context) =>
+                                SeatSelectionCubit()..loadSeats(60),
+                            child: SeatPage(
+                              trainNumber: trainNumber,
+                              from: fromStation,
+                              to: toStation,
+                            ),
+                          ),
+                        ),
                       );
                     },
                   ),
