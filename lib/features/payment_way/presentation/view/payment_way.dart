@@ -27,9 +27,11 @@ class PaymentWay extends StatelessWidget {
     final Uri uri = Uri.parse(url);
 
     if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(const SnackBar(content: Text("Cannot open payment page")));
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Cannot open payment page")),
+        );
+      }
     }
   }
 
@@ -38,10 +40,19 @@ class PaymentWay extends StatelessWidget {
     final seatsString = seats.map((e) => e.number).join(",");
 
     final methods = [
-      ("Card", Icons.credit_card, Colors.red, 5598973),
-      ("Wallet", Icons.account_balance_wallet, Colors.green, 5599322),
+      PaymentMethod(
+        name: "Card",
+        icon: Icons.credit_card,
+        color: Colors.red,
+        integrationId: 5598973,
+      ),
+      PaymentMethod(
+        name: "Wallet",
+        icon: Icons.account_balance_wallet,
+        color: Colors.green,
+        integrationId: 5599322,
+      ),
     ];
-
     return BlocProvider(
       create: (_) => PaymentCubit(),
       child: Scaffold(
@@ -52,6 +63,8 @@ class PaymentWay extends StatelessWidget {
         ),
         body: BlocConsumer<PaymentCubit, PaymentState>(
           listener: (context, state) async {
+            if (!context.mounted) return;
+
             if (state is PaymentSuccess) {
               if (state.paymentUrl != null) {
                 await _openUrl(context, state.paymentUrl!);
@@ -108,26 +121,26 @@ class PaymentWay extends StatelessWidget {
                               seats: seatsString,
                               price: price,
                               name: name,
-                              integrationId: m.$4,
+                              integrationId: m.integrationId,
                             );
                           },
                           child: Container(
                             decoration: BoxDecoration(
-                              color: m.$3.withOpacity(0.1),
+                              color: m.color.withOpacity(0.1),
                               borderRadius: BorderRadius.circular(20),
-                              border: Border.all(color: m.$3),
+                              border: Border.all(color: m.color),
                             ),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Icon(m.$2, size: 30, color: m.$3),
+                                Icon(m.icon, size: 30, color: m.color),
                                 const SizedBox(height: 8),
                                 Text(
-                                  m.$1,
+                                  m.name,
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 14,
-                                    color: m.$3,
+                                    color: m.color,
                                   ),
                                 ),
                               ],
@@ -150,4 +163,18 @@ class PaymentWay extends StatelessWidget {
       ),
     );
   }
+}
+
+class PaymentMethod {
+  final String name;
+  final IconData icon;
+  final Color color;
+  final int integrationId;
+
+  PaymentMethod({
+    required this.name,
+    required this.icon,
+    required this.color,
+    required this.integrationId,
+  });
 }
