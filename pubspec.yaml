@@ -33,12 +33,20 @@ dependencies:
   dio: ^5.9.2
   flutter:
     sdk: flutter
+  url_launcher: ^6.2.5
+  share_plus: ^7.2.1
+
+
   flutter_bloc: ^9.1.1
   flutter_localization: ^0.3.3
   gap: ^3.0.1
   intl: ^0.20.2
   provider: ^6.1.5+1
   shared_preferences: ^2.5.5
+  qr_flutter: ^4.1.0
+  pdf: ^3.10.4
+  webview_flutter: ^4.0.7
+  printing: ^5.12.0
 
 dev_dependencies:
   flutter_lints: ^6.0.0

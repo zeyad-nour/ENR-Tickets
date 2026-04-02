@@ -105,7 +105,7 @@ class SeatPage extends StatelessWidget {
                                 btnOkOnPress: () {
                                   Navigator.of(context).push(
                                     MaterialPageRoute(
-                                      builder: (context) => PaymentWay(),
+                                      builder: (context) => const PaymentWay(train: '', trainType: '', coach: '', seats: [], from: '', to: '', price: '', name: '',),
                                     ),
                                   );
                                 },
