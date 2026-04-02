@@ -15,7 +15,7 @@ class BookingBotton extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
 
-        /// 🔥 Gradient ناعم ومحترف
+        /// Gradient background
         gradient: LinearGradient(
           colors: [redTow, redTow, redTow, white],
           stops: const [0.0, 0.35, 0.65, 1.0],
@@ -34,7 +34,7 @@ class BookingBotton extends StatelessWidget {
             child: Text(
               "Booking confirmation",
               style: Styles.textStyle19.copyWith(
-                color: Colors.white, // أهم تغيير
+                color: Colors.white, 
                 fontWeight: FontWeight.bold,
                 letterSpacing: 0.5,
               ),

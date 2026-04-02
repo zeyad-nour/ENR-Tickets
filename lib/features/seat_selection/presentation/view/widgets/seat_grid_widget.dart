@@ -17,13 +17,14 @@ class SeatGridWidget extends StatelessWidget {
           );
         }
 
-        /// ❌ Error
+        ///  Error
         if (state is SeatSelectionFailure) {
           return Expanded(child: Center(child: Text(state.error)));
         }
 
-        /// ✅ Success
+        ///  Success
         if (state is SeatSelectionLoaded) {
+          
           return Expanded(
             child: ListView.builder(
               itemCount: 7,

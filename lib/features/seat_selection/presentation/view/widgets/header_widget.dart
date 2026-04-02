@@ -16,8 +16,8 @@ class HeaderWidget extends StatelessWidget {
           height: MediaQuery.sizeOf(context).height * 0.05,
 
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(0), // اختياري
-            /// 🔥 نفس Gradient الزرار
+            borderRadius: BorderRadius.circular(0),// No rounded corners for header
+         /// Gradient 
             gradient: LinearGradient(
               colors: [
                 Colors.red.shade800,

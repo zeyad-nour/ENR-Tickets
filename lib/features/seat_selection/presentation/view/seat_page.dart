@@ -18,7 +18,7 @@ class SeatPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => SeatSelectionCubit()..loadSeats(),
+      create: (_) => SeatSelectionCubit()..loadSeats(60),
       child: Builder(
         builder: (context) {
           return Scaffold(

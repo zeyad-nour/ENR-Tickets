@@ -10,14 +10,14 @@ class SeatSelectionCubit extends Cubit<SeatSelectionState> {
   SeatSelectionCubit() : super(SeatSelectionLoading());
 
   /// simulate API
-  void loadSeats() async {
+  void loadSeats(int seatCount) async {
     emit(SeatSelectionLoading());
 
     try {
       await Future.delayed(const Duration(seconds: 5));
 
       /// dummy data (كأنها جاية من API)
-      final seats = List.generate(28, (index) {
+      final seats = List.generate(seatCount, (index) {
         if (index % 5 == 0) {
           return SeatModel(
             number: index + 1,
@@ -57,6 +57,8 @@ class SeatSelectionCubit extends Cubit<SeatSelectionState> {
 
     emit(SeatSelectionLoaded(seats: updated));
   }
+
+  /// get selected seats
   List<SeatModel> getSelectedSeats() {
   if (state is! SeatSelectionLoaded) return [];
 
