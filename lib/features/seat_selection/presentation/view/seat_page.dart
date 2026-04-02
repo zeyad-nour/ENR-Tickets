@@ -1,3 +1,5 @@
+import 'package:enr_tickets/core/utils/colors.dart';
+import 'package:enr_tickets/core/widget/styles.dart';
 import 'package:enr_tickets/features/seat_selection/data/model/seatMode.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -43,7 +45,18 @@ class _SeatPageState extends State<SeatPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Seat Selection")),
+      backgroundColor: Colors.grey[100],
+      appBar: AppBar(
+        centerTitle: true,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          icon: Icon(Icons.arrow_back_ios, color: iconColor),
+        ),
+        title: const Text("Seat Selection", style: Styles.textStyle19),
+        backgroundColor: Colors.white,
+      ),
       body: BlocBuilder<SeatSelectionCubit, SeatSelectionState>(
         builder: (context, state) {
           if (state is SeatSelectionLoading) {
