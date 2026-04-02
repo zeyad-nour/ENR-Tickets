@@ -10,23 +10,25 @@ class CustomLogo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              "E",
-              style: Styles.textStyle70.copyWith(
-                color: const Color.fromARGB(255, 194, 28, 28),
+        Directionality(
+          textDirection: TextDirection.ltr,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "E",
+                style: Styles.textStyle70.copyWith(
+                  color: const Color.fromARGB(255, 194, 28, 28),
+                ),
               ),
-            ),
-            Text(
-              "N",
-              style: Styles.textStyle70.copyWith(color: Colors.grey[200]),
-            ),
-            Text("R", style: Styles.textStyle70),
-          ],
+              Text(
+                "N",
+                style: Styles.textStyle70.copyWith(color: Colors.grey[200]),
+              ),
+              Text("R", style: Styles.textStyle70),
+            ],
+          ),
         ),
-
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

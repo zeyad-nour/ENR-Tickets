@@ -5,6 +5,7 @@ import 'package:enr_tickets/core/widget/custom_button_register.dart';
 import 'package:enr_tickets/core/widget/sign_in_via.dart';
 import 'package:enr_tickets/features/create_account/presentation/view/create_account.dart';
 import 'package:enr_tickets/features/create_account/presentation/view/widget/custom_have_account_text_button.dart';
+import 'package:enr_tickets/features/home/presentation/state_mangement/settings_cubit/settings_cubit.dart';
 import 'package:enr_tickets/features/home/presentation/view/home_view.dart';
 import 'package:enr_tickets/features/log_in/presentation/state_mangement/log_in_cubit.dart';
 import 'package:enr_tickets/core/widget/custom_logo.dart';
@@ -57,16 +58,19 @@ class _LogInBodyState extends State<LogInBody> {
             child: Column(
               children: [
                 CustomLogo(),
-                Text(AppStrings.of(context, "headlogIn")),
+                Text(AppStrings.of(context, "headLogIn")),
                 FormFeildViewLogin(
                   emailController: emailController,
                   passwordController: passwordController,
                 ),
-                Custom_Text_button(() {}, title: AppStrings.of(context,"forgetpassword")),
+                Custom_Text_button(
+                  () {},
+                  title: AppStrings.of(context, "forgetPassword"),
+                ),
                 state is LogInLoding
                     ? CircularProgressIndicator()
                     : VerifyButton(
-                        title: "LogIn",
+                        title: AppStrings.of(context, "loginWord"),
                         onTap: () {
                           if (formKey.currentState!.validate()) {
                             cubit.logIn(
@@ -81,12 +85,18 @@ class _LogInBodyState extends State<LogInBody> {
                 Gap(20),
                 Center(child: SignMethodsView()),
                 Gap(20),
-                CustomHaveAccountTextButton(
-                  title: "I dont have account",
-                  onPressed: () {
-                    Navigator.of(context).pushAndRemoveUntil(
-                      MaterialPageRoute(builder: (context) => CreateAccount()),
-                      (route) => false,
+                BlocBuilder<SettingsCubit, SettingsState>(
+                  builder: (context, state) {
+                    return CustomHaveAccountTextButton(
+                      title: AppStrings.of(context, "donthaveAccount"),
+                      onPressed: () {
+                        Navigator.of(context).pushAndRemoveUntil(
+                          MaterialPageRoute(
+                            builder: (context) => CreateAccount(),
+                          ),
+                          (route) => false,
+                        );
+                      },
                     );
                   },
                 ),
