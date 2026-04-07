@@ -1,4 +1,3 @@
-import 'dart:developer' show log;
 import 'package:enr_tickets/features/home/presentation/state_mangement/search_result_cubit/search_result_cubit.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/search_results_widgets/custom_app_bar_search_results.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/search_results_widgets/custom_card_train_info.dart';
