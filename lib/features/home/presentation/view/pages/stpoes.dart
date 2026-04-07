@@ -3,33 +3,42 @@ import 'package:flutter/material.dart';
 
 class Stpoes extends StatelessWidget {
   final int stops;
-  final List<String> stopStations;
+  final List<String>? stopStations;
+
   const Stpoes({super.key, required this.stops, required this.stopStations});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: ListView.builder(
-        itemCount: 1,
-        itemBuilder: (context, index) {
-          return ExpansionTile(
-            title: Text(
-              "$stops Stops",
-              style: const TextStyle(
-                color: Colors.red,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+    if (stopStations == null || stopStations!.isEmpty) {
+      return const Padding(
+        padding: EdgeInsets.all(20),
+        child: Text("No stations available"),
+      );
+    }
 
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(10),
-                child: StationTimeline(stations: stopStations),
-              ),
-            ],
-          );
-        },
-      ),
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text(
+          "$stops Stops",
+          style: const TextStyle(
+            color: Colors.red,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+
+        const SizedBox(height: 10),
+
+        SizedBox(
+          height: 250,
+          child: ListView.builder(
+            itemCount: stopStations!.length,
+            itemBuilder: (context, index) {
+              return StationTimeline(stations: [stopStations![index]]);
+            },
+          ),
+        ),
+      ],
     );
   }
 }
