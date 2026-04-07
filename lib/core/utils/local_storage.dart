@@ -32,4 +32,9 @@ class LocalStorage {
     final prefs = await SharedPreferences.getInstance();
     return prefs.getString('language') ?? 'en';
   }
+      // Clear User Data{SingUp,Login,Token,...}
+  static Future<void> clearUserData() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.clear(); 
+  }
 }

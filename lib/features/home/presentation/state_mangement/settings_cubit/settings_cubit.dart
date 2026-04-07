@@ -48,4 +48,12 @@ class SettingsCubit extends Cubit<SettingsState> {
     await LocalStorage.saveLanguage(langCode); // حفظ
     emit(SettingsChange());
   }
+
+  Future<void> logout() async {
+    // مسح أي بيانات مستخدم محلية
+    await LocalStorage.clearUserData(); // دالة افتراضية امسح فيها بيانات المستخدم
+    
+    // إرسال الحالة للـ UI
+    emit(SettingsLogout());
+  }
 }
