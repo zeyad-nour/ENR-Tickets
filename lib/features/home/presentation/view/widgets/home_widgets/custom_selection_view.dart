@@ -70,7 +70,22 @@ class _CustomSelectionViewState extends State<CustomSelectionView> {
               },
             );
           },
-          child: SelectionStation(title: fromStation),
+          child: AnimatedSwitcher(
+            duration: const Duration(milliseconds: 300),
+            transitionBuilder: (child, animation) {
+              return SlideTransition(
+                position: Tween<Offset>(
+                  begin: const Offset(0, -0.3),
+                  end: Offset.zero,
+                ).animate(animation),
+                child: FadeTransition(opacity: animation, child: child),
+              );
+            },
+            child: SelectionStation(
+              key: ValueKey(fromStation),
+              title: fromStation,
+            ),
+          ),
         ),
 
         /// SWAP
@@ -90,12 +105,20 @@ class _CustomSelectionViewState extends State<CustomSelectionView> {
 
                 updateStations();
               },
-              child: Container(
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 300),
                 width: 37,
                 height: 37,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(100),
                   color: Colors.grey[200],
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black12,
+                      blurRadius: 5,
+                      offset: Offset(0, 3),
+                    ),
+                  ],
                 ),
                 child: Icon(Icons.swap_vert, color: buttonColor, size: 30),
               ),
@@ -119,7 +142,19 @@ class _CustomSelectionViewState extends State<CustomSelectionView> {
               },
             );
           },
-          child: SelectionStation(title: toStation),
+          child: AnimatedSwitcher(
+            duration: const Duration(milliseconds: 300),
+            transitionBuilder: (child, animation) {
+              return SlideTransition(
+                position: Tween<Offset>(
+                  begin: const Offset(0, 0.3),
+                  end: Offset.zero,
+                ).animate(animation),
+                child: FadeTransition(opacity: animation, child: child),
+              );
+            },
+            child: SelectionStation(key: ValueKey(toStation), title: toStation),
+          ),
         ),
       ],
     );

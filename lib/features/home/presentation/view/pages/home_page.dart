@@ -106,7 +106,7 @@ class HomePage extends StatelessWidget {
                         );
 
                         if (pickedDate != null) {
-                          cubit.updateDate(pickedDate); // 🔥 هنا التحديث
+                          cubit.updateDate(pickedDate); 
                         }
                       },
                     ),
