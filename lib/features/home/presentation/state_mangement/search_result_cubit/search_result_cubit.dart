@@ -27,24 +27,11 @@ class SearchResultCubit extends Cubit<SearchResultState> {
     try {
       emit(SearchResultLoading());
 
-      // محاكاة جلب بيانات من API
+      // Simulation fetch data from API
       await Future.delayed(Duration(seconds: 5));
 
+      // is List of Tickets (or Availabel Trains)
       final trains = <TrainInfo>[
-        TrainInfo(
-          trainNumber: trainNumber, //comaing from api
-          availableTickets: availableTickets, //comaing from api
-          stops: stops, //comaing from api
-          classType: classType, //comaing from api
-          fromStation: from, //local
-          toStation: to, //local
-          departTime: departTime, //comaing from api
-          arriveTime: arriveTime, //comaing from api
-          departDate: departDate, //comaing from api
-          arriveDate: arriveDate, //comaing from api
-          duration: duration, //comaing from api
-          stopeStations: stopeStations, //comaing from api
-        ),
         TrainInfo(
           trainNumber: trainNumber, //comaing from api
           availableTickets: availableTickets, //comaing from api

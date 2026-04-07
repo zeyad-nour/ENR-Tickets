@@ -7,8 +7,8 @@ import 'package:enr_tickets/core/widget/assets.dart';
 import 'package:enr_tickets/core/widget/styles.dart';
 import 'package:enr_tickets/features/home/presentation/state_mangement/settings_cubit/settings_cubit.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/settings_widgets/settings_card_widget.dart';
-import 'package:enr_tickets/features/home/presentation/view/widgets/settings_widgets/switch_card_settings.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/settings_widgets/text_button_widget.dart';
+import 'package:enr_tickets/features/log_in/presentation/view/log_in.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -108,31 +108,30 @@ class SettingsPageBody extends StatelessWidget {
           },
         ),
         Gap(30),
-        SwitchCardSettings(
-          title: AppStrings.of(context, "useBiometric"),
-          onChanged: (p0) => print("object"),
-        ),
-        SwitchCardSettings(
-          title: AppStrings.of(context, "useBiometric"),
-          onChanged: (p0) => print("object"),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: TextButtonWidget(
-            onPressed: () => log("Change password"),
-            task: AppStrings.of(context, "changePassword"),
-            icon: Icons.lock_outline_rounded,
-          ),
+
+        TextButtonWidget(
+          onPressed: () => log("Change password"),
+          task: AppStrings.of(context, "changePassword"),
+          icon: Icons.lock_outline_rounded,
         ),
 
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: TextButtonWidget(
-            onPressed: () => log("Delete Account"),
-            task: AppStrings.of(context, "deleteAccount"),
+        TextButtonWidget(
+          onPressed: () => log("Delete Account"),
+          task: AppStrings.of(context, "deleteAccount"),
 
-            icon: Icons.delete_outline_rounded,
-          ),
+          icon: Icons.delete_outline_rounded,
+        ),
+        TextButtonWidget(
+          onPressed: () {
+            Duration(seconds: 5);
+            Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(builder: (context) => LogIn()),
+              (roote) => false,
+            );
+          },
+          task: AppStrings.of(context, "signup"),
+
+          icon: Icons.login_rounded,
         ),
       ],
     );

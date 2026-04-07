@@ -1,7 +1,6 @@
 import 'package:enr_tickets/core/utils/app_strings.dart';
 import 'package:enr_tickets/core/utils/colors.dart';
 import 'package:enr_tickets/features/home/presentation/state_mangement/home_cubit/home_cubit.dart';
-import 'package:enr_tickets/features/home/presentation/view/pages/booking_page.dart';
 import 'package:enr_tickets/features/home/presentation/view/pages/home_page.dart';
 import 'package:enr_tickets/features/home/presentation/view/pages/my_tickets_page.dart';
 import 'package:enr_tickets/features/home/presentation/view/pages/settings_page.dart';
@@ -16,11 +15,10 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  int _currentIndex = 3;
+  int _currentIndex = 2;
 
   final List<Widget> _pages = const [
     SettingsPage(),
-    BookingPage(),
     MyTicketsPage(),
     HomePage(),
   ];
@@ -50,20 +48,16 @@ class _HomeViewState extends State<HomeView> {
           currentIndex: _currentIndex,
           onTap: _onTap,
           type: BottomNavigationBarType.fixed,
-          selectedItemColor: iconColor, 
+          selectedItemColor: iconColor,
           unselectedItemColor: Theme.of(context).brightness == Brightness.dark
-              ? Colors
-                    .white 
+              ? Colors.white
               : Colors.grey[600],
           items: [
             BottomNavigationBarItem(
               icon: Icon(Icons.settings),
               label: AppStrings.of(context, "settingsPage"),
             ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.bookmark_added_sharp),
-              label: AppStrings.of(context, "bookingPage"),
-            ),
+
             BottomNavigationBarItem(
               icon: Icon(Icons.calendar_today_outlined),
               label: AppStrings.of(context, "myTickets"),

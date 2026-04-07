@@ -10,6 +10,7 @@ import 'package:enr_tickets/features/seat_selection/presentation/view/widgets/bo
 import 'package:enr_tickets/core/widget/custom_dialog.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:enr_tickets/features/payment_way/presentation/view/payment_way.dart';
+import 'package:gap/gap.dart';
 
 class SeatPage extends StatefulWidget {
   final int trainNumber;
@@ -125,6 +126,7 @@ class _SeatPageState extends State<SeatPage> {
                     }
                   },
                 ),
+                Gap(20),
               ],
             );
           }

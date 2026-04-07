@@ -30,7 +30,7 @@ class SettingsCardWidget extends StatelessWidget {
               width: MediaQuery.sizeOf(context).width * 0.88,
               height: MediaQuery.sizeOf(context).height * 0.056,
 
-              // 👈 هنا نستخدم cardColor من Theme
+              
               decoration: BoxDecoration(
                 color: Theme.of(context).cardColor,
                 borderRadius: BorderRadius.circular(10),
@@ -43,7 +43,7 @@ class SettingsCardWidget extends StatelessWidget {
                     style: Styles.textStyle17.copyWith(
                       color: Theme.of(
                         context,
-                      ).textTheme.bodyLarge!.color, // نص ديناميكي
+                      ).textTheme.bodyLarge!.color,
                     ),
                   ),
                   const Spacer(),

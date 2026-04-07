@@ -27,13 +27,13 @@ class TravelDateCard extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
           height: 80,
           decoration: BoxDecoration(
-            color: theme.cardColor, 
+            color: theme.cardColor,
             borderRadius: BorderRadius.circular(8),
             boxShadow: [
               BoxShadow(
                 color: theme.brightness == Brightness.dark
                     ? Colors.black45
-                    : Colors.black12, 
+                    : Colors.black12,
                 blurRadius: 6,
                 offset: const Offset(0, 3),
               ),
@@ -53,16 +53,12 @@ class TravelDateCard extends StatelessWidget {
               const Gap(10),
               Icon(
                 Icons.calendar_month_outlined,
-                color: theme.iconTheme.color, 
+                color: theme.iconTheme.color,
                 size: 30,
               ),
 
               const Spacer(),
-              Container(
-                width: 2,
-                height: 50,
-                color: theme.dividerColor, 
-              ),
+              Container(width: 2, height: 50, color: theme.dividerColor),
               const Spacer(),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

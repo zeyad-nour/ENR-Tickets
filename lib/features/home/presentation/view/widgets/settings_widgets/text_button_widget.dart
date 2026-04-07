@@ -16,14 +16,17 @@ class TextButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-      onPressed: onPressed,
-      child: Row(
-        children: [
-          Text(task, style: Styles.textStyle17.copyWith(color: buttonColor)),
-          const SizedBox(width: 20),
-          Icon(icon, color: iconColor, size: 30),
-        ],
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+      child: TextButton(
+        onPressed: onPressed,
+        child: Row(
+          children: [
+            Text(task, style: Styles.textStyle17.copyWith(color: buttonColor)),
+            const SizedBox(width: 20),
+            Icon(icon, color: iconColor, size: 30),
+          ],
+        ),
       ),
     );
   }

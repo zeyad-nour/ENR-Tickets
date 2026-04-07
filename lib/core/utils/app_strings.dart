@@ -43,6 +43,7 @@ class AppStrings {
       "deleteAccount": "Delete Account",
       "departureStation": "Departure station",
       "arrivalStation": "Arrival station",
+      "signup": "Sign Up",
 
       // BottomNavigationBar
       "homePage": "Home",
@@ -104,6 +105,7 @@ class AppStrings {
       "deleteAccount": "حذف الحساب",
       "departureStation": "محطة المغادرة",
       "arrivalStation": "محطة الوصول",
+      "signup": "تسجيل الحروج",
 
       // BottomNavigationBar
       "homePage": "الرئيسية",

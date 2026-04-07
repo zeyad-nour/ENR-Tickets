@@ -10,6 +10,7 @@ class CreatUserCubit extends Cubit<CreatUserState> {
   void createUser() async{
     emit(CreatUserLoading());
     try {
+      //
      await Future.delayed(Duration(seconds: 5));
       emit(CreatUserSuccess());
     } catch (e) {

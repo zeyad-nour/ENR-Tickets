@@ -1,4 +1,5 @@
 import 'package:enr_tickets/core/utils/app_strings.dart';
+import 'package:enr_tickets/core/utils/colors.dart';
 import 'package:enr_tickets/core/widget/custom_button_register.dart';
 import 'package:enr_tickets/core/widget/styles.dart';
 import 'package:enr_tickets/features/home/presentation/state_mangement/home_cubit/home_cubit.dart';
@@ -81,15 +82,31 @@ class HomePage extends StatelessWidget {
                       date:
                           "${cubit.travelDate.day}/${cubit.travelDate.month}/${cubit.travelDate.year}",
                       onTap: () async {
+                        DateTime now = DateTime.now();
+
                         DateTime? pickedDate = await showDatePicker(
                           context: context,
-                          initialDate: cubit.travelDate,
-                          firstDate: DateTime(2023),
-                          lastDate: DateTime(2050),
+                          initialDate: cubit.travelDate.isBefore(now)
+                              ? now
+                              : cubit.travelDate,
+                          firstDate: now,
+                          lastDate: now.add(const Duration(days: 18)),
+                          builder: (context, child) {
+                            return Theme(
+                              data: Theme.of(context).copyWith(
+                                colorScheme: const ColorScheme.light(
+                                  primary: buttonColor,
+                                  onPrimary: Colors.white,
+                                  onSurface: Colors.black,
+                                ),
+                              ),
+                              child: child!,
+                            );
+                          },
                         );
 
                         if (pickedDate != null) {
-                          cubit.updateDate(pickedDate);
+                          cubit.updateDate(pickedDate); // 🔥 هنا التحديث
                         }
                       },
                     ),
