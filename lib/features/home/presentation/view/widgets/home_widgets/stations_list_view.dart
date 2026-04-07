@@ -36,7 +36,7 @@ class StationsListView extends StatelessWidget {
                 color: theme.textTheme.bodyLarge!.color,
               ),
             ),
-            leading: Image.asset(AssetsData.icontravel, width: 30,),
+            leading: Image.asset(AssetsData.icontravel, width: 30),
             trailing: station == selectedStation
                 ? const Icon(Icons.check, color: Colors.green)
                 : null,

@@ -13,11 +13,11 @@ void showStationsBottomSheet({
   showModalBottomSheet(
     context: context,
     isScrollControlled: true,
-    backgroundColor: Colors.transparent, // لتطبيق الأنيميشن بشكل أفضل
+    backgroundColor: Colors.transparent,
     builder: (context) {
       return TweenAnimationBuilder<double>(
         tween: Tween<double>(begin: 0, end: 1),
-        duration: const Duration(milliseconds: 300),
+        duration: const Duration(milliseconds: 600),
         curve: Curves.easeOut,
         builder: (context, value, child) {
           return Transform.translate(

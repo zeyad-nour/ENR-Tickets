@@ -24,7 +24,7 @@ class CustomCardTrainInfo extends StatefulWidget {
   final String duration;
   final int availableTickets;
   final int stops;
-  final VoidCallback onBuy;
+ 
   final List<String> stopStations;
 
   const CustomCardTrainInfo({
@@ -40,7 +40,7 @@ class CustomCardTrainInfo extends StatefulWidget {
     required this.duration,
     required this.availableTickets,
     required this.stops,
-    required this.onBuy,
+
     required this.stopStations,
   });
 

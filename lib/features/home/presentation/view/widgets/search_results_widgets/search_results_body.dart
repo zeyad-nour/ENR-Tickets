@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 
-
 class SearchResultsBody extends StatelessWidget {
   final int trainNumber;
   final int availableTickets;
@@ -79,10 +78,6 @@ class SearchResultsBody extends StatelessWidget {
                           duration: train.duration, //done
                           availableTickets: train.availableTickets, //done
                           stops: stops, //done
-
-                          onBuy: () {
-                            log("Bay Ticket");
-                          },
                         );
                       },
                     ),
