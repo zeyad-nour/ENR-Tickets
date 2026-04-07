@@ -37,4 +37,9 @@ class LocalStorage {
     final prefs = await SharedPreferences.getInstance();
     await prefs.clear(); 
   }
+    static Future<bool> isUserLoggedIn() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getBool('isLoggedIn') ?? false; // افتراضياً: مش مسجل دخول
+  }
+
 }

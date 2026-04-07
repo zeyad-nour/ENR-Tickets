@@ -1,8 +1,9 @@
-// ignore_for_file: avoid_print
+// ignore_for_file: use_build_context_synchronously, avoid_print
 
 import 'dart:developer';
 
 import 'package:enr_tickets/core/utils/app_strings.dart';
+import 'package:enr_tickets/core/utils/local_storage.dart';
 import 'package:enr_tickets/core/widget/assets.dart';
 import 'package:enr_tickets/core/widget/styles.dart';
 import 'package:enr_tickets/features/home/presentation/state_mangement/settings_cubit/settings_cubit.dart';
@@ -122,7 +123,8 @@ class SettingsPageBody extends StatelessWidget {
           icon: Icons.delete_outline_rounded,
         ),
         TextButtonWidget(
-          onPressed: () {
+          onPressed: () async{
+             await LocalStorage.clearUserData();
             Duration(seconds: 5);
             Navigator.of(context).pushAndRemoveUntil(
               MaterialPageRoute(builder: (context) => LogIn()),

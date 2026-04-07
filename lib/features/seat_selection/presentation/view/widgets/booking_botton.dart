@@ -15,16 +15,17 @@ class BookingBotton extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(25),
 
-          /// 🎨 Gradient احترافي
+      
           gradient: const LinearGradient(
             colors: [Color(0xffd32f2f), Color(0xfff44336)],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
 
-          /// 🔥 Shadow يخلي الزرار يبان 3D
+        
           boxShadow: [
             BoxShadow(
+              // ignore: deprecated_member_use
               color: Colors.red.withOpacity(0.4),
               blurRadius: 10,
               offset: const Offset(0, 5),
@@ -46,12 +47,11 @@ class BookingBotton extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  /// ✔ icon
+             
                   Icon(Icons.check_circle, color: Colors.white, size: 18),
 
                   SizedBox(width: 8),
 
-                  /// النص
                   Text(
                     "Booking confirmation",
                     style: TextStyle(
