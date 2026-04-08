@@ -37,23 +37,29 @@ class SeatWidget extends StatelessWidget {
 
     return GestureDetector(
       onTap: onTap,
-      child: SizedBox(
-        width: 50,
-        height: 60,
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            Icon(Icons.event_seat, size: 50, color: iconColor),
-
-            Text(
-              number.toString(),
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 17,
-                color: textColor,
+      child: AnimatedScale(
+        scale: state == SeatState.selected ? 1.2 : 1.0, 
+        duration: const Duration(milliseconds: 250),
+        curve: Curves.easeOutBack, 
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeInOut,
+          width: 50,
+          height: 60,
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              Icon(Icons.event_seat, size: 50, color: iconColor),
+              Text(
+                number.toString(),
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 17,
+                  color: textColor,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
