@@ -45,7 +45,7 @@ class SearchResultsBody extends StatelessWidget {
           if (state is SearchResultLoading) {
             return Center(
               child: AppLottieLoading(
-                assetPath: "assets/train_loading.json",
+                assetPath: "assets/search_result.json",
                 text: "Searching for trains...",
               ),
             );
