@@ -42,10 +42,10 @@ class _TrainLoadingState extends State<TrainLoading>
       child: Stack(
         alignment: Alignment.center,
         children: [
-          // الخط (السكة)
+   // background line
           Container(height: 4, width: double.infinity, color: deepcolor),
 
-          // القطار
+       // moving train icon
           AnimatedBuilder(
             animation: _animation,
             builder: (context, child) {

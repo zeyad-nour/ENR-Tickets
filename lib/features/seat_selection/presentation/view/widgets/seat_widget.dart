@@ -43,13 +43,13 @@ class SeatWidget extends StatelessWidget {
         child: Stack(
           alignment: Alignment.center,
           children: [
-            Icon(Icons.event_seat, size: 40, color: iconColor),
+            Icon(Icons.event_seat, size: 50, color: iconColor),
 
             Text(
               number.toString(),
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 14,
+                fontSize: 17,
                 color: textColor,
               ),
             ),

@@ -32,7 +32,7 @@ class _SeatPageState extends State<SeatPage> {
   @override
   void initState() {
     super.initState();
-    // تحميل الكراسي عند فتح الصفحة
+    // Load seats when the page initializes
     context.read<SeatSelectionCubit>().loadSeats(60);
   }
 
@@ -77,7 +77,7 @@ class _SeatPageState extends State<SeatPage> {
             return Column(
               children: [
                 const HeaderWidget(),
-                SeatGridWidget(seatCount: 60, trainType: "VIP"),
+                SeatGridWidget(seatCount: 52, trainType: "VIP"),
                 if (selectedSeats.isNotEmpty)
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8),
@@ -90,6 +90,7 @@ class _SeatPageState extends State<SeatPage> {
                       ),
                     ),
                   ),
+                Gap(20),
                 BookingBotton(
                   onPressed: () {
                     if (selectedSeats.isEmpty) {
