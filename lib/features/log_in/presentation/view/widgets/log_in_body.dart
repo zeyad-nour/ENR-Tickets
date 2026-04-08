@@ -5,6 +5,7 @@ import 'package:enr_tickets/core/widget/custom_button_register.dart';
 import 'package:enr_tickets/core/widget/sign_in_via.dart';
 import 'package:enr_tickets/features/create_account/presentation/view/create_account.dart';
 import 'package:enr_tickets/features/create_account/presentation/view/widget/custom_have_account_text_button.dart';
+import 'package:enr_tickets/features/forget_passwors/presentation/view/forget_password.dart';
 import 'package:enr_tickets/features/home/presentation/state_mangement/settings_cubit/settings_cubit.dart';
 import 'package:enr_tickets/features/home/presentation/view/home_view.dart';
 import 'package:enr_tickets/features/log_in/presentation/state_mangement/log_in_cubit.dart';
@@ -63,10 +64,13 @@ class _LogInBodyState extends State<LogInBody> {
                   emailController: emailController,
                   passwordController: passwordController,
                 ),
-                Custom_Text_button(
-                  () {},
-                  title: AppStrings.of(context, "forgetPassword"),
-                ),
+                Custom_Text_button(() {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const ForgetPassword(),
+                    ),
+                  );
+                }, title: AppStrings.of(context, "forgetPassword")),
                 state is LogInLoding
                     ? const CircularProgressIndicator()
                     : VerifyButton(
