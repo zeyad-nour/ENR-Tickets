@@ -1,3 +1,5 @@
+import 'package:enr_tickets/core/utils/colors.dart';
+import 'package:enr_tickets/core/widget/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -28,14 +30,8 @@ class AppLottieLoading extends StatelessWidget {
 
           if (text != null) ...[
             const SizedBox(height: 12),
-            Text(
-              text!,
-              style: const TextStyle(
-                fontSize: 14,
-                color: Colors.grey,
-              ),
-            ),
-          ]
+            Text(text!, style: Styles.textStyle20.copyWith(color: iconColor)),
+          ],
         ],
       ),
     );
