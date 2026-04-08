@@ -6,7 +6,7 @@ part 'reset_password_state.dart';
 class ResetPasswordCubit extends Cubit<ResetPasswordState> {
   ResetPasswordCubit() : super(ResetPasswordInitial());
 
-  Future<void> sendResetCode() async {
+  Future<void> sendResetCode(String email) async {
     emit(ResetPasswordLoding());
     try {
       await Future.delayed(const Duration(seconds: 3));
