@@ -1,4 +1,3 @@
-import 'package:enr_tickets/core/utils/colors.dart';
 import 'package:flutter/material.dart';
 
 class TrainLoading extends StatefulWidget {
@@ -22,10 +21,9 @@ class _TrainLoadingState extends State<TrainLoading>
       duration: const Duration(seconds: 2),
     )..repeat();
 
-    _animation = Tween<double>(
-      begin: -1,
-      end: 1,
-    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
+    _animation = Tween<double>(begin: -1, end: 1).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
+    );
   }
 
   @override
@@ -38,20 +36,27 @@ class _TrainLoadingState extends State<TrainLoading>
   Widget build(BuildContext context) {
     return SizedBox(
       height: 80,
-      width: MediaQuery.of(context).size.width * 0.3,
       child: Stack(
         alignment: Alignment.center,
         children: [
-   // background line
-          Container(height: 4, width: double.infinity, color: deepcolor),
+          // الخط (السكة)
+          Container(
+            height: 4,
+            width: double.infinity,
+            color: Colors.grey.shade400,
+          ),
 
-       // moving train icon
+          // القطار
           AnimatedBuilder(
             animation: _animation,
             builder: (context, child) {
               return Align(
                 alignment: Alignment(_animation.value, 0),
-                child: const Icon(Icons.train, size: 40, color: iconColor),
+                child: const Icon(
+                  Icons.train,
+                  size: 40,
+                  color: Colors.blue,
+                ),
               );
             },
           ),
