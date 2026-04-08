@@ -2,9 +2,11 @@
 
 import 'dart:developer';
 
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:enr_tickets/core/utils/app_strings.dart';
 import 'package:enr_tickets/core/utils/local_storage.dart';
 import 'package:enr_tickets/core/widget/assets.dart';
+import 'package:enr_tickets/core/widget/custom_dialog.dart';
 import 'package:enr_tickets/core/widget/styles.dart';
 import 'package:enr_tickets/features/home/presentation/state_mangement/settings_cubit/settings_cubit.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/settings_widgets/settings_card_widget.dart';
@@ -122,17 +124,27 @@ class SettingsPageBody extends StatelessWidget {
 
           icon: Icons.delete_outline_rounded,
         ),
+        // logout
         TextButtonWidget(
-          onPressed: () async{
-             await LocalStorage.clearUserData();
-            Duration(seconds: 5);
-            Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(builder: (context) => LogIn()),
-              (roote) => false,
+          onPressed: () {
+            CustomDialog.show(
+              context: context,
+              title: "Logout",
+              description: "Are you sure you want to logout?",
+              dialogType: DialogType.noHeader,
+
+              btnOkOnPress: () async {
+                await LocalStorage.clearUserData();
+
+                Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(builder: (context) => LogIn()),
+                  (route) => false,
+                );
+              },
             );
           },
-          task: AppStrings.of(context, "signup"),
 
+          task: AppStrings.of(context, "signup"),
           icon: Icons.login_rounded,
         ),
       ],
