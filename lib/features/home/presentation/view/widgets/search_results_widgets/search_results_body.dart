@@ -1,3 +1,4 @@
+import 'package:enr_tickets/core/widget/custom_loading.dart';
 import 'package:enr_tickets/features/home/presentation/state_mangement/search_result_cubit/search_result_cubit.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/search_results_widgets/custom_app_bar_search_results.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/search_results_widgets/custom_card_train_info.dart';
@@ -42,7 +43,7 @@ class SearchResultsBody extends StatelessWidget {
       body: BlocBuilder<SearchResultCubit, SearchResultState>(
         builder: (context, state) {
           if (state is SearchResultLoading) {
-            return Center(child: CircularProgressIndicator());
+            return Center(child: TrainLoading());
           } else if (state is SearchResultSuccess) {
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 6.0),
