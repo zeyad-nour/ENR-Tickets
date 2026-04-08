@@ -1,3 +1,4 @@
+import 'package:enr_tickets/core/utils/app_strings.dart';
 import 'package:enr_tickets/core/widget/app_lottie_lodaing.dart';
 import 'package:enr_tickets/features/home/presentation/state_mangement/search_result_cubit/search_result_cubit.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/search_results_widgets/custom_app_bar_search_results.dart';
@@ -46,7 +47,7 @@ class SearchResultsBody extends StatelessWidget {
             return Center(
               child: AppLottieLoading(
                 assetPath: "assets/search_result.json",
-                text: "Searching for trains...",
+                text: AppStrings.of(context, "searchtitle"),
               ),
             );
           } else if (state is SearchResultSuccess) {

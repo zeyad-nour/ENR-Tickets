@@ -32,6 +32,7 @@ class AppStrings {
       "searchResultsTitle": "Search results",
       "availableTickets": "Available tickets",
       "trainNumber": "Train number",
+      "searchtitle": "Searching for trains...",
 
       // Seatings / Settings
       "settings": "Settings",
@@ -94,7 +95,7 @@ class AppStrings {
       "searchResultsTitle": "نتائج البحث",
       "availableTickets": "التذاكر المتاحة",
       "trainNumber": "رقم القطار",
-
+      "searchtitle": "جاري البحث عن القطارات...",
       // Seatings / Settings
       "settings": "الإعدادات",
       "followSystem": "اتباع نظام الهاتف",
