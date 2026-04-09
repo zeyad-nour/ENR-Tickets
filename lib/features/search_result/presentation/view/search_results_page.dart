@@ -1,5 +1,5 @@
-import 'package:enr_tickets/features/home/presentation/state_mangement/search_result_cubit/search_result_cubit.dart';
-import 'package:enr_tickets/features/home/presentation/view/widgets/search_results_widgets/search_results_body.dart';
+import 'package:enr_tickets/features/search_result/presentation/state_mangement/search_result_cubit/search_result_cubit.dart';
+import 'package:enr_tickets/features/search_result/presentation/view/widgets/search_results_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

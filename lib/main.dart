@@ -1,11 +1,12 @@
 import 'package:enr_tickets/core/utils/local_storage.dart';
 import 'package:enr_tickets/features/create_account/presentation/view/create_account.dart';
-import 'package:enr_tickets/features/home/presentation/state_mangement/settings_cubit/settings_cubit.dart';
+import 'package:enr_tickets/features/home/settings/presentation/state_mangement/settings_cubit/settings_cubit.dart';
 import 'package:enr_tickets/features/home/presentation/view/pages/home_page.dart';
 import 'package:enr_tickets/features/seat_selection/presentation/state_mangement/cubit/seat_selection_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

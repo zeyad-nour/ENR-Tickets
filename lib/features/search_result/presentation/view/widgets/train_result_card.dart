@@ -1,4 +1,4 @@
-import 'package:enr_tickets/features/home/presentation/view/widgets/search_results_widgets/stops_widget.dart';
+import 'package:enr_tickets/features/search_result/presentation/view/widgets/stops_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:enr_tickets/features/seat_selection/presentation/view/seat_page.dart';
 

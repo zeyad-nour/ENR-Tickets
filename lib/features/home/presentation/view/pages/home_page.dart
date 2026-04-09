@@ -4,7 +4,7 @@ import 'package:enr_tickets/core/widget/custom_button_register.dart';
 import 'package:enr_tickets/core/widget/styles.dart';
 import 'package:enr_tickets/features/home/presentation/state_mangement/home_cubit/home_cubit.dart';
 
-import 'package:enr_tickets/features/home/presentation/view/pages/search_results_page.dart';
+import 'package:enr_tickets/features/search_result/presentation/view/search_results_page.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/home_widgets/custom_home_logo.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/home_widgets/custom_selection_view.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/home_widgets/travel_date_card.dart';
