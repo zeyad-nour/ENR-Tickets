@@ -1,4 +1,4 @@
-import 'package:enr_tickets/features/home/settings/presentation/state_mangement/settings_cubit/settings_cubit.dart';
+import 'package:enr_tickets/features/settings/presentation/state_mangement/settings_cubit/settings_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

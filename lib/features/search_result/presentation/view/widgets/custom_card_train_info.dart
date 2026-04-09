@@ -4,7 +4,7 @@ import 'package:enr_tickets/core/widget/styles.dart';
 import 'package:enr_tickets/features/home/presentation/view/pages/stpoes.dart';
 import 'package:enr_tickets/features/search_result/presentation/view/widgets/available_tickets_widget.dart';
 import 'package:enr_tickets/features/search_result/presentation/view/widgets/ticket_text_button_widget.dart';
-import 'package:enr_tickets/features/home/settings/presentation/view/settings_widgets/stations_widget_info.dart';
+import 'package:enr_tickets/features/settings/presentation/view/settings_widgets/stations_widget_info.dart';
 import 'package:enr_tickets/features/search_result/presentation/view/widgets/train_number_widget.dart';
 import 'package:enr_tickets/features/seat_selection/presentation/state_mangement/cubit/seat_selection_cubit.dart';
 import 'package:enr_tickets/features/seat_selection/presentation/view/seat_page.dart';
