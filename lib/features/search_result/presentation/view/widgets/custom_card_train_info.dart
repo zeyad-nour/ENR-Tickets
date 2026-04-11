@@ -1,7 +1,7 @@
 import 'package:enr_tickets/core/utils/app_strings.dart';
 import 'package:enr_tickets/core/utils/colors.dart';
 import 'package:enr_tickets/core/widget/styles.dart';
-import 'package:enr_tickets/features/home/presentation/view/pages/stpoes.dart';
+import 'package:enr_tickets/features/home/presentation/view/widgets/stops_widsgets/stpoes.dart';
 import 'package:enr_tickets/features/search_result/presentation/view/widgets/available_tickets_widget.dart';
 import 'package:enr_tickets/features/search_result/presentation/view/widgets/ticket_text_button_widget.dart';
 import 'package:enr_tickets/features/settings/presentation/view/widgets/stations_widget_info.dart';
