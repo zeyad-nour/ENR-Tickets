@@ -61,7 +61,7 @@ class _CustomCardTrainInfoState extends State<CustomCardTrainInfo> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    // Strings translate
+    // Strings translated
     final String priceLabel = AppStrings.of(context, "price");
     final String stopsLabel = AppStrings.of(context, "stops");
     final String choosingSeatLabel = AppStrings.of(context, "choosingSeat");

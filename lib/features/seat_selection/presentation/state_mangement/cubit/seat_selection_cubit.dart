@@ -14,7 +14,7 @@ class SeatSelectionCubit extends Cubit<SeatSelectionState> {
     emit(SeatSelectionLoading());
 
     try {
-      await Future.delayed(const Duration(seconds: 1));
+      await Future.delayed(const Duration(seconds: 5));
 
       /// 🔥 generate حسب العدد الحقيقي
       final seats = List.generate(seatCount, (index) {

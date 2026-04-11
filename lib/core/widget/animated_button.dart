@@ -21,11 +21,11 @@ class _AnimatedButtonState extends State<AnimatedButton>
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 500),
-    )..repeat(reverse: true); // 🔥 يطلع وينزل
+    )..repeat(reverse: true); // up to down and back to up
 
     _animation = Tween<double>(
       begin: 0,
-      end: -6,
+      end: -8,
     ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
   }
 

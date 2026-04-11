@@ -62,7 +62,9 @@ class _SeatPageState extends State<SeatPage> {
       body: BlocBuilder<SeatSelectionCubit, SeatSelectionState>(
         builder: (context, state) {
           if (state is SeatSelectionLoading) {
-            return const Center(child: CircularProgressIndicator());
+            return const Center(
+              child: CircularProgressIndicator(color: iconColor),
+            );
           }
 
           if (state is SeatSelectionFailure) {
