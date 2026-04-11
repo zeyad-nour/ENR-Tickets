@@ -1,5 +1,6 @@
 import 'package:enr_tickets/core/utils/app_strings.dart';
 import 'package:enr_tickets/core/utils/colors.dart';
+import 'package:enr_tickets/core/widget/animated_button.dart';
 import 'package:enr_tickets/core/widget/custom_button_register.dart';
 import 'package:enr_tickets/core/widget/styles.dart';
 import 'package:enr_tickets/features/home/presentation/state_mangement/home_cubit/home_cubit.dart';
@@ -106,7 +107,7 @@ class HomePage extends StatelessWidget {
                         );
 
                         if (pickedDate != null) {
-                          cubit.updateDate(pickedDate); 
+                          cubit.updateDate(pickedDate);
                         }
                       },
                     ),
@@ -116,11 +117,13 @@ class HomePage extends StatelessWidget {
                     /// Search Button
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                      child: VerifyButton(
-                        title: AppStrings.of(context, "search"),
-                        onTap: () {
-                          context.read<HomeCubit>().searchTrip();
-                        },
+                      child: AnimatedButton(
+                        child: VerifyButton(
+                          title: AppStrings.of(context, "search"),
+                          onTap: () {
+                            context.read<HomeCubit>().searchTrip();
+                          },
+                        ),
                       ),
                     ),
 

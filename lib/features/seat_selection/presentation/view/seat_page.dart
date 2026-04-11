@@ -1,6 +1,7 @@
 import 'package:enr_tickets/core/utils/colors.dart';
 import 'package:enr_tickets/core/widget/styles.dart';
 import 'package:enr_tickets/features/seat_selection/data/model/seatMode.dart';
+import 'package:enr_tickets/core/widget/animated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:enr_tickets/features/seat_selection/presentation/state_mangement/cubit/seat_selection_cubit.dart';
@@ -8,7 +9,7 @@ import 'package:enr_tickets/features/seat_selection/presentation/view/widgets/se
 import 'package:enr_tickets/features/seat_selection/presentation/view/widgets/header_widget.dart';
 import 'package:enr_tickets/features/seat_selection/presentation/view/widgets/booking_botton.dart';
 import 'package:enr_tickets/core/widget/custom_dialog.dart';
-import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:awesome_dialog/awesome_dialog.dart' hide AnimatedButton;
 import 'package:enr_tickets/features/payment_way/presentation/view/payment_way.dart';
 import 'package:gap/gap.dart';
 
@@ -91,41 +92,43 @@ class _SeatPageState extends State<SeatPage> {
                     ),
                   ),
                 Gap(20),
-                BookingBotton(
-                  onPressed: () {
-                    if (selectedSeats.isEmpty) {
-                      CustomDialog.show(
-                        context: context,
-                        title: "Noticeable",
-                        description: "You must choose your seat first.",
-                        dialogType: DialogType.noHeader,
-                      );
-                    } else {
-                      CustomDialog.show(
-                        context: context,
-                        title: "Alert",
-                        description: "Are you sure about this booking?",
-                        dialogType: DialogType.noHeader,
-                        btnOkOnPress: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (_) => PaymentWay(
-                                train: widget.trainNumber.toString(),
-                                trainType: "VIP",
-                                coach: "1",
-                                seats: selectedSeats,
-                                from: widget.from,
-                                to: widget.to,
-                                price: totalPrice.toString(),
-                                name: "Passenger",
+                AnimatedButton(
+                  child: BookingBotton(
+                    onPressed: () {
+                      if (selectedSeats.isEmpty) {
+                        CustomDialog.show(
+                          context: context,
+                          title: "Noticeable",
+                          description: "You must choose your seat first.",
+                          dialogType: DialogType.noHeader,
+                        );
+                      } else {
+                        CustomDialog.show(
+                          context: context,
+                          title: "Alert",
+                          description: "Are you sure about this booking?",
+                          dialogType: DialogType.noHeader,
+                          btnOkOnPress: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => PaymentWay(
+                                  train: widget.trainNumber.toString(),
+                                  trainType: "VIP",
+                                  coach: "1",
+                                  seats: selectedSeats,
+                                  from: widget.from,
+                                  to: widget.to,
+                                  price: totalPrice.toString(),
+                                  name: "Passenger",
+                                ),
                               ),
-                            ),
-                          );
-                        },
-                      );
-                    }
-                  },
+                            );
+                          },
+                        );
+                      }
+                    },
+                  ),
                 ),
                 Gap(20),
               ],
