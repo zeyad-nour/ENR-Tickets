@@ -14,7 +14,7 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  final bool loggedIn; // Store login state
+  final bool loggedIn; // Storing login state
 
   const MyApp({super.key, required this.loggedIn});
 
