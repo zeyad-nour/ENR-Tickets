@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
       ],
       child: BlocBuilder<SettingsCubit, SettingsState>(
         builder: (context, state) {
+
           final cubit = context.watch<SettingsCubit>();
 
           return MaterialApp(
