@@ -20,6 +20,7 @@ class AppStrings {
       "signInWith": "Or Sign in via",
       "google": "Google",
       "facebook": "Facebook",
+      "donthaveAccount": "Dont have an account ",
 
       // Home Page
       "headHomePage": "Book Tickets",
@@ -83,7 +84,7 @@ class AppStrings {
       "signInWith": "أو تسجيل الدخول عبر",
       "google": "جوجل",
       "facebook": "فيسبوك",
-
+      "donthaveAccount": "ليس لدي حساب ",
       // Home Page
       "headHomePage": "حجز التذاكر",
       "travelDate": "تاريخ الرحلة",

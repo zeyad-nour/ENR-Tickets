@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 
 class Custom_Text_button extends StatelessWidget {
   final String title;
-  final void Function()? onPressed;
-  const Custom_Text_button(this.onPressed, {super.key, required this.title});
+  final void Function() onPressed;
+  const Custom_Text_button( this.onPressed, {super.key, required this.title,required});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,9 @@ class Custom_Text_button extends StatelessWidget {
               ? Styles.textStyle19
               : Styles.textStyle19.copyWith(color: hintColorForm),
         ),
+
       ),
+      
     );
   }
 }
