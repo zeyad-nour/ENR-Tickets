@@ -30,7 +30,6 @@ class HomeCubit extends Cubit<HomeState> {
   /// Selected Data
   String fromStation = "From Station";
   String toStation = "To Station";
-  String tripType = "roundTrip";
   DateTime travelDate = DateTime.now();
 
   /// Load Stations (later from API)
@@ -73,10 +72,7 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   /// Update Trip Type
-  void updateTripType(String type) {
-    tripType = type;
-    emit(HomeSuccess(stations: stations));
-  }
+
 
   /// Search Trip
   void searchTrip() {
@@ -90,7 +86,7 @@ class HomeCubit extends Cubit<HomeState> {
         from: fromStation,
         to: toStation,
         date: travelDate,
-        tripType: tripType,
+      
         stopStation: stopStations,
       ),
     );

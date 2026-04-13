@@ -18,7 +18,8 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<HomeCubit, HomeState>(
+    
+    return BlocListener<HomeCubit, HomeState>(    // Action[Navigation,Dialogs,SnackBar]
       listener: (context, state) {
         if (state is HomeSearchSuccess) {
           Navigator.push(
