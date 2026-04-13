@@ -73,7 +73,6 @@ class HomeCubit extends Cubit<HomeState> {
 
   /// Update Trip Type
 
-
   /// Search Trip
   void searchTrip() {
     if (fromStation == "From Station" || toStation == "To Station") {
@@ -86,7 +85,7 @@ class HomeCubit extends Cubit<HomeState> {
         from: fromStation,
         to: toStation,
         date: travelDate,
-      
+
         stopStation: stopStations,
       ),
     );
