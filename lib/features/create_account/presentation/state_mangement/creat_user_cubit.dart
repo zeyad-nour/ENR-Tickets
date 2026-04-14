@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:dartz/dartz.dart';
 import 'package:enr_tickets/core/services/error/failures.dart';
 import 'package:enr_tickets/features/create_account/data/model/singin_model/singin_model.dart';
 import 'package:enr_tickets/features/create_account/data/repo/signin_repo.dart';
