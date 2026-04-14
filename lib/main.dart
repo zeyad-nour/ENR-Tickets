@@ -26,9 +26,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-         RepositoryProvider<LogInRepo>(
-      create: (_) => LoginRepoImplement(ApiService(Dio())),
-    ),
+        RepositoryProvider<LogInRepo>(
+          create: (_) => LoginRepoImplement(ApiService(Dio())),
+        ),
         BlocProvider<SettingsCubit>(create: (_) => SettingsCubit()),
         BlocProvider<SeatSelectionCubit>(create: (_) => SeatSelectionCubit()),
       ],

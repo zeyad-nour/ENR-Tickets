@@ -13,16 +13,10 @@ class LogInCubit extends Cubit<LogInState> {
 
   LogInCubit(this.logInRepo) : super(LogInInitial());
 
-  Future<void> logIn({
-    required String email,
-    required String password,
-  }) async {
+  Future<void> logIn({required String email, required String password}) async {
     emit(LogInLoding());
 
-    final result = await logInRepo.logIn(
-      email: email,
-      password: password,
-    );
+    final result = await logInRepo.logIn(email: email, password: password);
 
     result.fold(
       (Failure failure) {

@@ -18,10 +18,7 @@ class LoginRepoImplement implements LogInRepo {
     try {
       final response = await apiService.post(
         endpoint: "/api/email/login",
-        data: {
-          "email": email,
-          "password": password,
-        },
+        data: {"email": email, "password": password},
       );
 
       final model = LogInModel.fromJson(response.data);

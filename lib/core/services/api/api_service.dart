@@ -20,41 +20,24 @@ class ApiService {
     required String endpoint,
     Map<String, dynamic>? query,
   }) async {
-    final response = await _dio.get(
-      endpoint,
-      queryParameters: query,
-    );
+    final response = await _dio.get(endpoint, queryParameters: query);
     return response;
   }
 
   //// Post Method
-  Future<Response> post({
-    required String endpoint,
-    dynamic data,
-  }) async {
-    final response = await _dio.post(
-      endpoint,
-      data: data,
-    );
+  Future<Response> post({required String endpoint, dynamic data}) async {
+    final response = await _dio.post(endpoint, data: data);
     return response;
   }
 
   ///// PUT Method
-  Future<Response> put({
-    required String endpoint,
-    dynamic data,
-  }) async {
-    final response = await _dio.put(
-      endpoint,
-      data: data,
-    );
+  Future<Response> put({required String endpoint, dynamic data}) async {
+    final response = await _dio.put(endpoint, data: data);
     return response;
   }
 
   //// DELETE Method
-  Future<Response> delete({
-    required String endpoint,
-  }) async {
+  Future<Response> delete({required String endpoint}) async {
     final response = await _dio.delete(endpoint);
     return response;
   }

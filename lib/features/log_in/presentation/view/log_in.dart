@@ -10,9 +10,7 @@ class LogIn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => LogInCubit(  
-        context.read<LogInRepo>(),
-      ),
+      create: (context) => LogInCubit(context.read<LogInRepo>()),
       child: Scaffold(body: BackgroundImage()),
     );
   }
