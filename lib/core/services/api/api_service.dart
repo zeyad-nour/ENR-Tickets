@@ -48,4 +48,11 @@ Future<dynamic> post({
     );
     return response.data;
   }
+  // DELETE Method
+  Future<dynamic> delete({
+    required String endpoint,
+  }) async {
+    final response = await _dio.delete(endpoint);
+    return response.data;
+  }
 }
