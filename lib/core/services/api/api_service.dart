@@ -15,6 +15,7 @@ class ApiService {
     };
   }
 
+    //// Get Method
  Future<dynamic> get({
     required String endpoint,
     Map<String, dynamic>? query,
@@ -25,5 +26,16 @@ class ApiService {
     );
     return response.data;
   }
-
+////Post Method
+Future<dynamic> post({
+    required String endpoint,
+    dynamic data,
+  }) async {
+    final response = await _dio.post(
+      endpoint,
+      data: data,
+    );
+    return response.data;
+  }
+  
 }
