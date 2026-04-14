@@ -2,13 +2,13 @@ import 'package:equatable/equatable.dart';
 
 import 'user.in_model.dart';
 
-class LogIn extends Equatable {
+class LogInModel extends Equatable {
   final String? token;
   final User? user;
 
-  const LogIn({this.token, this.user});
+  const LogInModel({this.token, this.user});
 
-  factory LogIn.fromJson(Map<String, dynamic> json) => LogIn(
+  factory LogInModel.fromJson(Map<String, dynamic> json) => LogInModel(
     token: json['token'] as String?,
     user: json['user'] == null
         ? null
