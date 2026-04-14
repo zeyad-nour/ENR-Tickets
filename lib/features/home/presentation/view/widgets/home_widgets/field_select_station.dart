@@ -14,9 +14,7 @@ class SearchField extends StatelessWidget {
         decoration: InputDecoration(
           hintText: AppStrings.of(context, "Searchstation"),
           prefixIcon: const Icon(Icons.search),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
         ),
         onChanged: onChanged,
       ),

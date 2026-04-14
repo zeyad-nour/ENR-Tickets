@@ -21,9 +21,10 @@ class _TrainLoadingState extends State<TrainLoading>
       duration: const Duration(seconds: 2),
     )..repeat();
 
-    _animation = Tween<double>(begin: -1, end: 1).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
-    );
+    _animation = Tween<double>(
+      begin: -1,
+      end: 1,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
   }
 
   @override
@@ -52,11 +53,7 @@ class _TrainLoadingState extends State<TrainLoading>
             builder: (context, child) {
               return Align(
                 alignment: Alignment(_animation.value, 0),
-                child: const Icon(
-                  Icons.train,
-                  size: 40,
-                  color: Colors.blue,
-                ),
+                child: const Icon(Icons.train, size: 40, color: Colors.blue),
               );
             },
           ),

@@ -40,7 +40,10 @@ class TripTypeSelector extends StatelessWidget {
 
         Row(
           children: [
-            Text(AppStrings.of(context, "roundTrip"), style: TextStyle(fontSize: 14)),
+            Text(
+              AppStrings.of(context, "roundTrip"),
+              style: TextStyle(fontSize: 14),
+            ),
             Radio<String>(
               value: "roundTrip",
               groupValue: selectedType,

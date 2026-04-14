@@ -7,11 +7,11 @@ part 'creat_user_state.dart';
 
 class CreatUserCubit extends Cubit<CreatUserState> {
   CreatUserCubit() : super(CreatUserInitial());
-  void createUser() async{
+  void createUser() async {
     emit(CreatUserLoading());
     try {
       //
-     await Future.delayed(Duration(seconds: 5));
+      await Future.delayed(Duration(seconds: 5));
       emit(CreatUserSuccess());
     } catch (e) {
       emit(CreatUserFailure(error: e.toString()));

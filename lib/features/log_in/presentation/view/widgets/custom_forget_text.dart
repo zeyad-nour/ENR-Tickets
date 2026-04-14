@@ -8,15 +8,20 @@ import 'package:flutter/material.dart';
 class Custom_Text_button extends StatelessWidget {
   final String title;
   final void Function() onPressed;
-  const Custom_Text_button( this.onPressed, {super.key, required this.title,required});
+  const Custom_Text_button(
+    this.onPressed, {
+    super.key,
+    required this.title,
+    required,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-         margin: EdgeInsets.only(left: 10),
-              alignment: Alignment.topLeft,
-              width: double.infinity,
-              height: 50,
+      margin: EdgeInsets.only(left: 10),
+      alignment: Alignment.topLeft,
+      width: double.infinity,
+      height: 50,
       child: TextButton(
         onPressed: onPressed,
         child: Text(
@@ -25,9 +30,7 @@ class Custom_Text_button extends StatelessWidget {
               ? Styles.textStyle19
               : Styles.textStyle19.copyWith(color: hintColorForm),
         ),
-
       ),
-      
     );
   }
 }

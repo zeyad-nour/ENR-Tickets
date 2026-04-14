@@ -15,14 +15,12 @@ class BookingBotton extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(25),
 
-      
           gradient: const LinearGradient(
             colors: [Color(0xffd32f2f), Color(0xfff44336)],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
 
-        
           boxShadow: [
             BoxShadow(
               // ignore: deprecated_member_use
@@ -47,7 +45,6 @@ class BookingBotton extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-             
                   Icon(Icons.check_circle, color: Colors.white, size: 18),
 
                   SizedBox(width: 8),

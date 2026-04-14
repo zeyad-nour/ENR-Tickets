@@ -15,11 +15,6 @@ final class ResetPasswordFailure extends ResetPasswordState {
   ResetPasswordFailure(this.errorMessage);
 }
 
-
-
-
-
-
 // Send code loding
 // send code success
 // Send code failure

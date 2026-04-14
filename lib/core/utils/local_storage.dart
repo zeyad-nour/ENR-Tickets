@@ -32,14 +32,15 @@ class LocalStorage {
     final prefs = await SharedPreferences.getInstance();
     return prefs.getString('language') ?? 'en';
   }
-      // Clear User Data{SingUp,Login,Token,...}
+
+  // Clear User Data{SingUp,Login,Token,...}
   static Future<void> clearUserData() async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.clear(); 
+    await prefs.clear();
   }
-    static Future<bool> isUserLoggedIn() async {
+
+  static Future<bool> isUserLoggedIn() async {
     final prefs = await SharedPreferences.getInstance();
     return prefs.getBool('isLoggedIn') ?? false; // افتراضياً: مش مسجل دخول
   }
-
 }

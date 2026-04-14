@@ -38,9 +38,9 @@ class SeatWidget extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: AnimatedScale(
-        scale: state == SeatState.selected ? 1.2 : 1.0, 
+        scale: state == SeatState.selected ? 1.2 : 1.0,
         duration: const Duration(milliseconds: 250),
-        curve: Curves.easeOutBack, 
+        curve: Curves.easeOutBack,
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 300),
           curve: Curves.easeInOut,

@@ -11,7 +11,6 @@ class CustomHomeLogo extends StatelessWidget {
     final bool isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Container(
-     
       color: isDark
           ? Colors.black.withOpacity(0.2) // Dark Mode
           : Colors.white.withOpacity(0.2), // Light Mode

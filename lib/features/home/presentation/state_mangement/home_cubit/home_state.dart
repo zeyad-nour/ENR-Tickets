@@ -19,18 +19,17 @@ final class HomeFailure extends HomeState {
   HomeFailure({required this.errorMessage});
 }
 
-
 final class HomeSearchSuccess extends HomeState {
   final String from;
   final String to;
   final DateTime date;
- 
+
   final List<String> stopStation;
 
   HomeSearchSuccess({
     required this.from,
     required this.to,
     required this.date,
-   required this.stopStation,
+    required this.stopStation,
   });
 }

@@ -7,7 +7,7 @@ part 'log_in_state.dart';
 
 class LogInCubit extends Cubit<LogInState> {
   LogInCubit() : super(LogInInitial());
-  void logIn( {required String password, required String email}) async {
+  void logIn({required String password, required String email}) async {
     emit(LogInLoding());
     try {
       await Future.delayed(Duration(seconds: 5));

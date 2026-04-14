@@ -15,43 +15,29 @@ class ApiService {
     };
   }
 
-    //// Get Method
- Future<dynamic> get({
+  //// Get Method
+  Future<dynamic> get({
     required String endpoint,
     Map<String, dynamic>? query,
   }) async {
-    final response = await _dio.get(
-      endpoint,
-      queryParameters: query,
-    );
+    final response = await _dio.get(endpoint, queryParameters: query);
     return response.data;
   }
-////Post Method
-Future<dynamic> post({
-    required String endpoint,
-    dynamic data,
-  }) async {
-    final response = await _dio.post(
-      endpoint,
-      data: data,
-    );
+
+  ////Post Method
+  Future<dynamic> post({required String endpoint, dynamic data}) async {
+    final response = await _dio.post(endpoint, data: data);
     return response.data;
   }
-/////  PUT Method
-  Future<dynamic> put({
-    required String endpoint,
-    dynamic data,
-  }) async {
-    final response = await _dio.put(
-      endpoint,
-      data: data,
-    );
+
+  /////  PUT Method
+  Future<dynamic> put({required String endpoint, dynamic data}) async {
+    final response = await _dio.put(endpoint, data: data);
     return response.data;
   }
+
   // DELETE Method
-  Future<dynamic> delete({
-    required String endpoint,
-  }) async {
+  Future<dynamic> delete({required String endpoint}) async {
     final response = await _dio.delete(endpoint);
     return response.data;
   }

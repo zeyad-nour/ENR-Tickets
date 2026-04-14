@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class CustomText extends StatelessWidget {
   final String title;
-  final TextStyle  stylestitle;
+  final TextStyle stylestitle;
   const CustomText({super.key, required this.title, required this.stylestitle});
 
   @override

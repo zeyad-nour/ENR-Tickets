@@ -1,5 +1,4 @@
 class Validators {
-
   static String? nameValidator(String? value) {
     if (value == null || value.isEmpty) {
       return "Name is required";
@@ -15,8 +14,9 @@ class Validators {
       return "Email is required";
     }
 
-    final emailRegex =
-        RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+\-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
+    final emailRegex = RegExp(
+      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+\-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
+    );
 
     if (!emailRegex.hasMatch(value)) {
       return "Enter valid email";
@@ -48,5 +48,4 @@ class Validators {
 
     return null;
   }
-
 }

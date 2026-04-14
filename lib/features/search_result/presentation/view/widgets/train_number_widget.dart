@@ -11,7 +11,6 @@ class TrainNumberRow extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-  
     final String trainNumberLabel = AppStrings.of(context, "trainNumber");
 
     return Row(
@@ -31,6 +30,7 @@ class TrainNumberRow extends StatelessWidget {
     );
   }
 }
+
 class TrainNumberBadge extends StatelessWidget {
   final int trainNumber;
 

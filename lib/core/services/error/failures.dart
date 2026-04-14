@@ -51,4 +51,3 @@ class ServerFailuer extends Failure {
     }
   }
 }
-

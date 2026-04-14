@@ -16,7 +16,7 @@ class FormFeildViewLogin extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        //email 
+        //email
         CustomFormFeild(
           hint: AppStrings.of(context, "email"),
           icon: Icons.email,

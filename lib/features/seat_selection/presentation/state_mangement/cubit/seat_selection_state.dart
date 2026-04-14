@@ -8,7 +8,7 @@ final class SeatSelectionInitial extends SeatSelectionState {}
 // status spechial for Api
 class SeatSelectionLoading extends SeatSelectionState {}
 
-class SeatSelectionFailure extends SeatSelectionState {       
+class SeatSelectionFailure extends SeatSelectionState {
   final String error;
   SeatSelectionFailure(this.error);
 }
@@ -19,8 +19,3 @@ final class SeatSelectionLoaded extends SeatSelectionState {
 
   SeatSelectionLoaded({required this.seats});
 }
-
-
-
-
-

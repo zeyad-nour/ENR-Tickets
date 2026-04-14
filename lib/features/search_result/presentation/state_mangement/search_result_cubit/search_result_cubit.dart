@@ -29,9 +29,9 @@ class SearchResultCubit extends Cubit<SearchResultState> {
 
       // Simulation fetch data from API
       await Future.delayed(Duration(seconds: 5));
-    
+
       if (isClosed) return;
-      
+
       // is List of Tickets (or Availabel Trains)
       final trains = <TrainInfo>[
         TrainInfo(

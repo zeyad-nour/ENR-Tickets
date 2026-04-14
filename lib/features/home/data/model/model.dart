@@ -23,6 +23,7 @@ class TrainInfo {
     required this.arriveTime,
     required this.departDate,
     required this.arriveDate,
-    required this.duration, required this.stopeStations,
+    required this.duration,
+    required this.stopeStations,
   });
 }
