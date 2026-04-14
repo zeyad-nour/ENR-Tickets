@@ -34,20 +34,22 @@ class ServerFailuer extends Failure {
   }
 
   factory ServerFailuer.fromResponse(int statusCode, dynamic response) {
+    if (response == null) {
+      return ServerFailuer("Unexpected server error");
+    }
+
     if (statusCode == 400 || statusCode == 401 || statusCode == 403) {
-      return ServerFailuer(response['error']['message']);
+      return ServerFailuer(
+        response['message'] ?? response['msg'] ?? "Authentication Error",
+      );
     } else if (statusCode == 404) {
       return ServerFailuer("Your Request not Found, Please try later");
     } else if (statusCode == 500) {
       return ServerFailuer("Internal Server Error, Please try later");
     } else if (statusCode == 429) {
-      return ServerFailuer(
-        "The Server has Received too many requsts please wait and click on the refresh icon",
-      );
+      return ServerFailuer("Too many requests, try again later");
     } else {
-      return ServerFailuer(
-        "Opps there was an Error, Please click on the refresh icon",
-      );
+      return ServerFailuer("Unexpected Error occurred");
     }
   }
 }
