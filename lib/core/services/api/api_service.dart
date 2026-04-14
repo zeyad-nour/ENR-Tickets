@@ -37,5 +37,15 @@ Future<dynamic> post({
     );
     return response.data;
   }
-  
+/////  PUT Method
+  Future<dynamic> put({
+    required String endpoint,
+    dynamic data,
+  }) async {
+    final response = await _dio.put(
+      endpoint,
+      data: data,
+    );
+    return response.data;
+  }
 }
