@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:enr_tickets/core/services/api/api_service.dart';
 import 'package:enr_tickets/core/utils/local_storage.dart';
+import 'package:enr_tickets/features/create_account/data/repo/signin_repo.dart';
+import 'package:enr_tickets/features/create_account/data/repo/signin_repo_implement.dart';
 import 'package:enr_tickets/features/create_account/presentation/view/create_account.dart';
 import 'package:enr_tickets/features/log_in/data/repo/login_repo.dart';
 import 'package:enr_tickets/features/log_in/data/repo/login_repo_implement.dart';
@@ -26,6 +28,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        RepositoryProvider<SigninRepo>(
+          create: (_) => SigninRepoImplement(ApiService(Dio())),
+        ),
         RepositoryProvider<LogInRepo>(
           create: (_) => LoginRepoImplement(ApiService(Dio())),
         ),

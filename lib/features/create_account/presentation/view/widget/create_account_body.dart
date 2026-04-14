@@ -84,7 +84,12 @@ class _CreateAccountBodyState extends State<CreateAccountBody> {
                         title: AppStrings.of(context, "createNewAccount"),
                         onTap: () {
                           if (formKey.currentState!.validate()) {
-                            cubit.createUser();
+                            cubit.createUser(
+                              name: nameController.text,
+                              email: emailController.text,
+                              phone: phoneController.text,
+                              password: passwordController.text,
+                            );
                           }
                         },
                       ),
