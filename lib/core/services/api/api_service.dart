@@ -15,5 +15,15 @@ class ApiService {
     };
   }
 
+ Future<dynamic> get({
+    required String endpoint,
+    Map<String, dynamic>? query,
+  }) async {
+    final response = await _dio.get(
+      endpoint,
+      queryParameters: query,
+    );
+    return response.data;
+  }
 
 }
