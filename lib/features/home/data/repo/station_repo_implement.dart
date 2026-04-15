@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:enr_tickets/core/services/api/api_service.dart';
+import 'package:enr_tickets/core/services/api/endpoints.dart';
 import 'package:enr_tickets/features/home/data/model/station_model/station_model.dart';
 import 'package:enr_tickets/features/home/data/repo/station_repo.dart';
 
@@ -12,7 +13,7 @@ class StationRepoImplement implements StationRepo {
   Future<List<StationModel>> getStations() async {
     try {
       final response = await apiService.get(
-        endpoint: "/api/v1/user/stations",
+        endpoint: EndPoints.getStations,
       );
 
       final data = response.data as List;
@@ -21,7 +22,9 @@ class StationRepoImplement implements StationRepo {
           .map((json) => StationModel.fromJson(json))
           .toList();
     } on DioException catch (e) {
-      throw Exception(e.response?.data['msg'] ?? "Something went wrong");
+      throw Exception(
+        e.response?.data['msg'] ?? "Something went wrong",
+      );
     } catch (e) {
       throw Exception(e.toString());
     }
