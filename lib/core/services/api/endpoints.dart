@@ -2,8 +2,8 @@ class EndPoints {
   static const String baseUrl = "http://10.0.2.2:5000";
 
   /// 📧 Auth
-  static const String signup = "/api/email/signup";
-  static const String login = "/api/email/login";
+  static const String signup = "/api/email/signup"; //done
+  static const String login = "/api/email/login"; //done
   static const String forgetPassword = "/api/email/login-forget-password";
   static const String resetPassword = "/api/email/reset-password";
 

@@ -1,4 +1,5 @@
 part of 'creat_user_cubit.dart';
+
 @immutable
 sealed class CreatUserState {}
 

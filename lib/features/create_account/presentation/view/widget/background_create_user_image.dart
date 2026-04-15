@@ -13,7 +13,8 @@ class BackgroundCreateUserImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => CreatUserCubit(SigninRepoImplement(ApiService(Dio()))),
+      create: (context) =>
+          CreatUserCubit(SigninRepoImplement(ApiService(Dio()))),
       child: Stack(
         children: [
           Positioned.fill(
