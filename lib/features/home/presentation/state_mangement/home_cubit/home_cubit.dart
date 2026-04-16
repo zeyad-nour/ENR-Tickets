@@ -1,12 +1,15 @@
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:bloc/bloc.dart';
+import 'package:enr_tickets/features/home/data/repo/station_repo.dart';
 import 'package:meta/meta.dart';
 
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
-  HomeCubit() : super(HomeInitial());
+    final StationRepo stationRepo;
+
+  HomeCubit(this.stationRepo) : super(HomeInitial());
 
   /// Stations list
   List<String> stations = [];
@@ -37,20 +40,12 @@ class HomeCubit extends Cubit<HomeState> {
     try {
       emit(HomeLoding());
 
-      await Future.delayed(const Duration(seconds: 2));
+final result = await stationRepo.getStations();
+    stations = result.map((e) => e.name).toList();
 
-      stations = [
-        "Cairo",
-        "Giza",
-        "Alexandria",
-        "Tanta",
-        "Mansoura",
-        "Assiut",
-        "Sohag",
-        "Qena",
-        "Luxor",
-        "Aswan",
-      ];
+   
+
+
 
       emit(HomeSuccess(stations: stations));
     } catch (e) {

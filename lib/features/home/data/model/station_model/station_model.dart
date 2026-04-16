@@ -1,18 +1,21 @@
 import 'package:equatable/equatable.dart';
 
 class StationModel extends Equatable {
-  final bool? success;
-  final String? msg;
+  final String id;
+  final String name;
 
-  const StationModel({this.success, this.msg});
+  const StationModel({
+    required this.id,
+    required this.name,
+  });
 
-  factory StationModel.fromJson(Map<String, dynamic> json) => StationModel(
-    success: json['success'] as bool?,
-    msg: json['msg'] as String?,
-  );
-
-  Map<String, dynamic> toJson() => {'success': success, 'msg': msg};
+  factory StationModel.fromJson(Map<String, dynamic> json) {
+    return StationModel(
+      id: json['_id'] ?? json['id'] ?? '',
+      name: json['name'] ?? '',
+    );
+  }
 
   @override
-  List<Object?> get props => [success, msg];
+  List<Object?> get props => [id, name];
 }

@@ -1,5 +1,6 @@
 import 'package:enr_tickets/core/utils/app_strings.dart';
 import 'package:enr_tickets/core/utils/colors.dart';
+import 'package:enr_tickets/features/home/data/repo/station_repo.dart';
 import 'package:enr_tickets/features/home/presentation/state_mangement/home_cubit/home_cubit.dart';
 import 'package:enr_tickets/features/home/presentation/view/pages/home_page.dart';
 import 'package:enr_tickets/features/my_tickets/presentation/view/my_tickets_page.dart';
@@ -32,7 +33,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HomeCubit(),
+      create: (context) => HomeCubit( context.read<StationRepo>())..getStations(),
       child: Scaffold(
         body: IndexedStack(index: _currentIndex, children: _pages),
         bottomNavigationBar: BottomNavigationBar(
