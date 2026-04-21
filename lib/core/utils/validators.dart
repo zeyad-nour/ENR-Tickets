@@ -30,8 +30,18 @@ class Validators {
       return "Phone number required";
     }
 
-    if (value.length != 11) {
-      return "Enter valid phone number";
+    if (!value.startsWith('+')) {
+      return "Phone must start with + country code";
+    }
+
+    final digits = value.substring(1);
+
+    if (!RegExp(r'^[0-9]+$').hasMatch(digits)) {
+      return "Phone must contain only numbers after +";
+    }
+
+    if (digits.length < 10 || digits.length > 15) {
+      return "Enter valid international phone number";
     }
 
     return null;

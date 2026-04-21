@@ -18,8 +18,9 @@ class SigninRepoImplement implements SigninRepo {
     required String password,
   }) async {
     try {
+      print("PHONE SENT => $phone");
       final response = await apiService.post(
-        endpoint: "/api/email/signup",
+        endpoint: "/email/signup",
         data: {
           "name": name,
           "email": email,
