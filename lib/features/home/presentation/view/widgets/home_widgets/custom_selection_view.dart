@@ -9,14 +9,14 @@ import 'package:flutter/material.dart';
 class CustomSelectionView extends StatefulWidget {
   final String fromStation;
   final String toStation;
-
+ final List<String> stations;
   final Function(String from, String to) onStationsChanged;
 
   const CustomSelectionView({
     super.key,
     required this.fromStation,
     required this.toStation,
-    required this.onStationsChanged,
+    required this.onStationsChanged, required this.stations,
   });
 
   @override
@@ -24,18 +24,7 @@ class CustomSelectionView extends StatefulWidget {
 }
 
 class _CustomSelectionViewState extends State<CustomSelectionView> {
-  final List<String> stations = [
-    "Cairo",
-    "Giza",
-    "Alexandria",
-    "Tanta",
-    "Mansoura",
-    "Assiut",
-    "Sohag",
-    "Qena",
-    "Luxor",
-    "Aswan",
-  ];
+ 
 
   late String fromStation;
   late String toStation;
@@ -45,6 +34,7 @@ class _CustomSelectionViewState extends State<CustomSelectionView> {
     super.initState();
     fromStation = widget.fromStation;
     toStation = widget.toStation;
+    print(widget.stations);
   }
 
   void updateStations() {
@@ -61,7 +51,7 @@ class _CustomSelectionViewState extends State<CustomSelectionView> {
             showStationsBottomSheet(
               selectedStation: fromStation,
               context: context,
-              stations: stations,
+              stations: widget.stations,
               onStationSelected: (station) {
                 setState(() {
                   fromStation = station;
@@ -133,7 +123,7 @@ class _CustomSelectionViewState extends State<CustomSelectionView> {
             showStationsBottomSheet(
               selectedStation: toStation,
               context: context,
-              stations: stations,
+              stations:widget.stations,
               onStationSelected: (station) {
                 setState(() {
                   toStation = station;

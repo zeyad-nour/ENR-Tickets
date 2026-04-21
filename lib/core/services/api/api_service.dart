@@ -17,29 +17,16 @@ class ApiService {
     };
 
     /// 🔥 INTERCEPTOR (IMPORTANT)
-    _dio.interceptors.add(
-      InterceptorsWrapper(
-        onRequest: (options, handler) async {
-          final token = await LocalStorage.getToken();
+   _dio.interceptors.add(
+  InterceptorsWrapper(
+    onRequest: (options, handler) {
+      // احذف أي Authorization
+      options.headers.remove("Authorization");
 
-          if (token != null && token.isNotEmpty) {
-            options.headers["Authorization"] = "Bearer $token";
-          }
-
-          return handler.next(options);
-        },
-
-        /// 🔥 Handle errors globally
-        onError: (DioException error, handler) {
-          if (error.response?.statusCode == 401) {
-            print("❌ Unauthorized - token expired or missing");
-            // هنا ممكن تعمل logout تلقائي
-          }
-
-          return handler.next(error);
-        },
-      ),
-    );
+      return handler.next(options);
+    },
+  ),
+);
   }
 
   /// GET

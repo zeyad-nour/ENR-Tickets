@@ -74,6 +74,7 @@ class HomePage extends StatelessWidget {
                       onStationsChanged: (from, to) {
                         cubit.updateStations(from, to);
                       },
+                      stations: cubit.stations,
                     ),
 
                     const Gap(40),

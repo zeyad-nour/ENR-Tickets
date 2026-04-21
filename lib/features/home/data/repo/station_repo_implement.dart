@@ -14,13 +14,19 @@ class StationRepoImplement implements StationRepo {
     try {
       final response = await apiService.get(endpoint: EndPoints.getStations);
 
-      final data = response.data['data'] as List;
+      print("RESPONSE = ${response.data}");
 
-      return data.map((json) => StationModel.fromJson(json)).toList();
+      final raw = response.data;
+
+      final List list = raw is List
+          ? raw
+          : raw['data'] is List
+          ? raw['data']
+          : [];
+
+      return list.map((json) => StationModel.fromJson(json)).toList();
     } on DioException catch (e) {
       throw Exception(e.response?.data['msg'] ?? "Something went wrong");
-    } catch (e) {
-      throw Exception(e.toString());
     }
   }
 }
