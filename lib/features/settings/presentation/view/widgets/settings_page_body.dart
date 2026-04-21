@@ -134,7 +134,7 @@ class SettingsPageBody extends StatelessWidget {
               dialogType: DialogType.noHeader,
 
               btnOkOnPress: () async {
-                await LocalStorage.clearUserData();
+                await LocalStorage.logout();
 
                 Navigator.of(context).pushAndRemoveUntil(
                   MaterialPageRoute(builder: (context) => LogIn()),

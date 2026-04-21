@@ -51,7 +51,7 @@ class SettingsCubit extends Cubit<SettingsState> {
 
   Future<void> logout() async {
     // مسح أي بيانات مستخدم محلية
-    await LocalStorage.clearUserData(); // دالة افتراضية امسح فيها بيانات المستخدم
+    await LocalStorage.logout(); // دالة افتراضية امسح فيها بيانات المستخدم
 
     // إرسال الحالة للـ UI
     emit(SettingsLogout());

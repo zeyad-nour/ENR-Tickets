@@ -11,16 +11,17 @@ import 'package:enr_tickets/features/home/presentation/view/home_view.dart';
 import 'package:enr_tickets/features/log_in/data/repo/login_repo.dart';
 import 'package:enr_tickets/features/log_in/data/repo/login_repo_implement.dart';
 import 'package:enr_tickets/features/settings/presentation/state_mangement/settings_cubit/settings_cubit.dart';
-import 'package:enr_tickets/features/home/presentation/view/pages/home_page.dart';
 import 'package:enr_tickets/features/seat_selection/presentation/state_mangement/cubit/seat_selection_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-void main() async {
+Future <void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   bool loggedIn = await LocalStorage.isUserLoggedIn();
-  runApp(MyApp(loggedIn: loggedIn));
+    final token = await LocalStorage.getToken();
+
+  runApp(MyApp(loggedIn: token!=null&&token.isNotEmpty));
 }
 
 class MyApp extends StatelessWidget {

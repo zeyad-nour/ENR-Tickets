@@ -17,11 +17,16 @@ class ApiService {
     };
 
     /// 🔥 INTERCEPTOR (IMPORTANT)
-   _dio.interceptors.add(
+ _dio.interceptors.add(
   InterceptorsWrapper(
-    onRequest: (options, handler) {
-      // احذف أي Authorization
-      options.headers.remove("Authorization");
+    onRequest: (options, handler) async {
+      final token = await LocalStorage.getToken();
+
+      print("🔥 TOKEN IN REQUEST = $token");
+
+      if (token != null && token.isNotEmpty) {
+        options.headers['Authorization'] = 'Bearer $token';
+      }
 
       return handler.next(options);
     },

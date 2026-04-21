@@ -30,8 +30,8 @@ class LogInCubit extends Cubit<LogInState> {
       (LogInModel model) async {
         // ✅ Save auth data
         if (model.token != null && model.token!.isNotEmpty) {
-          await LocalStorage.saveToken(model.token!);
-          await LocalStorage.setLoginState(true);
+         
+         await LocalStorage.saveToken(model.token!);
         }
 
         emit(LogInSuccess(model: model));
