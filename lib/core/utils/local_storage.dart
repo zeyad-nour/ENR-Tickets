@@ -2,15 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LocalStorage {
-  // ================= TOKEN =================
+  // ================= KEYS =================
   static const String _tokenKey = 'token';
   static const String _loginKey = 'isLoggedIn';
+  static const String _themeKey = 'theme_mode';
+  static const String _langKey = 'language';
 
+  // ================= TOKEN =================
   static Future<void> saveToken(String token) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString(_tokenKey, token);
 
-    /// optional: mark user logged in
+    // 🔥 مهم جدًا: أول ما يتسجل توكن اعتبر المستخدم logged in
     await prefs.setBool(_loginKey, true);
   }
 
@@ -25,20 +28,25 @@ class LocalStorage {
   }
 
   // ================= LOGIN STATUS =================
+  static Future<void> setLoginState(bool value) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool(_loginKey, value);
+  }
+
   static Future<bool> isUserLoggedIn() async {
     final prefs = await SharedPreferences.getInstance();
     return prefs.getBool(_loginKey) ?? false;
   }
 
-  // ================= THEME MODE =================
+  // ================= THEME =================
   static Future<void> saveThemeMode(ThemeMode mode) async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setString('theme_mode', mode.toString());
+    await prefs.setString(_themeKey, mode.toString());
   }
 
   static Future<ThemeMode> getThemeMode() async {
     final prefs = await SharedPreferences.getInstance();
-    final modeStr = prefs.getString('theme_mode');
+    final modeStr = prefs.getString(_themeKey);
 
     switch (modeStr) {
       case 'ThemeMode.light':
@@ -53,12 +61,12 @@ class LocalStorage {
   // ================= LANGUAGE =================
   static Future<void> saveLanguage(String langCode) async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setString('language', langCode);
+    await prefs.setString(_langKey, langCode);
   }
 
   static Future<String> getLanguage() async {
     final prefs = await SharedPreferences.getInstance();
-    return prefs.getString('language') ?? 'en';
+    return prefs.getString(_langKey) ?? 'en';
   }
 
   // ================= CLEAR ALL =================
