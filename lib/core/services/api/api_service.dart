@@ -1,11 +1,12 @@
 import 'package:dio/dio.dart';
 
 class ApiService {
-  final String _baseUrl = "http://10.0.2.2:5000";
+  final String _baseUrl = "http://10.0.2.2:5000/api/v1";
   final Dio _dio;
 
   ApiService(this._dio) {
     _dio.options.baseUrl = _baseUrl;
+
     _dio.options.connectTimeout = const Duration(seconds: 20);
     _dio.options.receiveTimeout = const Duration(seconds: 20);
 
@@ -15,30 +16,50 @@ class ApiService {
     };
   }
 
-  //// Get Method
+  /// GET
   Future<Response> get({
     required String endpoint,
     Map<String, dynamic>? query,
   }) async {
-    final response = await _dio.get(endpoint, queryParameters: query);
-    return response;
+    try {
+      return await _dio.get(endpoint, queryParameters: query);
+    } catch (e) {
+      rethrow;
+    }
   }
 
-  //// Post Method
-  Future<Response> post({required String endpoint, dynamic data}) async {
-    final response = await _dio.post(endpoint, data: data);
-    return response;
+  /// POST
+  Future<Response> post({
+    required String endpoint,
+    dynamic data,
+  }) async {
+    try {
+      return await _dio.post(endpoint, data: data);
+    } catch (e) {
+      rethrow;
+    }
   }
 
-  ///// PUT Method
-  Future<Response> put({required String endpoint, dynamic data}) async {
-    final response = await _dio.put(endpoint, data: data);
-    return response;
+  /// PUT
+  Future<Response> put({
+    required String endpoint,
+    dynamic data,
+  }) async {
+    try {
+      return await _dio.put(endpoint, data: data);
+    } catch (e) {
+      rethrow;
+    }
   }
 
-  //// DELETE Method
-  Future<Response> delete({required String endpoint}) async {
-    final response = await _dio.delete(endpoint);
-    return response;
+  /// DELETE
+  Future<Response> delete({
+    required String endpoint,
+  }) async {
+    try {
+      return await _dio.delete(endpoint);
+    } catch (e) {
+      rethrow;
+    }
   }
 }
