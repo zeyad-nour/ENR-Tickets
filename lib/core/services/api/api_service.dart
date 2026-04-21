@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:enr_tickets/core/utils/local_storage.dart';
 
 class ApiService {
   final String _baseUrl = "http://10.0.2.2:5000/api/v1";
@@ -14,6 +15,31 @@ class ApiService {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
     };
+
+    /// 🔥 INTERCEPTOR (IMPORTANT)
+    _dio.interceptors.add(
+      InterceptorsWrapper(
+        onRequest: (options, handler) async {
+          final token = await LocalStorage.getToken();
+
+          if (token != null && token.isNotEmpty) {
+            options.headers["Authorization"] = "Bearer $token";
+          }
+
+          return handler.next(options);
+        },
+
+        /// 🔥 Handle errors globally
+        onError: (DioException error, handler) {
+          if (error.response?.statusCode == 401) {
+            print("❌ Unauthorized - token expired or missing");
+            // هنا ممكن تعمل logout تلقائي
+          }
+
+          return handler.next(error);
+        },
+      ),
+    );
   }
 
   /// GET
@@ -21,11 +47,7 @@ class ApiService {
     required String endpoint,
     Map<String, dynamic>? query,
   }) async {
-    try {
-      return await _dio.get(endpoint, queryParameters: query);
-    } catch (e) {
-      rethrow;
-    }
+    return await _dio.get(endpoint, queryParameters: query);
   }
 
   /// POST
@@ -33,11 +55,7 @@ class ApiService {
     required String endpoint,
     dynamic data,
   }) async {
-    try {
-      return await _dio.post(endpoint, data: data);
-    } catch (e) {
-      rethrow;
-    }
+    return await _dio.post(endpoint, data: data);
   }
 
   /// PUT
@@ -45,21 +63,13 @@ class ApiService {
     required String endpoint,
     dynamic data,
   }) async {
-    try {
-      return await _dio.put(endpoint, data: data);
-    } catch (e) {
-      rethrow;
-    }
+    return await _dio.put(endpoint, data: data);
   }
 
   /// DELETE
   Future<Response> delete({
     required String endpoint,
   }) async {
-    try {
-      return await _dio.delete(endpoint);
-    } catch (e) {
-      rethrow;
-    }
+    return await _dio.delete(endpoint);
   }
 }
