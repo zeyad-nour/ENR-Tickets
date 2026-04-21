@@ -7,6 +7,7 @@ import 'package:enr_tickets/features/create_account/presentation/view/create_acc
 import 'package:enr_tickets/features/home/data/repo/station_repo.dart';
 import 'package:enr_tickets/features/home/data/repo/station_repo_implement.dart';
 import 'package:enr_tickets/features/home/presentation/state_mangement/home_cubit/home_cubit.dart';
+import 'package:enr_tickets/features/home/presentation/view/home_view.dart';
 import 'package:enr_tickets/features/log_in/data/repo/login_repo.dart';
 import 'package:enr_tickets/features/log_in/data/repo/login_repo_implement.dart';
 import 'package:enr_tickets/features/settings/presentation/state_mangement/settings_cubit/settings_cubit.dart';
@@ -31,30 +32,24 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiRepositoryProvider(
       providers: [
-    RepositoryProvider<SigninRepo>(
-      create: (_) => SigninRepoImplement(ApiService(Dio())),
-    ),
-    RepositoryProvider<LogInRepo>(
-      create: (_) => LoginRepoImplement(ApiService(Dio())),
-    ),
+        RepositoryProvider<SigninRepo>(
+          create: (_) => SigninRepoImplement(ApiService(Dio())),
+        ),
+        RepositoryProvider<LogInRepo>(
+          create: (_) => LoginRepoImplement(ApiService(Dio())),
+        ),
 
-    RepositoryProvider<StationRepo>(
-      create: (_) => StationRepoImplement(ApiService(Dio())),
-    ),
+        RepositoryProvider<StationRepo>(
+          create: (_) => StationRepoImplement(ApiService(Dio())),
+        ),
 
-    BlocProvider<SettingsCubit>(
-      create: (_) => SettingsCubit(),
-    ),
+        BlocProvider<SettingsCubit>(create: (_) => SettingsCubit()),
 
-    BlocProvider<SeatSelectionCubit>(
-      create: (_) => SeatSelectionCubit(),
-    ),
+        BlocProvider<SeatSelectionCubit>(create: (_) => SeatSelectionCubit()),
 
-    BlocProvider<HomeCubit>(
-      create: (context) => HomeCubit(
-        context.read<StationRepo>(),
-      ),
-    ),
+        BlocProvider<HomeCubit>(
+          create: (context) => HomeCubit(context.read<StationRepo>()),
+        ),
       ],
       child: MultiBlocProvider(
         providers: [
@@ -106,7 +101,7 @@ class MyApp extends StatelessWidget {
                 ),
               ),
 
-              home: loggedIn ? const HomePage() : const CreateAccount(),
+              home: loggedIn ? const HomeView() : const CreateAccount(),
             );
           },
         ),

@@ -12,19 +12,13 @@ class StationRepoImplement implements StationRepo {
   @override
   Future<List<StationModel>> getStations() async {
     try {
-      final response = await apiService.get(
-        endpoint: EndPoints.getStations,
-      );
+      final response = await apiService.get(endpoint: EndPoints.getStations);
 
-      final data = response.data as List;
+      final data = response.data['data'] as List;
 
-      return data
-          .map((json) => StationModel.fromJson(json))
-          .toList();
+      return data.map((json) => StationModel.fromJson(json)).toList();
     } on DioException catch (e) {
-      throw Exception(
-        e.response?.data['msg'] ?? "Something went wrong",
-      );
+      throw Exception(e.response?.data['msg'] ?? "Something went wrong");
     } catch (e) {
       throw Exception(e.toString());
     }
