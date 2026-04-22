@@ -7,7 +7,7 @@ import 'package:meta/meta.dart';
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
-    final StationRepo stationRepo;
+  final StationRepo stationRepo;
 
   HomeCubit(this.stationRepo) : super(HomeInitial());
 
@@ -40,12 +40,14 @@ class HomeCubit extends Cubit<HomeState> {
     try {
       emit(HomeLoding());
 
-final result = await stationRepo.getStations();
-    stations = result.map((e) => e.name).toList();
+      final result = await stationRepo.getStations();
+      stations = result.map((e) => e.name).toList();
 
-   
-
-
+      if (result.isEmpty) {
+        stations = ["Cairo", "Giza", "Sohag", "Luxor"];
+      } else {
+        stations = result.map((e) => e.name).toList();
+      }
 
       emit(HomeSuccess(stations: stations));
     } catch (e) {
