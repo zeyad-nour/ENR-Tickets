@@ -11,7 +11,7 @@ class EndPoints {
   /// 👤 Users
   static const String getUserTickets = "/users/Ticket/";
   static const String getStations = "/users/stations";
-  static const String getTrips = "/users/trips";
+  static const String searchTrips = "/users/trip/search";
   static const String getSeats = "/users/seats";
   static const String holdSeat = "/users/hold-seat";
   static const String createBooking = "/users/createBooking";
