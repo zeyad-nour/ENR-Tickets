@@ -4,6 +4,7 @@ class EndPoints {
   /// 📧 Auth
   static const String signup = "/email/signup";
   static const String login = "/email/login";
+  static const String verfy = "/email/verify-email";
   static const String forgetPassword = "/email/login-forget-password";
   static const String resetPassword = "/email/reset-password";
 
