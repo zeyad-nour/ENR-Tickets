@@ -1,5 +1,5 @@
 class EndPoints {
-  static const String baseUrl = "http://10.0.2.2:5000/api/v1";
+  static const String baseUrl = "https://trainbookingapp.fly.dev/api/v1";
 
   /// 📧 Auth
   static const String signup = "/email/signup";
@@ -21,7 +21,7 @@ class EndPoints {
   static const String updateTrip = "/admin/trip/update/";
   static const String deleteTrip = "/admin/trip/delete/";
   static const String getTripById = "/admin/trip/";
-  static const String getTripsByStation = "/admin/trip/station/";
+  static const String getTripsByStation = "/admin/trip/station/"; 
 
   /// 🚄 Admin - Trains
   static const String createTrain = "/admin/train/create";
