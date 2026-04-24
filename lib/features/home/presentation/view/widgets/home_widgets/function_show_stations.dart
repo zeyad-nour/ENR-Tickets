@@ -21,7 +21,7 @@ void showStationsBottomSheet({
         curve: Curves.easeOut,
         builder: (context, value, child) {
           return Transform.translate(
-            offset: Offset(0, 200 * (1 - value)), // يظهر من الأسفل تدريجيًا
+            offset: Offset(0, 200 * (1 - value)), 
             child: Opacity(
               opacity: value,
               child: StatefulBuilder(

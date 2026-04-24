@@ -9,14 +9,15 @@ import 'package:flutter/material.dart';
 class CustomSelectionView extends StatefulWidget {
   final String fromStation;
   final String toStation;
- final List<String> stations;
+  final List<String> stations;
   final Function(String from, String to) onStationsChanged;
 
   const CustomSelectionView({
     super.key,
     required this.fromStation,
     required this.toStation,
-    required this.onStationsChanged, required this.stations,
+    required this.onStationsChanged,
+    required this.stations,
   });
 
   @override
@@ -24,8 +25,6 @@ class CustomSelectionView extends StatefulWidget {
 }
 
 class _CustomSelectionViewState extends State<CustomSelectionView> {
- 
-
   late String fromStation;
   late String toStation;
 
@@ -34,11 +33,32 @@ class _CustomSelectionViewState extends State<CustomSelectionView> {
     super.initState();
     fromStation = widget.fromStation;
     toStation = widget.toStation;
-    print(widget.stations);
   }
 
   void updateStations() {
     widget.onStationsChanged(fromStation, toStation);
+  }
+
+  void _openStationsSheet({
+    required String selected,
+    required Function(String) onSelect,
+  }) {
+    // 🔥 هنا الحل
+    if (widget.stations.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("No stations found"),
+        ),
+      );
+      return;
+    }
+
+    showStationsBottomSheet(
+      selectedStation: selected,
+      context: context,
+      stations: widget.stations,
+      onStationSelected: onSelect,
+    );
   }
 
   @override
@@ -48,11 +68,9 @@ class _CustomSelectionViewState extends State<CustomSelectionView> {
         /// FROM
         GestureDetector(
           onTap: () {
-            showStationsBottomSheet(
-              selectedStation: fromStation,
-              context: context,
-              stations: widget.stations,
-              onStationSelected: (station) {
+            _openStationsSheet(
+              selected: fromStation,
+              onSelect: (station) {
                 setState(() {
                   fromStation = station;
                 });
@@ -102,7 +120,7 @@ class _CustomSelectionViewState extends State<CustomSelectionView> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(100),
                   color: Colors.grey[200],
-                  boxShadow: [
+                  boxShadow: const [
                     BoxShadow(
                       color: Colors.black12,
                       blurRadius: 5,
@@ -110,7 +128,11 @@ class _CustomSelectionViewState extends State<CustomSelectionView> {
                     ),
                   ],
                 ),
-                child: Icon(Icons.swap_vert, color: buttonColor, size: 30),
+                child: const Icon(
+                  Icons.swap_vert,
+                  color: buttonColor,
+                  size: 30,
+                ),
               ),
             ),
             DashesCustom(),
@@ -120,11 +142,9 @@ class _CustomSelectionViewState extends State<CustomSelectionView> {
         /// TO
         GestureDetector(
           onTap: () {
-            showStationsBottomSheet(
-              selectedStation: toStation,
-              context: context,
-              stations:widget.stations,
-              onStationSelected: (station) {
+            _openStationsSheet(
+              selected: toStation,
+              onSelect: (station) {
                 setState(() {
                   toStation = station;
                 });
@@ -143,7 +163,10 @@ class _CustomSelectionViewState extends State<CustomSelectionView> {
                 child: FadeTransition(opacity: animation, child: child),
               );
             },
-            child: SelectionStation(key: ValueKey(toStation), title: toStation),
+            child: SelectionStation(
+              key: ValueKey(toStation),
+              title: toStation,
+            ),
           ),
         ),
       ],
