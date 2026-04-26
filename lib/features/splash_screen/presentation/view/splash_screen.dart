@@ -7,6 +7,8 @@ import 'package:enr_tickets/features/splash_screen/presentation/view/wave_painte
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
   @override
   State<SplashScreen> createState() => _SplashScreenState();
 }
@@ -52,8 +54,8 @@ class _SplashScreenState extends State<SplashScreen>
         context,
         PageRouteBuilder(
           transitionDuration: Duration(milliseconds: 600),
-          pageBuilder: (_, __, ___) => HomeView(),
-          transitionsBuilder: (_, animation, __, child) {
+          pageBuilder: (_, _, _) => HomeView(),
+          transitionsBuilder: (_, animation, _, child) {
             return FadeTransition(opacity: animation, child: child);
           },
         ),
@@ -61,7 +63,7 @@ class _SplashScreenState extends State<SplashScreen>
     });
   }
 
-  String loading() => "Loading" + "." * dots;
+  String loading() => "Loading${"." * dots}";
 
   @override
   void dispose() {
@@ -85,7 +87,7 @@ class _SplashScreenState extends State<SplashScreen>
 
           AnimatedBuilder(
             animation: wave,
-            builder: (_, __) {
+            builder: (_, _) {
               return CustomPaint(
                 size: Size.infinite,
                 painter: WavePainter(wave.value),
