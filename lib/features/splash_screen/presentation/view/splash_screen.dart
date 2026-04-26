@@ -1,13 +1,18 @@
+// ignore_for_file: deprecated_member_use
+
 import 'dart:async';
 import 'dart:ui';
 
 import 'package:enr_tickets/core/widget/assets.dart';
 import 'package:enr_tickets/features/home/presentation/view/home_view.dart';
+import 'package:enr_tickets/features/log_in/presentation/view/log_in.dart';
 import 'package:enr_tickets/features/splash_screen/presentation/view/wave_painter.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
+  final bool loggedIn;
+
+  const SplashScreen({super.key, required this.loggedIn});
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
@@ -21,6 +26,8 @@ class _SplashScreenState extends State<SplashScreen>
   late Animation<double> scale;
   late Animation<double> wave;
 
+  late Timer _timer; 
+
   int dots = 0;
 
   @override
@@ -29,12 +36,12 @@ class _SplashScreenState extends State<SplashScreen>
 
     scaleController = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 900),
+      duration: const Duration(milliseconds: 900),
     )..repeat(reverse: true);
 
     waveController = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 3),
+      duration: const Duration(seconds: 3),
     )..repeat();
 
     scale = Tween(begin: 0.9, end: 1.1).animate(
@@ -43,30 +50,41 @@ class _SplashScreenState extends State<SplashScreen>
 
     wave = Tween(begin: 0.0, end: 1.0).animate(waveController);
 
-    Timer.periodic(Duration(milliseconds: 500), (timer) {
+   
+    _timer = Timer.periodic(const Duration(milliseconds: 500), (timer) {
+      if (!mounted) return;
+
       setState(() {
         dots = (dots + 1) % 4;
       });
     });
 
-    Future.delayed(Duration(seconds: 3), () {
-      Navigator.pushReplacement(
-        context,
-        PageRouteBuilder(
-          transitionDuration: Duration(milliseconds: 600),
-          pageBuilder: (_, _, _) => HomeView(),
-          transitionsBuilder: (_, animation, _, child) {
-            return FadeTransition(opacity: animation, child: child);
-          },
-        ),
-      );
-    });
+    
+Future.delayed(const Duration(seconds: 3), () {
+  if (!mounted) return;
+
+  final nextScreen = widget.loggedIn
+      ? const HomeView()
+      : const LogIn(); 
+
+  Navigator.pushReplacement(
+    context,
+    PageRouteBuilder(
+      transitionDuration: const Duration(milliseconds: 600),
+      pageBuilder: (_, _, _) => nextScreen,
+      transitionsBuilder: (_, animation, _, child) {
+        return FadeTransition(opacity: animation, child: child);
+      },
+    ),
+  );
+});
   }
 
   String loading() => "Loading${"." * dots}";
 
   @override
   void dispose() {
+    _timer.cancel(); 
     scaleController.dispose();
     waveController.dispose();
     super.dispose();
@@ -115,13 +133,13 @@ class _SplashScreenState extends State<SplashScreen>
                     child: Image.asset(AssetsData.splashTow, width: 170),
                   ),
                 ),
-                SizedBox(height: 30),
+                const SizedBox(height: 30),
                 AnimatedSwitcher(
-                  duration: Duration(milliseconds: 300),
+                  duration: const Duration(milliseconds: 300),
                   child: Text(
                     loading(),
                     key: ValueKey(dots),
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 22,
                       fontWeight: FontWeight.w500,

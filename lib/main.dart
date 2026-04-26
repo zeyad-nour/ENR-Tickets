@@ -101,7 +101,7 @@ class MyApp extends StatelessWidget {
                 ),
               ),
 
-              home:SplashScreen(),
+         home: SplashScreen(loggedIn: loggedIn),
             );
           },
         ),
