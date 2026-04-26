@@ -68,7 +68,6 @@ class MyApp extends StatelessWidget {
 
             return MaterialApp(
               debugShowCheckedModeBanner: false,
-
               /// Language
               locale: cubit.locale,
               supportedLocales: const [Locale('en'), Locale('ar')],
@@ -77,7 +76,6 @@ class MyApp extends StatelessWidget {
                 GlobalWidgetsLocalizations.delegate,
                 GlobalCupertinoLocalizations.delegate,
               ],
-
               /// Theme
               themeMode: cubit.themeMode,
               theme: ThemeData(
@@ -100,7 +98,6 @@ class MyApp extends StatelessWidget {
                   bodyLarge: TextStyle(color: Colors.white),
                 ),
               ),
-
          home: SplashScreen(loggedIn: loggedIn),
             );
           },

@@ -36,23 +36,23 @@ class HomeCubit extends Cubit<HomeState> {
   DateTime travelDate = DateTime.now();
 
   /// Load Stations (later from API)
-Future<void> getStations() async {
-  emit(HomeLoding());
+  Future<void> getStations() async {
+    emit(HomeLoding());
+    print("===============================");
+    try {
+      final result = await stationRepo.getStations();
 
-  try {
-    final result = await stationRepo.getStations();
-
-    if (result.isEmpty) {
-      stations = [];
-      emit(HomeFailure(errorMessage: "No stations found"));
-    } else {
-      stations = result.map((e) => e.name).toList();
-      emit(HomeSuccess(stations: stations));
+      if (result.isEmpty) {
+        stations = [];
+        emit(HomeFailure(errorMessage: "No stations found"));
+      } else {
+        stations = result.map((e) => e.name).toList();
+        emit(HomeSuccess(stations: stations));
+      }
+    } catch (e) {
+      emit(HomeFailure(errorMessage: e.toString()));
     }
-  } catch (e) {
-    emit(HomeFailure(errorMessage: e.toString()));
   }
-}
 
   /// Update Stations (change defult value to navigator)
   void updateStations(String from, String to) {
