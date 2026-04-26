@@ -79,7 +79,9 @@ class _LogInBodyState extends State<LogInBody> {
                           if (formKey.currentState!.validate()) {
                             cubit.logIn(
                               email: emailController.text,
+
                               password: passwordController.text,
+                            
                             );
                           }
                         },

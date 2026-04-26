@@ -30,7 +30,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  
     final dio = Dio();
     final apiService = ApiService(dio);
 
@@ -48,22 +47,14 @@ class MyApp extends StatelessWidget {
       ],
       child: MultiBlocProvider(
         providers: [
-          BlocProvider<SettingsCubit>(
-            create: (_) => SettingsCubit(),
-          ),
-          BlocProvider<SeatSelectionCubit>(
-            create: (_) => SeatSelectionCubit(),
-          ),
+          BlocProvider<SettingsCubit>(create: (_) => SettingsCubit()),
+          BlocProvider<SeatSelectionCubit>(create: (_) => SeatSelectionCubit()),
           BlocProvider<HomeCubit>(
-            create: (context) =>
-                HomeCubit(context.read<StationRepo>()),
+            create: (context) => HomeCubit(context.read<StationRepo>()),
           ),
-       
         ],
         child: BlocBuilder<SettingsCubit, SettingsState>(
           builder: (context, state) {
-
-           
             final cubit = context.read<SettingsCubit>();
 
             return MaterialApp(
@@ -71,10 +62,7 @@ class MyApp extends StatelessWidget {
 
               ///  Language
               locale: cubit.locale,
-              supportedLocales: const [
-                Locale('en'),
-                Locale('ar'),
-              ],
+              supportedLocales: const [Locale('en'), Locale('ar')],
               localizationsDelegates: const [
                 GlobalMaterialLocalizations.delegate,
                 GlobalWidgetsLocalizations.delegate,
@@ -104,8 +92,8 @@ class MyApp extends StatelessWidget {
                 ),
               ),
 
-             
               home: SplashScreen(loggedIn: loggedIn),
+       
             );
           },
         ),

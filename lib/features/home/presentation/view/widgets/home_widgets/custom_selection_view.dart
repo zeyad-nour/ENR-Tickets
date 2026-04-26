@@ -44,14 +44,14 @@ class _CustomSelectionViewState extends State<CustomSelectionView> {
     required Function(String) onSelect,
   }) {
     // 🔥 هنا الحل
-    if (widget.stations.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text("No stations found"),
-        ),
-      );
-      return;
-    }
+    // if (widget.stations.isEmpty) {
+    //   ScaffoldMessenger.of(context).showSnackBar(
+    //     const SnackBar(
+    //       content: Text("No stations found"),
+    //     ),
+    //   );
+    //   return;
+    // }
 
     showStationsBottomSheet(
       selectedStation: selected,

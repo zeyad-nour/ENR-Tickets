@@ -12,7 +12,23 @@ class HomeCubit extends Cubit<HomeState> {
   HomeCubit(this.stationRepo) : super(HomeInitial());
 
   /// Stations list
-  List<String> stations = [];
+  List<String> stations = [
+    "Cairo",
+    "Giza",
+    "Beni Suef",
+    "Maghagha",
+    "Minya",
+    "Malawi",
+    "Deirut",
+    "Asyut",
+    "Tema",
+    "Tahta",
+    "Sohag",
+    "gerga",
+    "Balyna",
+    "Qena",
+    "Aswan",
+  ];
 
   /// Stop Stations
   List<String> stopStations = [
@@ -43,7 +59,6 @@ class HomeCubit extends Cubit<HomeState> {
       final result = await stationRepo.getStations();
 
       if (result.isEmpty) {
-        stations = [];
         emit(HomeFailure(errorMessage: "No stations found"));
       } else {
         stations = result.map((e) => e.name).toList();
