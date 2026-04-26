@@ -12,16 +12,17 @@ import 'package:enr_tickets/features/log_in/data/repo/login_repo.dart';
 import 'package:enr_tickets/features/log_in/data/repo/login_repo_implement.dart';
 import 'package:enr_tickets/features/settings/presentation/state_mangement/settings_cubit/settings_cubit.dart';
 import 'package:enr_tickets/features/seat_selection/presentation/state_mangement/cubit/seat_selection_cubit.dart';
+import 'package:enr_tickets/features/splash_screen/presentation/view/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-Future <void> main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  bool loggedIn = await LocalStorage.isUserLoggedIn();
-    final token = await LocalStorage.getToken();
+ 
+  final token = await LocalStorage.getToken();
 
-  runApp(MyApp(loggedIn: token!=null&&token.isNotEmpty));
+  runApp(MyApp(loggedIn: token != null && token.isNotEmpty));
 }
 
 class MyApp extends StatelessWidget {
@@ -102,7 +103,7 @@ class MyApp extends StatelessWidget {
                 ),
               ),
 
-              home: loggedIn ? const HomeView() : const CreateAccount(),
+              home:SplashScreen(),
             );
           },
         ),
@@ -110,4 +111,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-  //  home: loggedIn ? const HomePage() : const CreateAccount(),
+//  loggedIn ? const HomeView() : const CreateAccount()

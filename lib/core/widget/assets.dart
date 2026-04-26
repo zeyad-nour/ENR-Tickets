@@ -6,4 +6,6 @@ class AssetsData {
   static const String facebook = 'assets/images/facebook.jpg';
   static const String iconlogo = 'assets/images/iconlogo.jpg';
   static const String icontravel = 'assets/images/icon.png';
+  static const String splash = 'assets/images/123.jpeg';
+  static const String splashTow = 'assets/images/icon2223.png';
 }
