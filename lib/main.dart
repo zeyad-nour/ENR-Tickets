@@ -30,7 +30,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final apiService = ApiService(Dio());
+  
+    final dio = Dio();
+    final apiService = ApiService(dio);
 
     return MultiRepositoryProvider(
       providers: [
@@ -56,15 +58,18 @@ class MyApp extends StatelessWidget {
             create: (context) =>
                 HomeCubit(context.read<StationRepo>()),
           ),
+       
         ],
         child: BlocBuilder<SettingsCubit, SettingsState>(
           builder: (context, state) {
-            final cubit = context.watch<SettingsCubit>();
+
+           
+            final cubit = context.read<SettingsCubit>();
 
             return MaterialApp(
               debugShowCheckedModeBanner: false,
 
-              /// Language
+              ///  Language
               locale: cubit.locale,
               supportedLocales: const [
                 Locale('en'),
@@ -76,7 +81,7 @@ class MyApp extends StatelessWidget {
                 GlobalCupertinoLocalizations.delegate,
               ],
 
-              /// Theme
+              ///  Theme
               themeMode: cubit.themeMode,
               theme: ThemeData(
                 brightness: Brightness.light,
@@ -99,6 +104,7 @@ class MyApp extends StatelessWidget {
                 ),
               ),
 
+             
               home: SplashScreen(loggedIn: loggedIn),
             );
           },
