@@ -38,7 +38,7 @@ class HomeCubit extends Cubit<HomeState> {
   /// Load Stations (later from API)
   Future<void> getStations() async {
     emit(HomeLoding());
-    print("===============================");
+    print("===========[Geting Stations...]====================");
     try {
       final result = await stationRepo.getStations();
 

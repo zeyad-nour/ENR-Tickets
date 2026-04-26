@@ -26,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen>
   late Animation<double> scale;
   late Animation<double> wave;
 
-  late Timer _timer; 
+  late Timer _timer;
 
   int dots = 0;
 
@@ -50,7 +50,6 @@ class _SplashScreenState extends State<SplashScreen>
 
     wave = Tween(begin: 0.0, end: 1.0).animate(waveController);
 
-   
     _timer = Timer.periodic(const Duration(milliseconds: 500), (timer) {
       if (!mounted) return;
 
@@ -59,32 +58,30 @@ class _SplashScreenState extends State<SplashScreen>
       });
     });
 
-    
-Future.delayed(const Duration(seconds: 3), () {
-  if (!mounted) return;
+    Future.delayed(const Duration(seconds: 3), () {
+      if (!mounted) return;
+      _timer.cancel(); // stope timer when navigating to next screen
 
-  final nextScreen = widget.loggedIn
-      ? const HomeView()
-      : const LogIn(); 
+      final nextScreen = widget.loggedIn ? const HomeView() : const LogIn();
 
-  Navigator.pushReplacement(
-    context,
-    PageRouteBuilder(
-      transitionDuration: const Duration(milliseconds: 600),
-      pageBuilder: (_, _, _) => nextScreen,
-      transitionsBuilder: (_, animation, _, child) {
-        return FadeTransition(opacity: animation, child: child);
-      },
-    ),
-  );
-});
+      Navigator.pushReplacement(
+        context,
+        PageRouteBuilder(
+          transitionDuration: const Duration(milliseconds: 600),
+          pageBuilder: (_, _, _) => nextScreen,
+          transitionsBuilder: (_, animation, _, child) {
+            return FadeTransition(opacity: animation, child: child);
+          },
+        ),
+      );
+    });
   }
 
   String loading() => "Loading${"." * dots}";
 
   @override
   void dispose() {
-    _timer.cancel(); 
+    _timer.cancel();
     scaleController.dispose();
     waveController.dispose();
     super.dispose();

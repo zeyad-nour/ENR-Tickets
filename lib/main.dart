@@ -17,50 +17,45 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
- 
+
   final token = await LocalStorage.getToken();
 
   runApp(MyApp(loggedIn: token != null && token.isNotEmpty));
 }
 
 class MyApp extends StatelessWidget {
-  final bool loggedIn; // Storing login state
+  final bool loggedIn;
 
   const MyApp({super.key, required this.loggedIn});
 
   @override
   Widget build(BuildContext context) {
+    final apiService = ApiService(Dio());
+
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider<SigninRepo>(
-          create: (_) => SigninRepoImplement(ApiService(Dio())),
+          create: (_) => SigninRepoImplement(apiService),
         ),
         RepositoryProvider<LogInRepo>(
-          create: (_) => LoginRepoImplement(ApiService(Dio())),
+          create: (_) => LoginRepoImplement(apiService),
         ),
-
         RepositoryProvider<StationRepo>(
-          create: (_) => StationRepoImplement(ApiService(Dio())),
-        ),
-
-        BlocProvider<SettingsCubit>(create: (_) => SettingsCubit()),
-
-        BlocProvider<SeatSelectionCubit>(create: (_) => SeatSelectionCubit()),
-
-        BlocProvider<HomeCubit>(
-          create: (context) => HomeCubit(context.read<StationRepo>()),
+          create: (_) => StationRepoImplement(apiService),
         ),
       ],
       child: MultiBlocProvider(
         providers: [
-          RepositoryProvider<SigninRepo>(
-            create: (_) => SigninRepoImplement(ApiService(Dio())),
+          BlocProvider<SettingsCubit>(
+            create: (_) => SettingsCubit(),
           ),
-          RepositoryProvider<LogInRepo>(
-            create: (_) => LoginRepoImplement(ApiService(Dio())),
+          BlocProvider<SeatSelectionCubit>(
+            create: (_) => SeatSelectionCubit(),
           ),
-          BlocProvider<SettingsCubit>(create: (_) => SettingsCubit()),
-          BlocProvider<SeatSelectionCubit>(create: (_) => SeatSelectionCubit()),
+          BlocProvider<HomeCubit>(
+            create: (context) =>
+                HomeCubit(context.read<StationRepo>()),
+          ),
         ],
         child: BlocBuilder<SettingsCubit, SettingsState>(
           builder: (context, state) {
@@ -68,14 +63,19 @@ class MyApp extends StatelessWidget {
 
             return MaterialApp(
               debugShowCheckedModeBanner: false,
+
               /// Language
               locale: cubit.locale,
-              supportedLocales: const [Locale('en'), Locale('ar')],
+              supportedLocales: const [
+                Locale('en'),
+                Locale('ar'),
+              ],
               localizationsDelegates: const [
                 GlobalMaterialLocalizations.delegate,
                 GlobalWidgetsLocalizations.delegate,
                 GlobalCupertinoLocalizations.delegate,
               ],
+
               /// Theme
               themeMode: cubit.themeMode,
               theme: ThemeData(
@@ -98,7 +98,8 @@ class MyApp extends StatelessWidget {
                   bodyLarge: TextStyle(color: Colors.white),
                 ),
               ),
-         home: SplashScreen(loggedIn: loggedIn),
+
+              home: SplashScreen(loggedIn: loggedIn),
             );
           },
         ),
@@ -106,4 +107,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-//  loggedIn ? const HomeView() : const CreateAccount()
