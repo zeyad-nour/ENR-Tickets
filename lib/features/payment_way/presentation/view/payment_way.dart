@@ -1,5 +1,7 @@
 // ignore_for_file: deprecated_member_use, use_build_context_synchronously
 
+import 'package:enr_tickets/core/utils/colors.dart';
+import 'package:enr_tickets/core/widget/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -57,9 +59,12 @@ class PaymentWay extends StatelessWidget {
       create: (_) => PaymentCubit(),
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("Payment"),
+          title: Text(
+            "Payment Methods",
+            style: Styles.textStyle27.copyWith(color: Colors.white),
+          ),
           centerTitle: true,
-          backgroundColor: Colors.red,
+          backgroundColor: buttonColor,
         ),
         body: BlocConsumer<PaymentCubit, PaymentState>(
           listener: (context, state) async {

@@ -8,7 +8,7 @@ final class SearchResultInitial extends SearchResultState {}
 final class SearchResultLoading extends SearchResultState {}
 
 final class SearchResultSuccess extends SearchResultState {
-  final List<TrainInfo> trains; // نموذج بيانات كل رحلة
+  final List<TrainInfo> trains ; // نموذج بيانات كل رحلة
   SearchResultSuccess({required this.trains});
 }
 
