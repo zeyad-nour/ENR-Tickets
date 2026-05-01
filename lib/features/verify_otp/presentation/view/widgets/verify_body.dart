@@ -1,5 +1,8 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:enr_tickets/core/widget/assets.dart';
 import 'package:enr_tickets/core/widget/styles.dart';
+import 'package:enr_tickets/features/home/presentation/view/home_view.dart';
 import 'package:enr_tickets/features/verify_otp/presentation/state_mangement/cubit/cubit_verify_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,17 +16,20 @@ class VerifyBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<CubitVerifyCubit, CubitVerifyState>(
       listener: (context, state) {
-        // ✅ Success
+        //  Success
         if (state is CubitVerifySucsess) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(content: Text("Code verified successfully")),
           );
 
-          // 🔥 تقدر تعمل Navigation هنا
-          // Navigator.pushReplacementNamed(context, '/home');
+          Future.delayed(Duration(seconds: 1), () {
+            Navigator.of(
+              context,
+            ).pushReplacement(MaterialPageRoute(builder: (_) => HomeView()));
+          });
         }
 
-        // ❌ Failure
+        //  Failure
         if (state is CubitVerifyFailure) {
           ScaffoldMessenger.of(
             context,
@@ -51,23 +57,20 @@ class VerifyBody extends StatelessWidget {
 
             const Gap(30),
 
-            /// 🔥 OTP Input (هنا بيتم الverify مباشرة)
             TextField(
               keyboardType: TextInputType.number,
               maxLength: 6,
               onChanged: (value) {
-                print("Typing: $value");
 
                 if (value.length == 6) {
-                  print("OTP Entered: $value");
-                  context.read<CubitVerifyCubit>().verifyOtp(value,email);
+                  context.read<CubitVerifyCubit>().verifyOtp(value, email);
                 }
               },
             ),
 
             const Gap(36),
 
-            /// ⏳ Loading فقط
+            // Loading 
             if (state is CubitVerifyLoding) const CircularProgressIndicator(),
           ],
         );
