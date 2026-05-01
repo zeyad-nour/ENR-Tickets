@@ -5,4 +5,6 @@ part 'cubit_verify_state.dart';
 
 class CubitVerifyCubit extends Cubit<CubitVerifyState> {
   CubitVerifyCubit() : super(CubitVerifyInitial());
+
+  
 }
