@@ -33,6 +33,7 @@ class CreatUserCubit extends Cubit<CreatUserState> {
         emit(CreatUserFailure(error: failure.errorMessage));
       },
       (SinginModel model) {
+        print("Send OTP sucsess");
         emit(CreatUserSuccess(model: model));
       },
     );

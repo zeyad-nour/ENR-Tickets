@@ -7,6 +7,7 @@ import 'package:enr_tickets/features/create_account/presentation/view/widget/cus
 import 'package:enr_tickets/features/create_account/presentation/view/widget/form_feild_view_sign_in.dart';
 import 'package:enr_tickets/features/create_account/presentation/view/widget/sign_in_methods_view.dart';
 import 'package:enr_tickets/features/log_in/presentation/view/log_in.dart';
+import 'package:enr_tickets/features/verify_otp/presentation/view/verify_otp.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -19,7 +20,6 @@ class CreateAccountBody extends StatefulWidget {
 }
 
 class _CreateAccountBodyState extends State<CreateAccountBody> {
-
   final GlobalKey<FormState> formKey = GlobalKey();
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
@@ -43,7 +43,9 @@ class _CreateAccountBodyState extends State<CreateAccountBody> {
       listener: (context, state) {
         if (state is CreatUserSuccess) {
           Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(builder: (_) => LogIn()),
+            MaterialPageRoute(
+              builder: (_) => VerifyOtp(email: emailController.text,),
+            ),
             (route) => false,
           );
         } else if (state is CreatUserFailure) {
@@ -61,7 +63,7 @@ class _CreateAccountBodyState extends State<CreateAccountBody> {
             child: Column(
               children: [
                 Gap(13),
-                
+
                 CustomLogo(),
 
                 Text(

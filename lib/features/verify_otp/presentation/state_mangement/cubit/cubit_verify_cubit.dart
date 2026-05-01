@@ -9,10 +9,12 @@ class CubitVerifyCubit extends Cubit<CubitVerifyState> {
 
   CubitVerifyCubit(this.verifyRepo) : super(CubitVerifyInitial());
 
-  Future<void> verifyOtp(String otp) async {
+  Future<void> verifyOtp(String otp,String email) async {
+      print("Cubit Called with OTP: $otp"); // 👈
+
     emit(CubitVerifyLoding());
 
-    final result = await verifyRepo.verifyOtp(otp);
+    final result = await verifyRepo.verifyOtp(otp,email);
 
     result.fold(
       (failure) {

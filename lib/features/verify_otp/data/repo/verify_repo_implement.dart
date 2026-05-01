@@ -10,11 +10,11 @@ class VerifyRepoImplement implements VerifyRepo {
 
   VerifyRepoImplement(this.apiService);
   @override
-  Future<Either<Failure, void>> verifyOtp(String otp) async {
+  Future<Either<Failure, void>> verifyOtp(String otp,String email) async {
     try {
       final response = await apiService.post(
         endpoint: EndPoints.verifyOTP,
-        data: {"otp": otp},
+        data: {"email": email, "otp": otp, "type": "signup"},
       );
 
       final data = response.data;
