@@ -30,9 +30,9 @@ class Validators {
       return "Phone number required";
     }
 
-    if (!value.startsWith('+')) {
-      return "Phone must start with + country code";
-    }
+    // if (!value.startsWith('+')) {
+    //   return "Phone must start with + country code";
+    // }
 
     final digits = value.substring(1);
 

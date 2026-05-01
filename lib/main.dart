@@ -3,6 +3,7 @@ import 'package:enr_tickets/core/services/api/api_service.dart';
 import 'package:enr_tickets/core/utils/local_storage.dart';
 import 'package:enr_tickets/features/create_account/data/repo/signin_repo.dart';
 import 'package:enr_tickets/features/create_account/data/repo/signin_repo_implement.dart';
+import 'package:enr_tickets/features/create_account/presentation/state_mangement/creat_user_cubit.dart';
 import 'package:enr_tickets/features/home/data/repo/station_repo.dart';
 import 'package:enr_tickets/features/home/data/repo/station_repo_implement.dart';
 import 'package:enr_tickets/features/home/presentation/state_mangement/home_cubit/home_cubit.dart';
@@ -48,6 +49,9 @@ class MyApp extends StatelessWidget {
       child: MultiBlocProvider(
         providers: [
           BlocProvider<SettingsCubit>(create: (_) => SettingsCubit()),
+          BlocProvider<CreatUserCubit>(
+            create: (context) => CreatUserCubit(context.read<SigninRepo>()),
+          ),
           BlocProvider<SeatSelectionCubit>(create: (_) => SeatSelectionCubit()),
           BlocProvider<HomeCubit>(
             create: (context) => HomeCubit(context.read<StationRepo>()),
@@ -91,9 +95,7 @@ class MyApp extends StatelessWidget {
                   bodyLarge: TextStyle(color: Colors.white),
                 ),
               ),
-
               home: SplashScreen(loggedIn: loggedIn),
-       
             );
           },
         ),

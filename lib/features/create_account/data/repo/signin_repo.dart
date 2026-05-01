@@ -8,5 +8,6 @@ abstract class SigninRepo {
     required String email,
     required String phone,
     required String password,
+    required String confirmPassword,
   });
 }

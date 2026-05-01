@@ -19,8 +19,8 @@ class CreateAccountBody extends StatefulWidget {
 }
 
 class _CreateAccountBodyState extends State<CreateAccountBody> {
-  final GlobalKey<FormState> formKey = GlobalKey();
 
+  final GlobalKey<FormState> formKey = GlobalKey();
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
@@ -61,7 +61,9 @@ class _CreateAccountBodyState extends State<CreateAccountBody> {
             child: Column(
               children: [
                 Gap(13),
+                
                 CustomLogo(),
+
                 Text(
                   AppStrings.of(context, "createNewAccount"),
                   style: TextStyle(
@@ -70,6 +72,7 @@ class _CreateAccountBodyState extends State<CreateAccountBody> {
                     color: Colors.black,
                   ),
                 ),
+
                 FormFeildViewSignIn(
                   nameController: nameController,
                   emailController: emailController,
@@ -77,7 +80,9 @@ class _CreateAccountBodyState extends State<CreateAccountBody> {
                   passwordController: passwordController,
                   confirmPasswordController: confirmPasswordController,
                 ),
+
                 Gap(10),
+
                 state is CreatUserLoading
                     ? CircularProgressIndicator()
                     : VerifyButton(
@@ -89,6 +94,7 @@ class _CreateAccountBodyState extends State<CreateAccountBody> {
                               email: emailController.text,
                               phone: phoneController.text,
                               password: passwordController.text,
+                              confirmPassword: confirmPasswordController.text,
                             );
                           }
                         },

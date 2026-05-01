@@ -16,6 +16,7 @@ class CreatUserCubit extends Cubit<CreatUserState> {
     required String email,
     required String phone,
     required String password,
+    required String confirmPassword,
   }) async {
     emit(CreatUserLoading());
 
@@ -24,6 +25,7 @@ class CreatUserCubit extends Cubit<CreatUserState> {
       email: email,
       phone: phone,
       password: password,
+      confirmPassword: confirmPassword,
     );
 
     result.fold(

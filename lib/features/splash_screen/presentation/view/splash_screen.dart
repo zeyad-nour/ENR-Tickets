@@ -62,8 +62,7 @@ class _SplashScreenState extends State<SplashScreen>
       if (!mounted) return;
       _timer.cancel(); // stope timer when navigating to next screen
 
-      // final nextScreen = widget.loggedIn ? const HomeView() : const LogIn();
-      final nextScreen = HomeView();
+      final nextScreen = widget.loggedIn ? const HomeView() : const LogIn();
 
       Navigator.pushReplacement(
         context,

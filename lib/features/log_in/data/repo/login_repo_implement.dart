@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:enr_tickets/core/services/api/api_service.dart';
+import 'package:enr_tickets/core/services/api/endpoints.dart';
 import 'package:enr_tickets/core/services/error/failures.dart';
 import 'package:enr_tickets/features/log_in/data/model/LoginModel/log.in_model.dart';
 import 'package:enr_tickets/features/log_in/data/repo/login_repo.dart';
@@ -17,7 +18,7 @@ class LoginRepoImplement implements LogInRepo {
   }) async {
     try {
       final response = await apiService.post(
-        endpoint: "/email/login",
+        endpoint: EndPoints.login,
         data: {"email": email, "password": password},
       );
 
