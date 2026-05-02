@@ -1,5 +1,3 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'package:enr_tickets/core/widget/assets.dart';
 import 'package:enr_tickets/core/widget/custom_button_register.dart';
 import 'package:enr_tickets/core/widget/styles.dart';
@@ -11,31 +9,45 @@ import 'package:gap/gap.dart';
 
 class VerifyBody extends StatelessWidget {
   final String email;
+
   const VerifyBody({super.key, required this.email});
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<CubitVerifyCubit, CubitVerifyState>(
       listener: (context, state) {
-        //  Success
+        /// Verify Success
         if (state is CubitVerifySucsess) {
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text("Code verified successfully")),
+            const SnackBar(
+              content: Text("Code verified successfully"),
+            ),
           );
 
-          if (context.mounted) {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (_) => HomeView()),
-            );
-          }
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (_) => const HomeView(),
+            ),
+          );
         }
 
-        //  Failure
+        /// Verify Failure
         if (state is CubitVerifyFailure) {
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(SnackBar(content: Text(state.errorMessage)));
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(state.errorMessage),
+            ),
+          );
+        }
+
+        /// Resend Success
+        if (state is CubitVerifyResend) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text("OTP sent again"),
+            ),
+          );
         }
       },
 
@@ -47,7 +59,10 @@ class VerifyBody extends StatelessWidget {
 
             const Gap(20),
 
-            Text("Verification Code", style: Styles.textStyle27),
+            Text(
+              "Verification Code",
+              style: Styles.textStyle27,
+            ),
 
             const Gap(10),
 
@@ -62,24 +77,31 @@ class VerifyBody extends StatelessWidget {
             TextField(
               keyboardType: TextInputType.number,
               maxLength: 6,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: "Enter OTP",
+              ),
               onChanged: (value) {
                 if (value.length == 6) {
-                  context.read<CubitVerifyCubit>().verifyOtp(value, email);
+                  context.read<CubitVerifyCubit>().verifyOtp(
+                    value,
+                    email,
+                  );
                 }
               },
             ),
 
             const Gap(26),
 
-            // Loading
-            if (state is CubitVerifyLoding) CircularProgressIndicator(),
-
-            VerifyButton(
-              title: "Resend code",
-              onTap: () {
-                context.read<CubitVerifyCubit>().resendOtp(email);
-              },
-            ),
+            if (state is CubitVerifyLoding)
+              const CircularProgressIndicator()
+            else
+              VerifyButton(
+                title: "Resend code",
+                onTap: () {
+                  context.read<CubitVerifyCubit>().resendOtp(email);
+                },
+              ),
           ],
         );
       },
