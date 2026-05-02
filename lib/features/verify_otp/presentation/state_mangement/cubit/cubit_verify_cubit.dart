@@ -24,17 +24,18 @@ class CubitVerifyCubit extends Cubit<CubitVerifyState> {
     );
   }
 
-  Future<void> resendOtp(String email) async {
-    emit(CubitVerifyLoding());
-    final result = await verifyRepo.resendOtp(email);
+Future<void> resendOtp(String email) async {
+  emit(CubitVerifyLoding());
 
-    result.fold(
-      (failure) {
-        emit(CubitVerifyFailure(errorMessage: failure.errorMessage));
-      },
-      (_) {
-        emit(CubitVerifySucsess());
-      },
-    );
-  }
+  final result = await verifyRepo.resendOtp(email);
+
+  result.fold(
+    (failure) {
+      emit(CubitVerifyFailure(errorMessage: failure.errorMessage));
+    },
+    (_) {
+      emit(CubitVerifyResend()); 
+    },
+  );
+}
 }

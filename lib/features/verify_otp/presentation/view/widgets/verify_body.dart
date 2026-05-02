@@ -23,11 +23,12 @@ class VerifyBody extends StatelessWidget {
             const SnackBar(content: Text("Code verified successfully")),
           );
 
-          Future.delayed(Duration(seconds: 1), () {
-            Navigator.of(
+          if (context.mounted) {
+            Navigator.pushReplacement(
               context,
-            ).pushReplacement(MaterialPageRoute(builder: (_) => HomeView()));
-          });
+              MaterialPageRoute(builder: (_) => HomeView()),
+            );
+          }
         }
 
         //  Failure
