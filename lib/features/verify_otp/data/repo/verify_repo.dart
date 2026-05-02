@@ -3,7 +3,7 @@ import 'package:enr_tickets/core/services/error/failures.dart';
 
 abstract class VerifyRepo { 
   Future<Either<Failure,void>> verifyOtp(String otp,String email);
-  // Future<void> resendOtp(String email);
+  Future<Either<Failure, void>> resendOtp(String email);
 }
 
 

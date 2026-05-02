@@ -1,6 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:enr_tickets/core/widget/assets.dart';
+import 'package:enr_tickets/core/widget/custom_button_register.dart';
 import 'package:enr_tickets/core/widget/styles.dart';
 import 'package:enr_tickets/features/home/presentation/view/home_view.dart';
 import 'package:enr_tickets/features/verify_otp/presentation/state_mangement/cubit/cubit_verify_cubit.dart';
@@ -61,17 +62,23 @@ class VerifyBody extends StatelessWidget {
               keyboardType: TextInputType.number,
               maxLength: 6,
               onChanged: (value) {
-
                 if (value.length == 6) {
                   context.read<CubitVerifyCubit>().verifyOtp(value, email);
                 }
               },
             ),
 
-            const Gap(36),
+            const Gap(26),
 
-            // Loading 
-            if (state is CubitVerifyLoding) const CircularProgressIndicator(),
+            // Loading
+            if (state is CubitVerifyLoding) CircularProgressIndicator(),
+
+            VerifyButton(
+              title: "Resend code",
+              onTap: () {
+                context.read<CubitVerifyCubit>().resendOtp(email);
+              },
+            ),
           ],
         );
       },

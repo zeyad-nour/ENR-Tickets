@@ -10,7 +10,7 @@ class VerifyRepoImplement implements VerifyRepo {
 
   VerifyRepoImplement(this.apiService);
   @override
-  Future<Either<Failure, void>> verifyOtp(String otp,String email) async {
+  Future<Either<Failure, void>> verifyOtp(String otp, String email) async {
     try {
       final response = await apiService.post(
         endpoint: EndPoints.verifyOTP,
@@ -19,6 +19,28 @@ class VerifyRepoImplement implements VerifyRepo {
 
       final data = response.data;
 
+      if (data['success'] == true) {
+        return right(null);
+      } else {
+        return left(ServerFailuer(data['msg'] ?? 'Unknown error'));
+      }
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailuer.fromDioError(e));
+      } else {
+        return left(ServerFailuer("Unexpected error"));
+      }
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> resendOtp(String email) async {
+    try {
+      final response = await apiService.post(
+        endpoint: EndPoints.resendOTP,
+        data: {"email": email},
+      );
+      final data = response.data;
       if (data['success'] == true) {
         return right(null);
       } else {
