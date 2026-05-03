@@ -42,11 +42,10 @@ class _CreateAccountBodyState extends State<CreateAccountBody> {
     return BlocConsumer<CreatUserCubit, CreatUserState>(
       listener: (context, state) {
         if (state is CreatUserSuccess) {
-          Navigator.of(context).pushAndRemoveUntil(
+          Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (_) => VerifyOtp(email: emailController.text,),
+              builder: (_) => VerifyOtp(email: emailController.text),
             ),
-            (route) => false,
           );
         } else if (state is CreatUserFailure) {
           ScaffoldMessenger.of(
