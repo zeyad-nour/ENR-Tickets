@@ -1,7 +1,6 @@
 import 'package:enr_tickets/core/utils/app_strings.dart';
 import 'package:enr_tickets/core/utils/colors.dart';
 import 'package:enr_tickets/core/widget/styles.dart';
-import 'package:enr_tickets/features/home/presentation/view/widgets/stops_widsgets/stpoes.dart';
 import 'package:enr_tickets/features/search_result/presentation/view/widgets/available_tickets_widget.dart';
 import 'package:enr_tickets/features/search_result/presentation/view/widgets/ticket_text_button_widget.dart';
 import 'package:enr_tickets/features/settings/presentation/view/widgets/stations_widget_info.dart';
@@ -19,13 +18,9 @@ class CustomCardTrainInfo extends StatefulWidget {
   final String toStation;
   final String departTime;
   final String arriveTime;
-  final DateTime departDate;
-  final String arriveDate;
+
   final String duration;
   final int availableTickets;
-  final int stops;
-
-  final List<String> stopStations;
 
   const CustomCardTrainInfo({
     super.key,
@@ -35,13 +30,9 @@ class CustomCardTrainInfo extends StatefulWidget {
     required this.toStation,
     required this.departTime,
     required this.arriveTime,
-    required this.departDate,
-    required this.arriveDate,
+
     required this.duration,
     required this.availableTickets,
-    required this.stops,
-
-    required this.stopStations,
   });
 
   @override
@@ -63,7 +54,6 @@ class _CustomCardTrainInfoState extends State<CustomCardTrainInfo> {
 
     // Strings translated
     final String priceLabel = AppStrings.of(context, "price");
-    final String stopsLabel = AppStrings.of(context, "stops");
     final String choosingSeatLabel = AppStrings.of(context, "choosingSeat");
 
     return Padding(
@@ -104,10 +94,10 @@ class _CustomCardTrainInfoState extends State<CustomCardTrainInfo> {
               /// StationsRow
               StationsRow(
                 departTime: widget.departTime,
-             
+
                 fromStation: widget.fromStation,
                 arriveTime: widget.arriveTime,
-              
+
                 toStation: widget.toStation,
               ),
               Gap(10),
@@ -132,10 +122,6 @@ class _CustomCardTrainInfoState extends State<CustomCardTrainInfo> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  TicketTextButtonWidget(
-                    text: "$stopsLabel ${widget.stops}",
-                    onTap: toggleStops,
-                  ),
                   Container(height: 30, width: 1, color: Colors.grey.shade300),
                   TicketTextButtonWidget(
                     text: choosingSeatLabel,
@@ -157,20 +143,6 @@ class _CustomCardTrainInfoState extends State<CustomCardTrainInfo> {
                   ),
                 ],
               ),
-              AnimatedSize(
-                duration: const Duration(milliseconds: 400),
-                curve: Curves.easeInOut,
-                child: isExpanded
-                    ? Padding(
-                        padding: const EdgeInsets.only(top: 10),
-                        child: Stpoes(
-                          stops: widget.stops,
-                          stopStations: widget.stopStations,
-                        ),
-                      )
-                    : const SizedBox(),
-              ),
-              Gap(4),
             ],
           ),
         ),

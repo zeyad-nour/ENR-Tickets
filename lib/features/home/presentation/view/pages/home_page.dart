@@ -105,7 +105,7 @@ class _HomePageState extends State<HomePage> {
                               ? now
                               : cubit.travelDate,
                           firstDate: now,
-                          lastDate: now.add(const Duration(days: 18)),
+                          lastDate: now.add(const Duration(days: 30)),
                         );
 
                         if (pickedDate != null) {

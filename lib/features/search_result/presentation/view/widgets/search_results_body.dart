@@ -1,9 +1,8 @@
-import 'package:enr_tickets/core/utils/app_strings.dart';
 import 'package:enr_tickets/core/widget/app_lottie_lodaing.dart';
 import 'package:enr_tickets/features/search_result/presentation/state_mangement/search_result_cubit/search_result_cubit.dart';
 import 'package:enr_tickets/features/search_result/presentation/state_mangement/search_result_cubit/search_result_state.dart';
-import 'package:enr_tickets/features/search_result/presentation/view/widgets/custom_app_bar_search_results.dart';
 import 'package:enr_tickets/features/search_result/presentation/view/widgets/custom_card_train_info.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -27,13 +26,16 @@ class SearchResultsBody extends StatelessWidget {
               itemBuilder: (context, index) {
                 final trip = state.trains[index];
 
-                return ListTile(
-                  title: Text("${trip.trainNumber} - ${trip.trainType}"),
-                  subtitle: Text(
-                    "${trip.from} → ${trip.to}\n"
-                    "${trip.departureTime} - ${trip.arrivalTime}",
-                  ),
-                  trailing: Text("${trip.price} EGP"),
+                return CustomCardTrainInfo(
+                  trainNumber: trip.trainNumber,
+                  classType: trip.trainType,
+                  fromStation: trip.from,
+                  toStation: trip.to,
+                  departTime: trip.departureTime,
+                  arriveTime: trip.arrivalTime,
+
+                  duration: trip.duration,
+                  availableTickets: trip.availableTickets,
                 );
               },
             );
@@ -49,3 +51,11 @@ class SearchResultsBody extends StatelessWidget {
     );
   }
 }
+//  ListTile(
+//                   title: Text("${trip.trainNumber} - ${trip.trainType}"),
+//                   subtitle: Text(
+//                     "${trip.from} → ${trip.to}\n"
+//                     "${trip.departureTime} - ${trip.arrivalTime}",
+//                   ),
+//                   trailing: Text("${trip.price} EGP"),
+//                 );
