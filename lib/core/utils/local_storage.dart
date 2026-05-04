@@ -13,13 +13,16 @@ class LocalStorage {
   /// Save token + mark user as logged in (ONE SOURCE OF TRUTH)
   static Future<void> saveToken(String token) async {
     final prefs = await SharedPreferences.getInstance();
+
     await prefs.setString(_tokenKey, token);
-    await prefs.setBool(_loginKey, true);
+
+    print("🔥 TOKEN SAVED = $token");
   }
 
   /// Get token
   static Future<String?> getToken() async {
     final prefs = await SharedPreferences.getInstance();
+    print("🔥 TOKEN READ = ${prefs.getString(_tokenKey)}");
     return prefs.getString(_tokenKey);
   }
 
