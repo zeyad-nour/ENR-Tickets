@@ -39,18 +39,9 @@ class _HomePageState extends State<HomePage> {
             context,
             MaterialPageRoute(
               builder: (_) => SearchResultsPage(
-                stopStations: state.stopStation,
                 from: state.from,
                 to: state.to,
-                trainNumber: 125,
-                availableTickets: 30,
-                stops: state.stopStation.length,
-                classType: 'ثالثة مكيف',
-                departTime: '1.5',
-                arriveTime: '8.5',
-                departDate: state.date,
-                arriveDate: '19/3/2026',
-                price: '350',
+                date: state.date.toIso8601String().split("T")[0],
               ),
             ),
           );
@@ -90,13 +81,12 @@ class _HomePageState extends State<HomePage> {
 
                     /// Stations
                     CustomSelectionView(
-            fromStation: cubit.fromStation ?? cubit.stations.first,
-               toStation: cubit.toStation ?? cubit.stations.first,
+                      fromStation: cubit.fromStation ?? cubit.stations.first,
+                      toStation: cubit.toStation ?? cubit.stations.first,
                       onStationsChanged: (from, to) {
                         cubit.updateStations(from, to);
                       },
-                     stations: cubit.stations,
-
+                      stations: cubit.stations,
                     ),
 
                     const Gap(40),

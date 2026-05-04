@@ -40,25 +40,22 @@ class HomeCubit extends Cubit<HomeState> {
     emit(HomeSuccess(stations: _stations));
   }
 
-  void searchTrip() {
-    if (fromStation == null || toStation == null) {
-      emit(HomeFailure(errorMessage: "Please choose stations correctly"));
-      return;
-    }
-
-
-    // 🔥 هنا تستخدم IDs في API
-    log("FROM ID: ${fromStation!.id}");
-    log("TO ID: ${toStation!.id}");
-
-    emit(HomeSearchSuccess(
-      from: fromStation!.name,
-      to: toStation!.name,
-      date: travelDate,
-      stopStation: [],
-    ));
+void searchTrip() {
+  if (fromStation == null || toStation == null) {
+    emit(HomeFailure(errorMessage: "Please choose stations correctly"));
+    return;
   }
 
+  log("FROM ID: ${fromStation!.id}");
+  log("TO ID: ${toStation!.id}");
+
+  emit(HomeSearchSuccess(
+    from: fromStation!.id,   
+    to: toStation!.id,     
+    date: travelDate,
+    stopStation: [],
+  ));
+}
 
     void updateDate(DateTime date) {
     travelDate = date;

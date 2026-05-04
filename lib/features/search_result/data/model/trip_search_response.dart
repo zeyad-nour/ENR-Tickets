@@ -13,12 +13,16 @@ class TripSearchResponse extends Equatable {
   });
 
   factory TripSearchResponse.fromJson(Map<String, dynamic> json) {
+    final data = json['data'];
+
     return TripSearchResponse(
       success: json['success'] ?? false,
       msg: json['msg'] ?? '',
-      trips: (json['data'] as List<dynamic>)
-          .map((e) => TripModel.fromJson(e))
-          .toList(),
+      trips: (data is List)
+          ? data.map((e) => TripModel.fromJson(e)).toList()
+          : (data['trips'] as List<dynamic>)
+                .map((e) => TripModel.fromJson(e))
+                .toList(),
     );
   }
 

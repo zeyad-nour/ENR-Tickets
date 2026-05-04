@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:dio/dio.dart';
+import 'package:enr_tickets/core/services/api/api_service.dart';
 import 'package:enr_tickets/core/services/api/endpoints.dart';
 import 'package:enr_tickets/core/services/error/failures.dart';
 
@@ -7,9 +7,9 @@ import 'package:enr_tickets/features/search_result/data/model/trip_search_respon
 import 'search_trips_repo.dart';
 
 class SearchTripsRepoImpl implements SearchTripsRepo {
-  final Dio dio;
+  final ApiService api;
 
-  SearchTripsRepoImpl(this.dio);
+  SearchTripsRepoImpl(this.api);
 
   @override
   Future<Either<Failure, TripSearchResponse>> searchTrips({
@@ -20,9 +20,12 @@ class SearchTripsRepoImpl implements SearchTripsRepo {
     int limit = 10,
   }) async {
     try {
-      final response = await dio.get(
-        EndPoints.searchTrips,
-        queryParameters: {
+      print("FROM = $from");
+      print("TO = $to");
+      print("DATE = $date");
+      final response = await api.get(
+        endpoint: EndPoints.searchTrips,
+        query: {
           "from": from,
           "to": to,
           "date": date,
@@ -34,10 +37,6 @@ class SearchTripsRepoImpl implements SearchTripsRepo {
       final model = TripSearchResponse.fromJson(response.data);
 
       return Right(model);
-    } on DioException catch (e) {
-      return Left(
-        ServerFailuer(e.message ?? 'An error occurred while fetching trips.'),
-      );
     } catch (e) {
       return Left(ServerFailuer(e.toString()));
     }

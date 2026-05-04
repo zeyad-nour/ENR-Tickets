@@ -1,9 +1,6 @@
-import 'dart:developer' show log;
 
-import 'package:enr_tickets/core/utils/colors.dart';
 import 'package:enr_tickets/features/home/data/model/station_model/station_model.dart';
 
-import 'package:enr_tickets/features/home/presentation/view/widgets/home_widgets/dash_custom.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/home_widgets/selection_station.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/home_widgets/function_show_stations.dart';
 import 'package:flutter/material.dart';

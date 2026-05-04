@@ -1,69 +1,33 @@
+import 'package:dio/dio.dart';
+import 'package:enr_tickets/core/services/api/api_service.dart';
+import 'package:enr_tickets/features/search_result/data/repo/search_trips_repo_implement.dart';
 import 'package:enr_tickets/features/search_result/presentation/state_mangement/search_result_cubit/search_result_cubit.dart';
 import 'package:enr_tickets/features/search_result/presentation/view/widgets/search_results_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SearchResultsPage extends StatelessWidget {
-  final int trainNumber;
-  final int availableTickets;
-  final int stops;
-  final String classType;
-  final String departTime;
-  final String arriveTime;
-  final DateTime departDate;
-  final String arriveDate;
-  final String price;
   final String from;
   final String to;
-  final List<String> stopStations;
+  final String date;
+
   const SearchResultsPage({
     super.key,
     required this.from,
     required this.to,
-    required this.trainNumber,
-    required this.availableTickets,
-    required this.stops,
-    required this.classType,
-    required this.departTime,
-    required this.arriveTime,
-    required this.departDate,
-    required this.arriveDate,
-    required this.price,
-    required this.stopStations,
+    required this.date,
   });
 
   @override
   Widget build(BuildContext context) {
+    final dio = Dio();
+final api = ApiService(dio);
+final repo = SearchTripsRepoImpl(api);
     return BlocProvider(
-      create: (context) => SearchResultCubit()
-        ..fetchResults(
-          stops: stops,
-          trainNumber: trainNumber,
-          stopeStations: stopStations,
-          classType: classType,
-          from: from,
-          to: to,
-          departTime: departTime,
-          arriveTime: arriveTime,
-          departDate: departDate,
-          arriveDate: arriveDate,
-          duration: price,
-          availableTickets: availableTickets,
-        ),
-      child: SearchResultsBody(
-        stopeStation: stopStations,
-        fromStation: from,
-        toStation: to,
-        trainNumber: trainNumber,
-        availableTickets: availableTickets,
-        stops: stops,
-        classType: classType,
-        departTime: departTime,
-        arriveTime: arriveTime,
-        departDate: departDate,
-        arriveDate: arriveDate,
-        price: price,
-      ),
+      create: (context) =>
+        SearchResultCubit(repo)
+            ..fetchResults(from: from, to: to, date: date),
+      child: SearchResultsBody(),
     );
   }
 }

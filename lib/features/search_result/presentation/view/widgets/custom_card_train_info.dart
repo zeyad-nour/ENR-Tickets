@@ -104,10 +104,10 @@ class _CustomCardTrainInfoState extends State<CustomCardTrainInfo> {
               /// StationsRow
               StationsRow(
                 departTime: widget.departTime,
-                departDate: widget.departDate,
+             
                 fromStation: widget.fromStation,
                 arriveTime: widget.arriveTime,
-                arriveDate: widget.arriveDate,
+              
                 toStation: widget.toStation,
               ),
               Gap(10),
