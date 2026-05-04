@@ -55,7 +55,7 @@ class MyApp extends StatelessWidget {
           BlocProvider<SeatSelectionCubit>(create: (_) => SeatSelectionCubit()),
           BlocProvider<HomeCubit>(
             create: (context) =>
-                HomeCubit(context.read<StationRepo>())..getStations(),
+                HomeCubit(context.read<StationRepo>()),
           ),
         ],
         child: BlocBuilder<SettingsCubit, SettingsState>(

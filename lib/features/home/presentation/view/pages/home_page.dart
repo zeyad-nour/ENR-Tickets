@@ -4,7 +4,6 @@ import 'package:enr_tickets/core/widget/animated_button.dart';
 import 'package:enr_tickets/core/widget/custom_button_register.dart';
 import 'package:enr_tickets/core/widget/styles.dart';
 import 'package:enr_tickets/features/home/presentation/state_mangement/home_cubit/home_cubit.dart';
-
 import 'package:enr_tickets/features/search_result/presentation/view/search_results_page.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/home_widgets/custom_home_logo.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/home_widgets/custom_selection_view.dart';
@@ -13,31 +12,45 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+
+    /// 🔥 هنا بنشغل API بعد ما الصفحة تفتح
+    Future.microtask(() {
+      context.read<HomeCubit>().getStations();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return BlocListener<HomeCubit, HomeState>(
-      // Action[Navigation,Dialogs,SnackBar]
       listener: (context, state) {
         if (state is HomeSearchSuccess) {
           Navigator.push(
             context,
             MaterialPageRoute(
               builder: (_) => SearchResultsPage(
-                stopStations: state.stopStation, //coming from api
+                stopStations: state.stopStation,
                 from: state.from,
                 to: state.to,
-                trainNumber: 125, //comain from api
-                availableTickets: 30, //comain from api
-                stops: state.stopStation.length, //coming from api
-                classType: 'ثالثة مكيف', //comin from api
-                departTime: '1.5', //comain from api
-                arriveTime: '8.5', //comain from api
-                departDate: state.date, //local (day travel)
-                arriveDate: '19/3/2026', //comain from api
-                price: '350', //comain from api
+                trainNumber: 125,
+                availableTickets: 30,
+                stops: state.stopStation.length,
+                classType: 'ثالثة مكيف',
+                departTime: '1.5',
+                arriveTime: '8.5',
+                departDate: state.date,
+                arriveDate: '19/3/2026',
+                price: '350',
               ),
             ),
           );
@@ -53,6 +66,13 @@ class HomePage extends StatelessWidget {
         builder: (context, state) {
           final cubit = context.read<HomeCubit>();
 
+          /// 🔥 loading state
+          if (state is HomeLoding) {
+            return const Scaffold(
+              body: Center(child: CircularProgressIndicator()),
+            );
+          }
+
           return SafeArea(
             child: Scaffold(
               backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -60,6 +80,7 @@ class HomePage extends StatelessWidget {
                 child: Column(
                   children: [
                     CustomHomeLogo(),
+
                     Text(
                       AppStrings.of(context, "headHomePage"),
                       style: Styles.textStyle27.copyWith(
@@ -68,14 +89,13 @@ class HomePage extends StatelessWidget {
                     ),
 
                     /// Stations
-                   
                     CustomSelectionView(
                       fromStation: cubit.fromStation,
                       toStation: cubit.toStation,
                       onStationsChanged: (from, to) {
                         cubit.updateStations(from, to);
                       },
-                      stations: cubit.stations,
+                      stations: state is HomeSuccess ? state.stations : [],
                     ),
 
                     const Gap(40),
@@ -95,18 +115,6 @@ class HomePage extends StatelessWidget {
                               : cubit.travelDate,
                           firstDate: now,
                           lastDate: now.add(const Duration(days: 18)),
-                          builder: (context, child) {
-                            return Theme(
-                              data: Theme.of(context).copyWith(
-                                colorScheme: const ColorScheme.light(
-                                  primary: buttonColor,
-                                  onPrimary: Colors.white,
-                                  onSurface: Colors.black,
-                                ),
-                              ),
-                              child: child!,
-                            );
-                          },
                         );
 
                         if (pickedDate != null) {
