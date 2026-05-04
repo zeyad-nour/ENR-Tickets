@@ -18,7 +18,6 @@ class ApiService {
       'Accept': 'application/json',
     };
 
-    /// 🔥 INTERCEPTOR (IMPORTANT)
     _dio.interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) async {

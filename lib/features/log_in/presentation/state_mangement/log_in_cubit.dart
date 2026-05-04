@@ -1,4 +1,5 @@
-import 'dart:nativewrappers/_internal/vm/lib/developer.dart';
+
+// ignore_for_file: avoid_print
 
 import 'package:bloc/bloc.dart';
 import 'package:enr_tickets/core/services/error/failures.dart';
@@ -25,7 +26,7 @@ class LogInCubit extends Cubit<LogInState> {
       (LogInModel model) async {
         final token = model.token;
 
-        log("TOKEN FROM API = $token");
+      
 
         if (token != null && token.isNotEmpty) {
           await LocalStorage.saveToken(token);

@@ -2,12 +2,13 @@
 
 import 'package:enr_tickets/core/widget/assets.dart';
 import 'package:enr_tickets/core/widget/styles.dart';
+import 'package:enr_tickets/features/home/data/model/station_model/station_model.dart';
 import 'package:flutter/material.dart';
 
 class StationsListView extends StatelessWidget {
-  final List<String> stations;
-  final String selectedStation;
-  final Function(String) onStationSelected;
+  final List<StationModel> stations;
+  final StationModel selectedStation;
+  final Function(StationModel) onStationSelected;
 
   const StationsListView({
     super.key,
@@ -31,7 +32,7 @@ class StationsListView extends StatelessWidget {
           color: theme.cardColor,
           child: ListTile(
             title: Text(
-              station,
+              station.name,
               style: Styles.textStyle20.copyWith(
                 color: theme.textTheme.bodyLarge!.color,
               ),

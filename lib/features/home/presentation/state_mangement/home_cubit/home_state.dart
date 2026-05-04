@@ -8,7 +8,7 @@ final class HomeInitial extends HomeState {}
 final class HomeLoding extends HomeState {}
 
 final class HomeSuccess extends HomeState {
-  final List<String> stations;
+  final List<StationModel> stations;
 
   HomeSuccess({required this.stations});
 }

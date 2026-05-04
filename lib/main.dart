@@ -17,11 +17,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 Future<void> main() async {
+
   WidgetsFlutterBinding.ensureInitialized();
-
   final token = await LocalStorage.getToken();
-
   runApp(MyApp(loggedIn: token != null && token.isNotEmpty));
+  
 }
 
 class MyApp extends StatelessWidget {
@@ -73,7 +73,6 @@ class MyApp extends StatelessWidget {
                 GlobalWidgetsLocalizations.delegate,
                 GlobalCupertinoLocalizations.delegate,
               ],
-
               ///  Theme
               themeMode: cubit.themeMode,
               theme: ThemeData(

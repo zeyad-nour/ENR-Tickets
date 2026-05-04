@@ -1,6 +1,7 @@
-// ignore_for_file: depend_on_referenced_packages
+import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
+import 'package:enr_tickets/features/home/data/model/station_model/station_model.dart';
 import 'package:enr_tickets/features/home/data/repo/station_repo.dart';
 import 'package:meta/meta.dart';
 
@@ -11,65 +12,59 @@ class HomeCubit extends Cubit<HomeState> {
 
   HomeCubit(this.stationRepo) : super(HomeInitial());
 
-  /// Stations list
-  List<String> _stations = [];
+  List<StationModel> _stations = [];
+  List<StationModel> get stations => _stations;
 
-  /// Stop Stations
-  List<String> stopStations = [
+  StationModel? fromStation;
+  StationModel? toStation;
 
-  ];
-
-  /// Selected Data
-  String fromStation = "From Station";
-  String toStation = "To Station";
   DateTime travelDate = DateTime.now();
 
-  /// Load Stations (later from API)
-Future<void> getStations() async {
-  emit(HomeLoding());
+  Future<void> getStations() async {
+    emit(HomeLoding());
 
+    try {
+      final result = await stationRepo.getStations();
+      _stations = result;
 
-  try {
-    final result = await stationRepo.getStations();
-
-    _stations = result.map((e) => e.name).toList();
-
-    emit(HomeSuccess(stations: _stations));
-  } catch (e) {
-    emit(HomeFailure(errorMessage: e.toString()));
+      emit(HomeSuccess(stations: _stations));
+    } catch (e) {
+      emit(HomeFailure(errorMessage: e.toString()));
+    }
   }
-}
 
-  /// Update Stations (change defult value to navigator)
-  void updateStations(String from, String to) {
+  void updateStations(StationModel from, StationModel to) {
     fromStation = from;
     toStation = to;
+
     emit(HomeSuccess(stations: _stations));
   }
 
-  /// Update Date  (change defult value date )
-  void updateDate(DateTime date) {
-    travelDate = date;
-    emit(HomeSuccess(stations: _stations));
-  }
-
-  /// Update Trip Type
-
-  /// Search Trip
   void searchTrip() {
-    if (fromStation == "From Station" || toStation == "To Station") {
+    if (fromStation == null || toStation == null) {
       emit(HomeFailure(errorMessage: "Please choose stations correctly"));
       return;
     }
 
-    emit(
-      HomeSearchSuccess(
-        from: fromStation,
-        to: toStation,
-        date: travelDate,
 
-        stopStation: stopStations,
-      ),
-    );
+    // 🔥 هنا تستخدم IDs في API
+    log("FROM ID: ${fromStation!.id}");
+    log("TO ID: ${toStation!.id}");
+
+    emit(HomeSearchSuccess(
+      from: fromStation!.name,
+      to: toStation!.name,
+      date: travelDate,
+      stopStation: [],
+    ));
+  }
+
+
+    void updateDate(DateTime date) {
+    travelDate = date;
+    emit(HomeSuccess(stations: _stations));
   }
 }
+
+
+

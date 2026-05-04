@@ -90,14 +90,13 @@ class _HomePageState extends State<HomePage> {
 
                     /// Stations
                     CustomSelectionView(
-                      fromStation: cubit.fromStation,
-                      toStation: cubit.toStation,
+            fromStation: cubit.fromStation ?? cubit.stations.first,
+               toStation: cubit.toStation ?? cubit.stations.first,
                       onStationsChanged: (from, to) {
                         cubit.updateStations(from, to);
                       },
-                      stations: cubit.state is HomeSuccess
-                          ? (cubit.state as HomeSuccess).stations
-                          : [],
+                     stations: cubit.stations,
+
                     ),
 
                     const Gap(40),
