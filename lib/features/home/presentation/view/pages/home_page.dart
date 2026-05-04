@@ -68,6 +68,7 @@ class HomePage extends StatelessWidget {
                     ),
 
                     /// Stations
+                   
                     CustomSelectionView(
                       fromStation: cubit.fromStation,
                       toStation: cubit.toStation,

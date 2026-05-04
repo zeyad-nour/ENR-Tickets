@@ -1,6 +1,7 @@
 import 'dart:developer' show log;
 
 import 'package:enr_tickets/core/utils/colors.dart';
+
 import 'package:enr_tickets/features/home/presentation/view/widgets/home_widgets/dash_custom.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/home_widgets/selection_station.dart';
 import 'package:enr_tickets/features/home/presentation/view/widgets/home_widgets/function_show_stations.dart';
@@ -43,15 +44,12 @@ class _CustomSelectionViewState extends State<CustomSelectionView> {
     required String selected,
     required Function(String) onSelect,
   }) {
-    // 🔥 هنا الحل
-    // if (widget.stations.isEmpty) {
-    //   ScaffoldMessenger.of(context).showSnackBar(
-    //     const SnackBar(
-    //       content: Text("No stations found"),
-    //     ),
-    //   );
-    //   return;
-    // }
+    if (widget.stations.isEmpty) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text("No stations found")));
+      return;
+    }
 
     showStationsBottomSheet(
       selectedStation: selected,
@@ -163,10 +161,7 @@ class _CustomSelectionViewState extends State<CustomSelectionView> {
                 child: FadeTransition(opacity: animation, child: child),
               );
             },
-            child: SelectionStation(
-              key: ValueKey(toStation),
-              title: toStation,
-            ),
+            child: SelectionStation(key: ValueKey(toStation), title: toStation),
           ),
         ),
       ],

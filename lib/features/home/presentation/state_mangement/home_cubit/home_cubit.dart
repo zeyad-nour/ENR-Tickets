@@ -13,37 +13,12 @@ class HomeCubit extends Cubit<HomeState> {
 
   /// Stations list
   List<String> stations = [
-    "Cairo",
-    "Giza",
-    "Beni Suef",
-    "Maghagha",
-    "Minya",
-    "Malawi",
-    "Deirut",
-    "Asyut",
-    "Tema",
-    "Tahta",
-    "Sohag",
-    "gerga",
-    "Balyna",
-    "Qena",
-    "Aswan",
+
   ];
 
   /// Stop Stations
   List<String> stopStations = [
-    "Cairo",
-    "Giza",
-    "Beni Suef",
-    "Maghagha",
-    "Minya",
-    "Malawi",
-    "Deirut",
-    "Asyut",
-    "Tema",
-    "Tahta",
-    "Sohag",
-    "gerga",
+
   ];
 
   /// Selected Data

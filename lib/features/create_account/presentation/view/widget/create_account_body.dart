@@ -114,6 +114,16 @@ class _CreateAccountBodyState extends State<CreateAccountBody> {
                     );
                   },
                 ),
+                CustomHaveAccountTextButton(
+                  title: "Verfy code",
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) => VerifyOtp(email: emailController.text),
+                      ),
+                    );
+                  },
+                ),
               ],
             ),
           ),
