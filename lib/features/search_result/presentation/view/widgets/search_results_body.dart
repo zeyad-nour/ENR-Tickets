@@ -16,7 +16,9 @@ class SearchResultsBody extends StatelessWidget {
       body: BlocBuilder<SearchResultCubit, SearchResultState>(
         builder: (context, state) {
           if (state is SearchResultLoading) {
-            return const Center(child: CircularProgressIndicator());//
+            return const Center(
+              child: AppLottieLoading(assetPath: 'assets/search_result.json'),
+            ); //replaced
           }
 
           if (state is SearchResultSuccess) {
