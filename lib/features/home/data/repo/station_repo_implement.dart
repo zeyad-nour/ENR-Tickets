@@ -16,11 +16,6 @@ class StationRepoImplement implements StationRepo {
     try {
       final response = await apiService.get(endpoint: EndPoints.getStations);
 
-      print("RESPONSE = ${response.data}");
-      print(
-        "RESPONSE = 555555555555555555555555555555555555555555555555555555555555555555555555555555555555555",
-      );
-
       final raw = response.data;
 
       final List list = raw is List

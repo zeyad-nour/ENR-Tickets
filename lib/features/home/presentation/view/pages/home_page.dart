@@ -1,5 +1,6 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:enr_tickets/core/utils/app_strings.dart';
-import 'package:enr_tickets/core/utils/colors.dart';
 import 'package:enr_tickets/core/widget/animated_button.dart';
 import 'package:enr_tickets/core/widget/custom_button_register.dart';
 import 'package:enr_tickets/core/widget/styles.dart';
@@ -24,7 +25,6 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
 
-    /// 🔥 هنا بنشغل API بعد ما الصفحة تفتح
     Future.microtask(() {
       context.read<HomeCubit>().getStations();
     });
@@ -64,7 +64,7 @@ class _HomePageState extends State<HomePage> {
       },
       child: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) {
-          final cubit = context.read<HomeCubit>();
+          final cubit = context.watch<HomeCubit>();
 
           /// 🔥 loading state
           if (state is HomeLoding) {
@@ -95,7 +95,9 @@ class _HomePageState extends State<HomePage> {
                       onStationsChanged: (from, to) {
                         cubit.updateStations(from, to);
                       },
-                      stations: state is HomeSuccess ? state.stations : [],
+                      stations: cubit.state is HomeSuccess
+                          ? (cubit.state as HomeSuccess).stations
+                          : [],
                     ),
 
                     const Gap(40),

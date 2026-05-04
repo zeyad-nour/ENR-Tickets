@@ -1,9 +1,10 @@
+import 'dart:nativewrappers/_internal/vm/lib/developer.dart';
+
 import 'package:bloc/bloc.dart';
 import 'package:enr_tickets/core/services/error/failures.dart';
 import 'package:enr_tickets/core/utils/local_storage.dart';
 import 'package:enr_tickets/features/log_in/data/model/LoginModel/log.in_model.dart';
 import 'package:enr_tickets/features/log_in/data/repo/login_repo.dart';
-import 'package:meta/meta.dart';
 
 part 'log_in_state.dart';
 
@@ -22,13 +23,18 @@ class LogInCubit extends Cubit<LogInState> {
         emit(LogInFailure(error: failure.errorMessage));
       },
       (LogInModel model) async {
-        //  Save auth data
-        if (model.token != null && model.token!.isNotEmpty) {
-          await LocalStorage.saveToken(model.token!);
+        final token = model.token;
+
+        log("TOKEN FROM API = $token");
+
+        if (token != null && token.isNotEmpty) {
+          await LocalStorage.saveToken(token);
+          print("TOKEN SAVED SUCCESSFULLY");
+        } else {
+          print("❌ TOKEN IS NULL OR EMPTY");
         }
 
         emit(LogInSuccess(model: model));
-        print("TOKEN FROM API = ${model.token}");
       },
     );
   }

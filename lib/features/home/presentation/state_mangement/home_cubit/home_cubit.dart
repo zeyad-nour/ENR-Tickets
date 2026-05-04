@@ -12,9 +12,7 @@ class HomeCubit extends Cubit<HomeState> {
   HomeCubit(this.stationRepo) : super(HomeInitial());
 
   /// Stations list
-  List<String> stations = [
-
-  ];
+  List<String> _stations = [];
 
   /// Stop Stations
   List<String> stopStations = [
@@ -27,34 +25,32 @@ class HomeCubit extends Cubit<HomeState> {
   DateTime travelDate = DateTime.now();
 
   /// Load Stations (later from API)
-  Future<void> getStations() async {
-    emit(HomeLoding());
-    print("===========[Geting Stations...]====================");
-    try {
-      final result = await stationRepo.getStations();
+Future<void> getStations() async {
+  emit(HomeLoding());
 
-      if (result.isEmpty) {
-        emit(HomeFailure(errorMessage: "No stations found"));
-      } else {
-        stations = result.map((e) => e.name).toList();
-        emit(HomeSuccess(stations: stations));
-      }
-    } catch (e) {
-      emit(HomeFailure(errorMessage: e.toString()));
-    }
+
+  try {
+    final result = await stationRepo.getStations();
+
+    _stations = result.map((e) => e.name).toList();
+
+    emit(HomeSuccess(stations: _stations));
+  } catch (e) {
+    emit(HomeFailure(errorMessage: e.toString()));
   }
+}
 
   /// Update Stations (change defult value to navigator)
   void updateStations(String from, String to) {
     fromStation = from;
     toStation = to;
-    emit(HomeSuccess(stations: stations));
+    emit(HomeSuccess(stations: _stations));
   }
 
   /// Update Date  (change defult value date )
   void updateDate(DateTime date) {
     travelDate = date;
-    emit(HomeSuccess(stations: stations));
+    emit(HomeSuccess(stations: _stations));
   }
 
   /// Update Trip Type

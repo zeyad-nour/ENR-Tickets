@@ -16,13 +16,11 @@ class LocalStorage {
 
     await prefs.setString(_tokenKey, token);
 
-    print("🔥 TOKEN SAVED = $token");
   }
 
   /// Get token
   static Future<String?> getToken() async {
     final prefs = await SharedPreferences.getInstance();
-    print("🔥 TOKEN READ = ${prefs.getString(_tokenKey)}");
     return prefs.getString(_tokenKey);
   }
 
