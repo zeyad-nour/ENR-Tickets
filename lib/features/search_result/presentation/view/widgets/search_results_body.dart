@@ -36,6 +36,7 @@ class SearchResultsBody extends StatelessWidget {
 
                   duration: trip.duration,
                   availableTickets: trip.availableTickets,
+                  tripId: trip.tripId,
                 );
               },
             );
@@ -51,11 +52,3 @@ class SearchResultsBody extends StatelessWidget {
     );
   }
 }
-//  ListTile(
-//                   title: Text("${trip.trainNumber} - ${trip.trainType}"),
-//                   subtitle: Text(
-//                     "${trip.from} → ${trip.to}\n"
-//                     "${trip.departureTime} - ${trip.arrivalTime}",
-//                   ),
-//                   trailing: Text("${trip.price} EGP"),
-//                 );

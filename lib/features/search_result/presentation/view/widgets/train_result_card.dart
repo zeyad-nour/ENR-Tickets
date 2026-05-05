@@ -133,6 +133,7 @@ class _TrainResultCardState extends State<TrainResultCard> {
                           trainNumber: train.trainNumber,
                           from: train.fromStation,
                           to: train.toStation,
+                          tripId: train.tripId,
                         ),
                       ),
                     );

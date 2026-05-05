@@ -17,12 +17,13 @@ class SeatPage extends StatefulWidget {
   final int trainNumber;
   final String from;
   final String to;
-
+  final String tripId;
   const SeatPage({
     super.key,
     required this.trainNumber,
     required this.from,
     required this.to,
+    required this.tripId,
   });
 
   @override
@@ -34,7 +35,7 @@ class _SeatPageState extends State<SeatPage> {
   void initState() {
     super.initState();
     // Load seats when the page initializes
-    context.read<SeatSelectionCubit>().loadSeats(widget.trainNumber.toString());
+    context.read<SeatSelectionCubit>().loadSeats(widget.tripId);
   }
 
   int getSeatPrice() {
@@ -80,7 +81,7 @@ class _SeatPageState extends State<SeatPage> {
             return Column(
               children: [
                 const HeaderWidget(),
-                SeatGridWidget(seatCount: 52, trainType: "VIP"),
+                SeatGridWidget(seatCount: state.seats.length, trainType: "VIP"),
                 if (selectedSeats.isNotEmpty)
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8),

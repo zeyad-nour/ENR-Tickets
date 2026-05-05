@@ -1,3 +1,5 @@
+import 'package:dio/dio.dart';
+import 'package:enr_tickets/core/services/api/api_service.dart';
 import 'package:enr_tickets/core/utils/app_strings.dart';
 import 'package:enr_tickets/core/utils/colors.dart';
 import 'package:enr_tickets/core/widget/styles.dart';
@@ -18,7 +20,7 @@ class CustomCardTrainInfo extends StatefulWidget {
   final String toStation;
   final String departTime;
   final String arriveTime;
-
+  final String tripId;
   final String duration;
   final int availableTickets;
 
@@ -33,6 +35,7 @@ class CustomCardTrainInfo extends StatefulWidget {
 
     required this.duration,
     required this.availableTickets,
+    required this.tripId,
   });
 
   @override
@@ -41,6 +44,7 @@ class CustomCardTrainInfo extends StatefulWidget {
 
 class _CustomCardTrainInfoState extends State<CustomCardTrainInfo> {
   bool isExpanded = false;
+  final api = ApiService(Dio());
 
   void toggleStops() {
     setState(() {
@@ -130,11 +134,12 @@ class _CustomCardTrainInfoState extends State<CustomCardTrainInfo> {
                         MaterialPageRoute(
                           builder: (context) => BlocProvider(
                             create: (context) =>
-                                SeatSelectionCubit()..loadSeats(60),
+                                SeatSelectionCubit()..loadSeats(widget.tripId),
                             child: SeatPage(
                               trainNumber: widget.trainNumber,
                               from: widget.fromStation,
                               to: widget.toStation,
+                              tripId: widget.tripId,
                             ),
                           ),
                         ),
