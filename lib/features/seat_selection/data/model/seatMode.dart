@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 enum SeatStatus { available, selected, booked }
 
 class SeatModel {

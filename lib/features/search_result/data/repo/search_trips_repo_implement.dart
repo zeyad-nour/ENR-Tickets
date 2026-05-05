@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:enr_tickets/core/services/api/api_service.dart';
 import 'package:enr_tickets/core/services/api/endpoints.dart';
@@ -20,9 +22,9 @@ class SearchTripsRepoImpl implements SearchTripsRepo {
     int limit = 10,
   }) async {
     try {
-      print("FROM = $from");
-      print("TO = $to");
-      print("DATE = $date");
+      log("FROM = $from");
+      log("TO = $to");
+      log("DATE = $date");
       final response = await api.get(
         endpoint: EndPoints.searchTrips,
         query: {
