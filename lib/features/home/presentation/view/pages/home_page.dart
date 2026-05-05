@@ -1,7 +1,6 @@
 // ignore_for_file: deprecated_member_use, use_build_context_synchronously
 
 import 'package:enr_tickets/core/utils/app_strings.dart';
-import 'package:enr_tickets/core/utils/colors.dart';
 import 'package:enr_tickets/core/widget/animated_button.dart';
 import 'package:enr_tickets/core/widget/custom_button_register.dart';
 import 'package:enr_tickets/core/widget/styles.dart';
