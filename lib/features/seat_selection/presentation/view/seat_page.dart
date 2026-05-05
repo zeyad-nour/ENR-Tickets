@@ -1,4 +1,5 @@
 import 'package:enr_tickets/core/utils/colors.dart';
+import 'package:enr_tickets/core/widget/app_lottie_lodaing.dart';
 import 'package:enr_tickets/core/widget/styles.dart';
 import 'package:enr_tickets/features/seat_selection/data/model/seatMode.dart';
 import 'package:enr_tickets/core/widget/animated_button.dart';
@@ -38,8 +39,6 @@ class _SeatPageState extends State<SeatPage> {
     context.read<SeatSelectionCubit>().loadSeats(widget.tripId);
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,7 +58,7 @@ class _SeatPageState extends State<SeatPage> {
         builder: (context, state) {
           if (state is SeatSelectionLoading) {
             return const Center(
-              child: CircularProgressIndicator(color: iconColor),
+              child: AppLottieLoading(assetPath: "assets/search_result.json"),
             );
           }
 
