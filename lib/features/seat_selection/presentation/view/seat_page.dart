@@ -34,7 +34,7 @@ class _SeatPageState extends State<SeatPage> {
   void initState() {
     super.initState();
     // Load seats when the page initializes
-    context.read<SeatSelectionCubit>().loadSeats(60);
+    context.read<SeatSelectionCubit>().loadSeats(widget.trainNumber.toString());
   }
 
   int getSeatPrice() {

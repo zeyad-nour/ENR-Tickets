@@ -1,35 +1,33 @@
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:bloc/bloc.dart';
+import 'package:dio/dio.dart';
+import 'package:enr_tickets/core/services/api/api_service.dart';
 import 'package:enr_tickets/features/seat_selection/data/model/seatMode.dart';
+import 'package:enr_tickets/features/seat_selection/data/repo/set_repo.dart';
 import 'package:meta/meta.dart';
 
 part 'seat_selection_state.dart';
 
 class SeatSelectionCubit extends Cubit<SeatSelectionState> {
   SeatSelectionCubit() : super(SeatSelectionLoading());
-
+final api = ApiService(Dio());
   /// ✅ خد seatCount من بره
-  void loadSeats(int seatCount) async {
-    emit(SeatSelectionLoading());
+Future<void> loadSeats(String tripId) async {
+  emit(SeatSelectionLoading());
 
-    try {
-      await Future.delayed(const Duration(seconds: 5));
+  try {
+    final response = await api.get(
+      endpoint: "/users/trips/$tripId/seats",
+    );
 
-      /// 🔥 generate حسب العدد الحقيقي
-      final seats = List.generate(seatCount, (index) {
-        if (index % 5 == 0) {
-          return SeatModel(number: index + 1, status: SeatStatus.booked);
-        }
+    final model = SeatResponse.fromJson(response.data);
 
-        return SeatModel(number: index + 1, status: SeatStatus.available);
-      });
-
-      emit(SeatSelectionLoaded(seats: seats));
-    } catch (e) {
-      emit(SeatSelectionFailure(e.toString()));
-    }
+    emit(SeatSelectionLoaded(seats: model.seats));
+  } catch (e) {
+    emit(SeatSelectionFailure(e.toString()));
   }
+}
 
   /// اختيار كرسي
   void toggleSeat(int seatNumber) {
