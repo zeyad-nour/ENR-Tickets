@@ -16,7 +16,11 @@ class SearchResultsBody extends StatelessWidget {
         builder: (context, state) {
           if (state is SearchResultLoading) {
             return const Center(
-              child: AppLottieLoading(assetPath: 'assets/search_result.json'),
+              child: AppLottieLoading(
+                assetPath: 'assets/search_result.json',
+                size: 150,
+                text: "Searching for trips...",
+              ),
             ); //replaced
           }
 

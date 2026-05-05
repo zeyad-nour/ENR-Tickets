@@ -58,7 +58,11 @@ class _SeatPageState extends State<SeatPage> {
         builder: (context, state) {
           if (state is SeatSelectionLoading) {
             return const Center(
-              child: AppLottieLoading(assetPath: "assets/search_result.json"),
+              child: AppLottieLoading(
+                assetPath: "assets/search_result.json",
+                size: 150,
+                text: "Loading seats...",
+              ),
             );
           }
 

@@ -1,5 +1,7 @@
 // ignore_for_file: avoid_print
 
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:enr_tickets/core/utils/local_storage.dart';
 
@@ -23,7 +25,7 @@ class ApiService {
         onRequest: (options, handler) async {
           final token = await LocalStorage.getToken();
 
-          print("🔥 TOKEN IN REQUEST = $token");
+          log("TOKEN IN REQUEST = $token");
 
           if (token != null && token.isNotEmpty) {
             options.headers['Authorization'] = 'Bearer $token';
