@@ -1,6 +1,7 @@
-// ignore_for_file: use_build_context_synchronously
+// ignore_for_file: deprecated_member_use, use_build_context_synchronously
 
 import 'package:enr_tickets/core/utils/app_strings.dart';
+import 'package:enr_tickets/core/utils/colors.dart';
 import 'package:enr_tickets/core/widget/animated_button.dart';
 import 'package:enr_tickets/core/widget/custom_button_register.dart';
 import 'package:enr_tickets/core/widget/styles.dart';
@@ -106,6 +107,21 @@ class _HomePageState extends State<HomePage> {
                               : cubit.travelDate,
                           firstDate: now,
                           lastDate: now.add(const Duration(days: 30)),
+
+                          builder: (context, child) {
+                            return Theme(
+                              data: Theme.of(context).copyWith(
+                                colorScheme: ColorScheme.dark(
+                                  primary: Colors.red,
+                                  onPrimary: Colors.white,
+                                  surface: Colors.transparent.withOpacity(0.3),
+                                  onSurface: Colors.white,
+                                ),
+                                dialogBackgroundColor: Colors.white,
+                              ),
+                              child: child!,
+                            );
+                          },
                         );
 
                         if (pickedDate != null) {
