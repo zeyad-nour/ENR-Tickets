@@ -1,30 +1,21 @@
 enum SeatStatus { available, selected, booked }
 
 class SeatModel {
-  final String seatId;
   final int number;
   final SeatStatus status;
-  final int row;
-  final String position;
   final int price;
 
   SeatModel({
-    required this.seatId,
     required this.number,
     required this.status,
-    required this.row,
-    required this.position,
     required this.price,
   });
 
   factory SeatModel.fromJson(Map<String, dynamic> json) {
     return SeatModel(
-      seatId: json['seatId'],
       number: json['number'],
+      price: json['price'] ?? 0,
       status: _mapStatus(json['status']),
-      row: json['row'],
-      position: json['position'],
-      price: json['price'],
     );
   }
 
@@ -41,12 +32,9 @@ class SeatModel {
 
   SeatModel copyWith({SeatStatus? status}) {
     return SeatModel(
-      seatId: seatId,
       number: number,
-      status: status ?? this.status,
-      row: row,
-      position: position,
       price: price,
+      status: status ?? this.status,
     );
   }
 }

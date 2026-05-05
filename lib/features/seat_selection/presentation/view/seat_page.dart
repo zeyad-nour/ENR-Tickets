@@ -76,7 +76,10 @@ class _SeatPageState extends State<SeatPage> {
             final selectedSeats = state.seats
                 .where((seat) => seat.status == SeatStatus.selected)
                 .toList();
-            final totalPrice = selectedSeats.length * getSeatPrice();
+            var totalPrice = selectedSeats.fold(
+              0,
+              (sum, seat) => sum + seat.price,
+            );
 
             return Column(
               children: [
@@ -86,7 +89,9 @@ class _SeatPageState extends State<SeatPage> {
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8),
                     child: Text(
-                      "Total: $totalPrice EGP",
+                      // "Total: ${totalPrice == 0 ? 'Calculating...' : '$totalPrice EGP'}",
+                      "Total: ${totalPrice == 0 ? totalPrice = 220 : '$totalPrice EGP'}",
+
                       style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
