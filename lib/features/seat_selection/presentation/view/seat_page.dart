@@ -38,12 +38,7 @@ class _SeatPageState extends State<SeatPage> {
     context.read<SeatSelectionCubit>().loadSeats(widget.tripId);
   }
 
-  int getSeatPrice() {
-    if (widget.trainNumber == 185) return 75;
-    if (widget.trainNumber == 2009) return 150;
-    if (widget.trainNumber == 2031) return 200;
-    return 100;
-  }
+
 
   @override
   Widget build(BuildContext context) {
