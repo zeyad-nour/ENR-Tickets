@@ -1,6 +1,9 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:enr_tickets/core/utils/colors.dart';
 import 'package:enr_tickets/core/widget/app_lottie_lodaing.dart';
 import 'package:enr_tickets/core/widget/styles.dart';
+import 'package:enr_tickets/features/passenger_info/presentation/view/add_passenger_sheet.dart';
 import 'package:enr_tickets/features/seat_selection/data/model/seatMode.dart';
 import 'package:enr_tickets/core/widget/animated_button.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +22,7 @@ class SeatPage extends StatefulWidget {
   final String from;
   final String to;
   final String tripId;
+
   const SeatPage({
     super.key,
     required this.trainNumber,
@@ -35,7 +39,6 @@ class _SeatPageState extends State<SeatPage> {
   @override
   void initState() {
     super.initState();
-    // Load seats when the page initializes
     context.read<SeatSelectionCubit>().loadSeats(widget.tripId);
   }
 
@@ -46,9 +49,7 @@ class _SeatPageState extends State<SeatPage> {
       appBar: AppBar(
         centerTitle: true,
         leading: IconButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
+          onPressed: () => Navigator.of(context).pop(),
           icon: Icon(Icons.arrow_back_ios, color: iconColor),
         ),
         title: const Text("Seat Selection", style: Styles.textStyle19),
@@ -74,6 +75,7 @@ class _SeatPageState extends State<SeatPage> {
             final selectedSeats = state.seats
                 .where((seat) => seat.status == SeatStatus.selected)
                 .toList();
+
             var totalPrice = selectedSeats.fold(
               0,
               (sum, seat) => sum + seat.price,
@@ -82,14 +84,19 @@ class _SeatPageState extends State<SeatPage> {
             return Column(
               children: [
                 const HeaderWidget(),
-                SeatGridWidget(seatCount: state.seats.length, trainType: "VIP"),
+
+                Expanded(
+                  child: SeatGridWidget(
+                    seatCount: state.seats.length,
+                    trainType: "VIP",
+                  ),
+                ),
+
                 if (selectedSeats.isNotEmpty)
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8),
                     child: Text(
-                      // "Total: ${totalPrice == 0 ? 'Calculating...' : '$totalPrice EGP'}",
-                      "Total: ${totalPrice == 0 ? totalPrice = 220 : '$totalPrice EGP'}",
-
+                      "Total: ${totalPrice == 0 ? 220 : '$totalPrice EGP'}",
                       style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -97,7 +104,9 @@ class _SeatPageState extends State<SeatPage> {
                       ),
                     ),
                   ),
-                Gap(20),
+
+                const Gap(20),
+
                 AnimatedButton(
                   child: BookingBotton(
                     onPressed: () {
@@ -114,29 +123,39 @@ class _SeatPageState extends State<SeatPage> {
                           title: "Alert",
                           description: "Are you sure about this booking?",
                           dialogType: DialogType.noHeader,
-                          btnOkOnPress: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (_) => PaymentWay(
-                                  train: widget.trainNumber.toString(),
-                                  trainType: "VIP",
-                                  coach: "1",
-                                  seats: selectedSeats,
-                                  from: widget.from,
-                                  to: widget.to,
-                                  price: totalPrice.toString(),
-                                  name: "Passenger",
-                                ),
-                              ),
+                          btnOkOnPress: () async {
+                            var passenger = await showModalBottomSheet(
+                              context: context,
+                              isScrollControlled: true,
+                              backgroundColor: Colors.transparent,
+                              builder: (_) => const AddPassengerSheet(),
                             );
+
+                            if (passenger != null) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => PaymentWay(
+                                    train: widget.trainNumber.toString(),
+                                    trainType: "VIP",
+                                    coach: "1",
+                                    seats: selectedSeats,
+                                    from: widget.from,
+                                    to: widget.to,
+                                    price: totalPrice.toString(),
+                                    name: passenger["name"],
+                                  ),
+                                ),
+                              );
+                            }
                           },
                         );
                       }
                     },
                   ),
                 ),
-                Gap(20),
+
+                const Gap(20),
               ],
             );
           }
