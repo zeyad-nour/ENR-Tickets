@@ -57,7 +57,7 @@ class _CustomCardTrainInfoState extends State<CustomCardTrainInfo> {
     final theme = Theme.of(context);
 
     // Strings translated
-    final String priceLabel = AppStrings.of(context, "price");
+    // final String priceLabel = AppStrings.of(context, "price");
     final String choosingSeatLabel = AppStrings.of(context, "choosingSeat");
 
     return Padding(
@@ -110,7 +110,7 @@ class _CustomCardTrainInfoState extends State<CustomCardTrainInfo> {
               /// Duration with price label
               Center(
                 child: Text(
-                  "$priceLabel ${widget.duration}",
+                  "Flight time ${widget.duration}",
                   style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
               ),
